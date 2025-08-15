@@ -1,0 +1,86 @@
+###############################################################################
+# OVERVIEW
+###############################################################################
+# The following contains the pre-commit hooks for this repository.
+#
+# Relevant Links:
+#
+# Pre-commit: https://pre-commit.com/
+# Supported hooks: https://github.com/pre-commit/pre-commit-hooks
+# Ruff rules: https://docs.astral.sh/ruff/rules/
+###############################################################################
+# GENERAL
+###############################################################################
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+    # prevent giant files from being committed.
+    -   id: check-added-large-files
+        args: ["--maxkb=10000"]
+    # check for files with names that would
+    # conflict on a case-insensitive filesystem
+    # like MacOS HFS+ or Windows FAT.
+    -   id: check-case-conflict
+    # checks for a common error of placing
+    # code before the docstring.
+    -   id: check-docstring-first
+    # attempts to load all yaml files to
+    # verify syntax.
+    -   id: check-yaml
+        # allow yaml files which use the
+        # multi-document syntax
+        args: ["--allow-multiple-documents"]
+    # attempts to load all TOML files to
+    # verify syntax.
+    -   id: check-toml
+    # makes sure files end in a newline and
+    # only a newline.
+    -   id: end-of-file-fixer
+    # replaces or checks mixed line ending.
+    -   id: mixed-line-ending
+    # checks that all your JSON files are pretty.
+    # "Pretty" here means that keys are sorted
+    # and indented.
+    -   id: pretty-format-json
+        # automatically format json files;
+        # when autofixing, retain the original
+        # key ordering (instead of sorting
+        # the keys)
+        args: ["--autofix", "--no-sort-keys"]
+    # trims trailing whitespace.
+    -   id: trailing-whitespace
+    # checks that non-binary executables have
+    # a proper shebang.
+    -   id: check-executables-have-shebangs
+        files: \.sh$
+    # checks for the existence of private keys.
+    -   id: detect-private-key
+###############################################################################
+# SECURITY
+###############################################################################
+-   repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+    # must first run
+    # detect-secrets scan > .secrets.baseline
+    -   id: detect-secrets
+        args: ["--baseline", ".secrets.baseline"]
+        exclude: package.lock.json
+###############################################################################
+# GITHUB ACTIONS
+###############################################################################
+-   repo: https://github.com/rhysd/actionlint
+    rev: v1.7.7
+    hooks:
+    -   id: actionlint
+###############################################################################
+# SPELLING
+###############################################################################
+-   repo: https://github.com/crate-ci/typos
+    rev: v1
+    hooks:
+    -   id: typos
+        args: ["--force-exclude"]
+###############################################################################
+
