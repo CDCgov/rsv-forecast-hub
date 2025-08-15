@@ -56,6 +56,9 @@ repos:
         files: \.sh$
     # checks for the existence of private keys.
     -   id: detect-private-key
+    # detects aws credentials (from hubTemplate)
+    -   id: detect-aws-credentials
+        args: [--allow-missing-credentials]
 ###############################################################################
 # SECURITY
 ###############################################################################
