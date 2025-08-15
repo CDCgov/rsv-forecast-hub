@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > This repository is currently under construction!
 
-# *[Insert title of hub]*
+# RSV Forecast Hub
 
 *[Describe overall purpose of hub.]* Anyone interested in using these data for additional research or publications is
 requested to contact *[insert email]* for information regarding attribution of the source forecasts.
@@ -39,7 +39,7 @@ and [epiweeks](https://pypi.org/project/epiweeks/) for Python).
 
 If you have questions aboutthis target, please reach out to *[insert name]* (*[insert email]*).
 
-## Accessing hub data on the cloud
+## Accessing Hub Data On The Cloud
 
 *[Remove this section if you're not planning to host your hub's data on the Hubverse's AWS infrastructure]*
 
@@ -96,11 +96,11 @@ The dataset can be filtered and transformed using dplyr and then materialized in
 using the [`collect_hub()` function](https://hubverse-org.github.io/hubData/reference/collect_hub.html).
 
 
-#### Accessing target data
+#### Accessing Target Data
 
 *[hubData will be updated to access target data once the Hubverse target data standards are finalized.]*
 
-#### Accessing model output data
+#### Accessing Model Output Data
 
 Below is an example of using hubData to connect to a hub on S3 and filter the model output data.
 
@@ -142,7 +142,7 @@ Polars is a good choice if you:
 - want to save a subset of the hub's data (*e.g.*, forecasts for a specific date or target) to your local machine
 - want to save hub data in a different file format (*e.g.*, parquet to .csv)
 
-### Installing polars
+### Installing Polars
 
 Use pip to install Polars:
 
@@ -159,7 +159,7 @@ LazyFrames do not perform computations until necessary, so any filtering and tra
 deferred until an explicit
 [`collect()` operation](https://docs.pola.rs/api/python/stable/reference/lazyframe/api/polars.LazyFrame.collect.html#polars.LazyFrame.collect).
 
-#### Accessing target data
+#### Accessing Target Data
 
 Get all oracle-output files into a single DataFrame.
 
@@ -176,7 +176,7 @@ oracle_data = pl.scan_parquet(
 oracle_dataframe = oracle_data.filter(pl.col("location") == "MA").collect()
 ```
 
-#### Accessing model output data
+#### Accessing Model Output Data
 
 Get the model-output files for a specific team (all rounds).
 This example uses
@@ -191,7 +191,7 @@ lf = pl.scan_parquet(
 )
 ```
 
-#### Using partitions (hive-style)
+#### Using Partitions (Hive-Style)
 
 If your data uses hive-style partitioning, Polars can use the partitions to filter the data before reading it.
 
@@ -224,13 +224,13 @@ This option is ideal if you:
 - want to download a subset of the data (instead of the entire hub)
 - are using the data for an application that requires local storage or fast response times
 
-### Installing the AWS CLI
+### Installing The AWS CLI
 
 - Install the AWS CLI using the
 [instructions here](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 - You can skip the instructions for setting up security credentials, since Hubverse data is public
 
-### Using the AWS CLI
+### Using The AWS CLI
 
 When using the AWS CLI, the `--no-sign-request` option is required, since it tells AWS to bypass a credential check
 (*i.e.*, `--no-sign-request` allows anonymous access to public S3 data).
@@ -269,7 +269,7 @@ aws s3 cp s3://[hub-bucket-name]/[modeling-team-name]/UMass-flusion/ . --recursi
 
 ## Acknowledgments
 
-This repository follows the guidelines and standards outlined by [the
+This repository follows the guidelines and standards outlined by the
 [hubverse](https://hubverse.io), which provides a set of data formats and open source tools for modeling hubs.
 
 
