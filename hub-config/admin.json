@@ -8,7 +8,7 @@
   },
   "repository": {
     "host": "github",
-    "owner": "https://github.com/cdcent/cfa-internal-rsv-forecast-hub",
+    "owner": "cdcent",
     "name": "cfa-internal-rsv-forecast-hub"
   },
   "file_format": [
