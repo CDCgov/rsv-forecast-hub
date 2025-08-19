@@ -1,10 +1,10 @@
 {
   "schema_version": "https://raw.githubusercontent.com/hubverse-org/schemas/main/v5.0.0/admin-schema.json",
-  "name": "Template Forecast Hub",
-  "maintainer": "Consortium of Infectious Disease Modeling Hubs",
+  "name": "RSV Forecast Hub",
+  "maintainer": "CDC/CFA Short-Term Forecasts Team",
   "contact": {
-    "name": "Joe Bloggs",
-    "email": "j.bloggs@cidmh.com"
+    "name": "T. Martin",
+    "email": "rsvhub@cdc.gov"
   },
   "repository": {
     "host": "github",
@@ -21,7 +21,7 @@
     "host": {
       "name": "aws",
       "storage_service": "s3",
-      "storage_location": "hub-template"
+      "storage_location": "cfa-internal-rsv-forecast-hub"
     }
   }
 }
