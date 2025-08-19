@@ -185,7 +185,7 @@
             "target": {
               "required": null,
               "optional": [
-                "wk inc covid hosp"
+                "wk inc rsv hosp"
               ]
             }
           },

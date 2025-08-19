@@ -1,5 +1,5 @@
 {
-  "schema_version": "https://raw.githubusercontent.com/hubverse-org/schemas/main/v5.1.0/admin-schema.json",
+  "schema_version": "https://raw.githubusercontent.com/hubverse-org/schemas/main/v5.0.0/admin-schema.json",
   "name": "Template Forecast Hub",
   "maintainer": "Consortium of Infectious Disease Modeling Hubs",
   "contact": {
