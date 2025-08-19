@@ -46,7 +46,6 @@ jobs:
         id: validate
         run: hubAdmin::ci_validate_hub_config(diff = "${{ runner.temp }}/diff.md")
         shell: Rscript {0}
-
       - name: Comment On PR
         id: comment-diff
         if: ${{ github.event_name != 'workflow_dispatch' }}
@@ -54,7 +53,6 @@ jobs:
         with:
           pr: ${{ env.PR_NUMBER }}
           path: ${{ runner.temp }}/diff.md
-
       - name: Error On Failure
         if: ${{ steps.validate.outputs.result == 'false' }}
         run: |
