@@ -2,7 +2,7 @@
   "schema_version": "https://raw.githubusercontent.com/hubverse-org/schemas/main/v5.0.0/tasks-schema.json",
   "rounds": [
     {
-      "roune_name": "Forecasting 2025-26 Round",
+      "roune_name": "RSV Forecasting 2025-26",
       "round_id_from_variable": true,
       "round_id": "reference_date",
       "model_tasks": [
