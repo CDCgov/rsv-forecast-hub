@@ -1,3 +1,5 @@
+# The following is a workflow derived from
+# https://github.com/posit-dev/setup-air/blob/main/examples/format-check.yaml
 on:
   push:
     branches: [main, master]
