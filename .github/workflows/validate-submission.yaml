@@ -31,20 +31,24 @@ jobs:
             any::hubValidations
             any::sessioninfo
 
-      - name: Get Model Output Changes
-        id: get_changed_files_in_model_output
-        uses: step-security/changed-files@v45
-        with:
-          path: model-output
-          dir_names: "true"
+      # - name: Get Model Output Changes
+      #   id: get_changed_files_in_model_output
+      #   uses: step-security/changed-files@v45
+      #   with:
+      #     path: model-output
+      #     dir_names: "true"
 
-      - name: Check Modified Output Directories
-        run: |
-          if [ "${{ steps.get_changed_files_in_model_output.outputs.all_modified_files }}" == "CovidHub-ensemble" ]; then
-            { echo "model=ensemble" | tee -a $GITHUB_ENV; }
-          else
-            { echo "model=other" | tee -a $GITHUB_ENV; }
-          fi
+      # - name: Check Modified Output Directories
+      #   run: |
+      #     if [ "${{ steps.get_changed_files_in_model_output.outputs.all_modified_files }}" == "CovidHub-ensemble" ]; then
+      #       { echo "model=ensemble" | tee -a $GITHUB_ENV; }
+      #     else
+      #       { echo "model=other" | tee -a $GITHUB_ENV; }
+      #     fi
+
+
+      # skip_submit_window_check = Sys.getenv("model") == "ensemble"
+      # # was removed from after pr_number line
 
       - name: Run Validations
         env:
@@ -54,7 +58,7 @@ jobs:
           v <- hubValidations::validate_pr(
               gh_repo = Sys.getenv("GITHUB_REPOSITORY"),
               pr_number = Sys.getenv("PR_NUMBER"),
-              skip_submit_window_check = Sys.getenv("model") == "ensemble"
+
           )
           hubValidations::check_for_errors(v, verbose = TRUE)
         shell: Rscript {0}
