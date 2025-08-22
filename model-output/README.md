@@ -1,60 +1,45 @@
-# Model outputs folder
+# Model Outputs Folder
 
-This folder contains a set of subdirectories, one for each model, that contains submitted model output files for that model. The structure of these directories and their contents follows general [hubverse model output guidelines](https://hubdocs.readthedocs.io/en/latest/user-guide/model-output.html). Specific documentation for the COVID-19 Forecast Hub follows.
+This folder contains a set of subdirectories, one for each model, that contains submitted model output files for that model. The structure of these directories and their contents follows general [hubverse model output guidelines](https://hubdocs.readthedocs.io/en/latest/user-guide/model-output.html). Specific documentation for the RSV Forecast Hub follows.
 
 
-# Data submission instructions
+# Data Submission Instructions
 
-All forecasts should be submitted directly to the [model-output/](./) folder. Data in this directory should be added to the repository through a pull request so that automatic data validation checks are run.
+All forecasts should be submitted directly to the `model-output` folder (i.e. this current folder). Data in this directory should be added to the repository through [a pull request](https://github.com/cdcent/cfa-internal-rsv-forecast-hub/pulls) so that automatic data validation checks are run.
 
-These instructions provide detail about the [data format](#Data-formatting) as well as [validation](#Forecast-validation) that you can do prior to this pull request. In addition, we describe [metadata](https://github.com/hubverse-org/hubTemplate/blob/master/model-metadata/README.md) that each model should provide in the model-metadata folder.
+These instructions provide detail about the [data format](#Data-Formatting) as well as [validation](#Forecast-Validation) that you can do prior to this pull request. In addition, we describe [metadata](https://github.com/hubverse-org/hubTemplate/blob/master/model-metadata/README.md) that each model should provide in the model-metadata folder.
 
-*Table of Contents*
+*Table Of Contents*
 
--   [What is a forecast](#What-is-a-forecast)
--   [Target data](#Target-data)
--   [Data formatting](#Data-formatting)
--   [Forecast file format](#Forecast-file-format)
--   [Forecast data validation](#Forecast-validation)
--   [Weekly ensemble build](#Weekly-ensemble-build)
--   [Policy on late submissions](#policy-on-late-or-updated-submissions)
+-   [What Is A Forecast](#What-Is-A-Forecast)
+-   [Target Data](#Target-Data)
+-   [Data Formatting](#Data-Formatting)
+-   [Forecast File Format](#Forecast-File-Format)
+-   [Forecast Data Validation](#Forecast-Validation)
+-   [Weekly Ensemble Build](#Weekly-Ensemble-Build)
+-   [Late Submission Policy](#Late-Submission-Policy)
 
-## What is a forecast
+## What Is A Forecast
 
-Models are asked to make specific quantitative forecasts about data that will be observed in the future. These forecasts are interpreted as
-"unconditional" predictions about the future. That is, they are not
-predictions only for a limited set of possible future scenarios in which a certain set of conditions (e.g. vaccination uptake is strong, or new social-distancing mandates are put in place) hold about the future --
-rather, they should characterize uncertainty across all reasonable
-future scenarios. In practice, all forecasting models make some
-assumptions about how current trends in data may change and impact the
-forecasted outcome; some teams select a "most likely" scenario or
-combine predictions across multiple scenarios that may occur. Forecasts
-submitted to this repository will be evaluated against observed data.
+Models are asked to make specific quantitative forecasts about data that will be observed in the future. These forecasts are interpreted as "unconditional" predictions about the future. That is, they are not predictions only for a limited set of possible future scenarios in which a certain set of conditions (e.g. vaccination uptake is strong, or new social-distancing mandates are put in place) hold about the future — rather, they should characterize uncertainty across all reasonable future scenarios. In practice, all forecasting models make some assumptions about how current trends in data may change and impact the forecasted outcome; some teams select a "most likely" scenario or combine predictions across multiple scenarios that may occur. Forecasts submitted to this repository will be evaluated against observed data.
 
-We note that other modeling efforts, such as the [Influenza Scenario
-Modeling Hub](https://fluscenariomodelinghub.org/), have been
-launched to collect and aggregate model outputs from "scenario
-projection" models. These models create longer-term projections under a
-specific set of assumptions about how the main drivers of the pandemic
-(such as non-pharmaceutical intervention compliance, or vaccination
-uptake) may change over time.
+We note that other modeling efforts, such as the [Influenza Scenario Modeling Hub](https://fluscenariomodelinghub.org/), have been launched to collect and aggregate model outputs from "scenario projection" models. These models create longer-term projections under a specific set of assumptions about how the main drivers of the pandemic (such as non-pharmaceutical intervention compliance, or vaccination uptake) may change over time.
 
 ## Target Data
 
-This project treats laboratory-confirmed COVID-19 hospital admissions data, and percent of emergency department visits due to COVID-19 as the target ("gold standard") data for forecasting. The specific forecasting targets are epiweekly total incident hospital admissions and epiweekly percent of emergency department visits due to COVID-19.
+This project treats laboratory-confirmed RSV hospital admissions data, and percent of emergency department visits due to RSV as the target ("gold standard") data for forecasting. The specific forecasting targets are epiweekly total incident hospital admissions and epiweekly percent of emergency department visits due to RSV.
+
 These data are reported through CDC's NHSN (National Health Safety Network) and NSSP (National Syndromic Surveillance Program) systems.
 
 Further information on the data can be found at the NHSN's [Hospital Respiratory Reporting](https://www.cdc.gov/nhsn/psc/hospital-respiratory-reporting.html) page and NSSP's [Emergency Department Visit Trajectories](https://data.cdc.gov/Public-Health-Surveillance/NSSP-Emergency-Department-Visit-Trajectories-by-St/rdmq-nq56/about_data) page.
 
 
-## Forecast submission formatting
+## Forecast Submission Formatting
 
 
-The automatic checks in place for forecast files submitted to this
-repository validates both the filename and file contents to ensure the
-file can be used in the visualization and ensemble forecasting.
+The automatic checks in place for forecast files submitted to this repository validate both the filename and file contents to ensure the file can be used in the visualization and ensemble forecasting.
 
-### Subdirectory
+### Model Subdirectories
 
 Each model that submits forecasts for this project will have a unique subdirectory within the [model-output/](model-output/) directory in this GitHub repository where forecasts will be submitted. Each subdirectory must be named
 
@@ -65,8 +50,7 @@ where
 -   `team` is the team name and
 -   `model` is the name of your model.
 
-Both team and model should be less than 15 characters and not include
-hyphens or other special characters, with the exception of "\_".
+Both team and model should be less than 15 characters and not include hyphens or other special characters, with the exception of "\_".
 
 The combination of `team` and `model` should be unique from any other model in the project.
 
@@ -149,11 +133,11 @@ Values in the `target` column must be a character (string) and be either one or 
 
 
 ### `horizon`
-Values in the `horizon` column indicate the number of weeks  between the `reference_date` and the `target_end_date`. For submissions to the COVID-19 Forecast Hub, this should be a number between -1 and 3. It indicates the [epidemiological week ("epiweek")](https://epiweeks.readthedocs.io/en/stable/) being forecast/nowcast relative to the epiweek containing the forecast submission date ("the submission epiweek").
+Values in the `horizon` column indicate the number of weeks  between the `reference_date` and the `target_end_date`. For submissions to the RSV Forecast Hub, this should be a number between -1 and 3. It indicates the [epidemiological week ("epiweek")](https://epiweeks.readthedocs.io/en/stable/) being forecast/nowcast relative to the epiweek containing the forecast submission date ("the submission epiweek").
 
 A `horizon` of -1 indicates that the prediction is a nowcast for ultimately reported data from the epiweek prior to the submission epiweek. A `horizon` of 1 indicates that the prediction is a forecast for the epiweek following submission epiweek.
 
-Note that the COVID-19 Forecast Hub uses [US CDC / MMWR epiweeks](https://ndc.services.cdc.gov/wp-content/uploads/MMWR_Week_overview.pdf), which begin on Sunday and end on Saturday, not [ISO epiweeks](https://en.wikipedia.org/wiki/ISO_week_date).
+Note that the RSV Forecast Hub uses [US CDC / MMWR epiweeks](https://ndc.services.cdc.gov/wp-content/uploads/MMWR_Week_overview.pdf), which begin on Sunday and end on Saturday, not [ISO epiweeks](https://en.wikipedia.org/wiki/ISO_week_date).
 
 ### `target_end_date`
 
