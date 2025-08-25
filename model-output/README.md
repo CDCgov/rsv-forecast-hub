@@ -95,7 +95,7 @@ The date YYYY-MM-DD is the [`reference_date`](#reference_date). This should be t
 
 The `team` and `model` in this file must match the `team` and `model` in
 the directory this file is in. Both `team` and `model` should be less
-than 15 characters, alpha-numeric and underscores only, with no spaces
+than 21 characters, alpha-numeric and underscores only, with no spaces
 or hyphens. Submission of both targets- quantiles and samples must be in the same weekly csv or parquet submission file.
 
 ## Forecast File Format
