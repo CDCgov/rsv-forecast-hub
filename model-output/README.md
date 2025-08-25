@@ -274,7 +274,7 @@ Optionally, you may validate a forecast file locally before submitting it to the
 
 ## Weekly Ensemble Build
 
-Every Thursday morning, we will generate an RSV Forecast Hub ensemble hospital admission forecast using valid forecast submissions in the current week by the Wednesday 11PM ET deadline. Some or all participant forecasts may be combined into an ensemble forecast to be published in real-time along with the participant forecasts. In addition, some or all forecasts may be displayed alongside the output of a baseline model for comparison.
+Every Thursday morning, we will generate an RSV Forecast Hub ensemble forecasts for hospital admissions and ED visits using valid forecast submitted by the Wednesday 11PM ET deadline. Some or all participant forecasts may be combined into an ensemble forecast to be published in real-time along with the participant forecasts. In addition, some or all forecasts may be displayed alongside the output of a baseline model for comparison.
 
 
 ## Policy On Late Or Updated Submissions
