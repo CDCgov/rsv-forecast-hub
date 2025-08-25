@@ -226,10 +226,7 @@ When the predictions are samples, values in the `output_type_id` column are inde
 | 2024-10-15 |  0      |  NH | sample | s3 | - |
 | 2024-10-15 |  1      |  NH | sample | s3 | - |
 
-Here, `output_type_id = s0` and `output_type_id = s1` specifies that the predictions
- for horizons -1, 0, and 1 are part of the same joint distribution. Samples from joint
- distribution across `horizon`s and `location`s can be specified by shared `output_type_id`
-  across `location`s and `horizon`s as shown in the example below:
+Here, `output_type_id = s0` and `output_type_id = s1` specifies that the predictions for horizons -1, 0, and 1 are part of the same joint distribution. Samples from joint distribution across `horizon`s and `location`s can be specified by shared `output_type_id` across `location`s and `horizon`s as shown in the example below:
 
 | origin_date|horizon| location | output_type| output_type_id | value |
 |:---------- |:-----:|:-----:| :-------- | :------------ | :---- |
@@ -246,8 +243,7 @@ Here, `output_type_id = s0` and `output_type_id = s1` specifies that the predict
 | 2024-10-15 |  0      |  NH | sample | S1 | - |
 | 2024-10-15 |  1      |  NH | sample | S1 | - |
 
-The above table shows two samples indexed by `output_type_id:` `S1` and `S2` from a joint predictive distribution across `location`s and `horizon`s.
-More details on sample output can be found in the [hubverse documentation of sample output type](https://hubverse.io/en/latest/user-guide/sample-output-type.html).
+The above table shows two samples indexed by `output_type_id:` `S1` and `S2` from a joint predictive distribution across `location`s and `horizon`s. More details on sample output can be found in the [hubverse documentation of sample output type](https://hubverse.io/en/latest/user-guide/sample-output-type.html).
 
 ### `value`
 
@@ -260,12 +256,7 @@ To ensure proper data formatting, pull requests for new data in
 
 ### Pull request forecast validation
 
-When a pull request is submitted, the data are validated through [Github
-Actions](https://docs.github.com/en/actions) which runs the tests
-present in [the hubValidations
-package](https://github.com/hubverse-org/hubValidations). The
-intent for these tests are to validate the requirements above. Please
-[let us know](https://github.com/CDCgov/covid19-forecast-hub/issues) if you are facing issues while running the tests.
+When a pull request is submitted, the data are validated through [Github Actions](https://docs.github.com/en/actions) which runs the tests present in [the hubValidations package](https://github.com/hubverse-org/hubValidations). The intent for these tests are to validate the requirements above. Please [let us know](https://github.com/CDCgov/rsv-forecast-hub/issues) if you are facing issues while running the tests.
 
 ### Local forecast validation
 
@@ -285,15 +276,18 @@ In order to ensure that forecasting is done in real-time, all forecasts are requ
 Teams may submit updates or corrections until the forecast submission deadline.
 
 ### Post-deadline corrections
+
 Between the submission deadline and ensemble generation, teams may request to revise a submission to correct technical errors (e.g. accidentally submitting the wrong version of a file). We will consider these correction requests on a case-by-case basis. After the weekly hub ensemble is generated (scheduled for Thursdays at 10 AM US/Eastern Time), no further changes can be made to weekly forecasts.
 
 Teams should not use the technical correction mechanism as a way to extend the submission deadline, so frequent requests for technical corrections from a single team are more likely to be denied.
 
 ### Retrospective baseline models
+
 Teams wishing to contribute a non-designated baseline model to the Hub may request that that retrospective "forecasts" from that baseline model be added to the Hub. We will consider and potentially approve such requests for inclusion in the Hub provided that:
 
 - The model is non-designated
 - Its status as a retrospective baseline is declared prominently in the model metadata
 
 ## Evaluation Criteria
+
 Forecasts will be evaluated using a variety of metrics, including the weighted interval score (WIS).
