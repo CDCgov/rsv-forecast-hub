@@ -17,7 +17,7 @@ The following columns are included in `time-series.parquet`:
 
 ## Hospital Admissions Data
 
-The hospital admission prediction target `wk inc rsv hosp` is the weekly number of confirmed RSV hospital admissions based on [NHSN Hospital Respiratory Reporting](https://www.cdc.gov/nhsn/psc/hospital-respiratory-reporting.html). [Weekly official counts](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metrics-by-Ju/ua7e-t2fy/about_data) are publicly released on Fridays. [Preliminary counts](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metrics-by-Ju/mpgq-jmmr/about_data) are released on Wednesdays. We update files in this target-data directory every Wednesday with latest reported incident RSV admissions values.
+The hospital admission prediction target `wk inc rsv hosp` is the weekly number of confirmed RSV hospital admissions based on the `totalconfrsvnewadm` column of the [NHSN Hospital Respiratory Reporting](https://www.cdc.gov/nhsn/psc/hospital-respiratory-reporting.html). [Weekly official counts](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metrics-by-Ju/ua7e-t2fy/about_data) are publicly released on Fridays. [Preliminary counts](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metrics-by-Ju/mpgq-jmmr/about_data) are released on Wednesdays.
 
 ## Emergency Department Visits Data
 
