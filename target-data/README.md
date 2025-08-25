@@ -23,4 +23,3 @@ The hospital admission prediction target `wk inc rsv hosp` is the weekly number 
 ## Emergency Department Visits Data
 
 The emergency department visits prediction target `wk inc rsv prop ed visits` is the weekly proportion of emergency department (ED) visits due to RSV based on `percent_visits_rsv` column of the [National Syndromic Surveillance Program](https://www.cdc.gov/nssp/index.html) (NSSP) [Emergency Department Visits - COVID-19, Flu, RSV, Sub-state](https://data.cdc.gov/Public-Health-Surveillance/NSSP-Emergency-Department-Visit-Trajectories-by-St/rdmq-nq56/about_data) dataset. Although these numbers are reported in the percentage form, we accept forecasts as decimal proportions (i.e., `percent_visits_rsv / 100`). The target data values are therefore expressed that way in the [`time-series.parquet`](time-series.parquet) target data file.
-
