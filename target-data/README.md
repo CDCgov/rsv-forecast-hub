@@ -1,5 +1,6 @@
 # Target Data
-This folder contains target data in [standard hubverse format](https://docs.hubverse.io/en/latest/user-guide/target-data.html), [`time-series.parquet`](time-series.parquet) containing both RSV hospital admissions and emergency department visits data. `time-series.parquet` contains the truth data for (eventual) evaluation of the forecasts submitted to the RSV Forecast Hub.
+This folder contains target data in [standard hubverse format](https://docs.hubverse.io/en/latest/user-guide/target-data.html), [`time-series.parquet`](time-series.parquet) with both RSV hospital admissions and emergency department visits data. `time-series.parquet` file is updated every Wednesday with the latest reported RSV hospital admissions and ED visits values. 
+We will treat this data as the truth data for (eventual) evaluation of the forecasts submitted to the RSV Forecast Hub.
 
 ### Target Data Dictionary
 
