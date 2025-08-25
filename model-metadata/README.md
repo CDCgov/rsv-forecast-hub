@@ -33,7 +33,7 @@ An abbreviated (<21 character) name for your model.
 
 ### `model_contributors`
 
-A list of all individuals involved in producing the model. For each contributor, please provide a name, affiliation, and email address. Individually may optionally provide [ORCID](https://orcid.org/) identifiers.
+A list of all individuals involved in producing the model. For each contributor, please provide a name, affiliation, and email address. Individuals may optionally provide [ORCID](https://orcid.org/) identifiers.
 
 Use the following YAML syntax
 
@@ -94,17 +94,33 @@ A boolean value (`true` or `false`) that indicates whether a model is an ensembl
 
 A boolean value (`true` or `false`) that indicates whether a model is an ensemble specifically of other models submitted to the RSV Forecast Hub.
 
+### `website_url`
+
+The url of a website with additional information about your model, such as detailed methods, visualizations, or interactive dashboards.
+
+
 ## Optional Fields
 
 The following metadata fields are optional, but encouraged.
 
+### `designated_github_users`
+
+GitHub user ids of team members who would be responsible for submitting forecasts as a pull request to the RSV Forecast Hub repository. Only the pull request from users specified here can get merged automatically after validation. Example:
+
+```
+designated_github_users: [
+  "dependabot",
+  "octocat"
+]
+```
+or
+```
+designated_github_users: ["dependabot"]
+```
+
 ### `model_version`
 
 An identifier of the version of the model. We recommend [semantic versioning](https://semver.org/) style: `X.Y` or `X.Y.Z`, so `1.2` for version 1.2.
-
-### `website_url`
-
-The url of a website with additional information about your model, such as detailed methods, visualizations, or interactive dashboards.
 
 ### `repo_url`
 
@@ -125,20 +141,7 @@ Any information about funding source(s) for the team or members of the team that
 team_funding: "National Institutes of General Medical Sciences (R01GM123456). The content is solely the responsibility of the authors and does not necessarily represent the official views of NIGMS."
 ```
 
-### `designated_github_users`
 
-GitHub user ids of team members who would be responsible for submitting forecasts as a pull request to the RSV Forecast Hub repository. Only the pull request from users specified here can get merged automatically after validation. Example:
-
-```
-designated_github_users: [
-  "dependabot",
-  "octocat"
-]
-```
-or
-```
-designated_github_users: ["dependabot"]
-```
 
 # Metadata Validation
 
@@ -164,6 +167,7 @@ hubValidations::validate_model_metadata(hub_path=".", file_path="UMass-trends_en
 ```
 
 If all is well, you should see output similar to the following:
+
 ```
 ✔ model-metadata-schema.json: File exists at path hub-config/model-metadata-schema.json.
 ✔ UMass-trends_ensemble.yml: File exists at path model-metadata/UMass-trends_ensemble.yml.
