@@ -50,7 +50,7 @@ where
 -   `team` is the team name and
 -   `model` is the name of your model.
 
-Both team and model should be less than 15 characters and not include hyphens or other special characters, with the exception of "\_".
+Both team and model should be less than 21 characters and not include hyphens or other special characters, with the exception of "\_".
 
 The combination of `team` and `model` should be unique from any other model in the project.
 
