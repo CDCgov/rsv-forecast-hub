@@ -29,7 +29,8 @@ jobs:
         run: |
           sudo apt-get update
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
+      - name: "Set up R dependencies"
+        uses: r-lib/actions/setup-r-dependencies@v2
         with:
           packages: |
             any::hubValidations
