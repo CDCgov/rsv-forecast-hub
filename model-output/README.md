@@ -63,7 +63,7 @@ The metadata file will be saved within the `model-metadata` directory in the Hub
     otherteam-othermodel.yaml
 
 
-Details on the content and formatting of metadata files are provided in the [model-metadata README](https://github.com/hubverse-org/hubTemplate/blob/master/model-metadata/README.md).
+Details on the content and formatting of metadata files are provided in the [model-metadata README](model-metadata/README.md).
 
 
 
