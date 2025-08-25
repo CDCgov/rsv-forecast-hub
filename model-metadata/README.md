@@ -33,7 +33,7 @@ An abbreviated (<21 character) name for your model.
 
 ### `model_contributors`
 
-A list of all individuals involved in producing the model. For each contributor, please provide a name, affiliation, and email address. Individually may optionally provide [ORCID](https://orcid.org/) identifiers.
+A list of all individuals involved in producing the model. For each contributor, please provide a name, affiliation, and email address. Individuals may optionally provide [ORCID](https://orcid.org/) identifiers.
 
 Use the following YAML syntax
 
