@@ -89,7 +89,7 @@ where
 -   `team` is the abbreviated team name, and
 -   `model` is the abbreviated name of your model.
 
-The date YYYY-MM-DD is the [`reference_date`](#reference_date). This should be the Saturday following the submission date. For example, submission from the team above for a reference date of November 2, 2024 will be named:
+The date YYYY-MM-DD is the [`reference_date`](#reference_date). This should be the Saturday following the submission date. For example, submission from a team named `exampleteam` with a model named `examplemodel` for a reference date of November 2, 2024 will be named:
 
     2024-11-02-exampleteam-examplemodel.csv
 
