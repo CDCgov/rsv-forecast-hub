@@ -1,38 +1,42 @@
-# Model metadata
+# Model Metadata
 
-This folder contains metadata files for the models submitting to the  COVID-19 Forecast Hub. The specification for these files has been adapted to be consistent with [model metadata guidelines in the hubverse documentation](https://hubdocs.readthedocs.io/en/latest/user-guide/model-metadata.html).
+This folder contains metadata files for the models submitting to the RSV Forecast Hub. The specification for these files has been adapted to be consistent with [model metadata guidelines in the hubverse documentation](https://hubdocs.readthedocs.io/en/latest/user-guide/model-metadata.html).
 
 Each model is required to have metadata in [yaml format](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html).
 
 
-These instructions provide detail about the [data
-format](#Data-format) as well as [validation](#Data-validation) that
-you can do prior to a pull request with a metadata file.
+These instructions provide detail about the [data format](#Data-Format) as well as [validation](#Metadata-Validation) that you can do prior to a pull request with a metadata file.
 
-# Data format
+# Data Format
+
 This section describes each of the fields (keys) in the YAML document. Please order the variables in this order in your YAML metadata file.
 
-## Required fields
+## Required Fields
+
 The following metadata fields are mandatory.
 
 ### `team_name`
+
 The full name of your team. Must be fewer than 50 characters.
 
 ### `team_abbr`
+
 An abbreviated (<21 character) name for your team.
 
 ### `model_name`
+
 The full name of your model. Must be fewer than 50 characters.
 
 ### `model_abbr`
+
 An abbreviated (<21 character) name for your model.
 
 ### `model_contributors`
 
-A list of all individuals involved in producing the model.
-For each contributor, please provide a name, affiliation, and email address. Individually may optionally provide [ORCID](https://orcid.org/) identifiers.
+A list of all individuals involved in producing the model. For each contributor, please provide a name, affiliation, and email address. Individually may optionally provide [ORCID](https://orcid.org/) identifiers.
 
 Use the following YAML syntax
+
 ```
 model_contributors: [
   {
@@ -54,7 +58,7 @@ All email addresses provided will be added to an email distribution list through
 
 ### `license`
 
-One of the following [accepted licenses](https://github.com/CDCgov/covid19-forecast-hub/blob/37f4ffdd57c0dc2d8372b674728304e37a46212f/hub-config/model-metadata-schema.json#L69-L75) by inputting `license: <license code>` with one of the following codes. The license you pick will govern future use of the forecast data you contribute to the Hub.
+One of the following accepted licenses by inputting `license: <license code>` with one of the following codes. The license you pick will govern future use of the forecast data you contribute to the Hub.
 
  - `CC-BY-4.0`: [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/deed.en)
  - `CC0-1.0`: [CC0 1.0 Universal (public domain declaration)](https://creativecommons.org/publicdomain/zero/1.0/deed.en)
@@ -70,7 +74,7 @@ A team-specified boolean indicator (`true` or `false`) for whether the model sho
 
 ### `data_inputs`
 
-List or description of the data sources used to inform the model, in particular any dataset used that are not the [target dataset](../README.md#target-data-source) of epiweekly incident COVID-19 hospital admissions reported to NHSN.
+List or description of the data sources used to inform the model, in particular any dataset used that are not the [target dataset](../README.md#target-data-source) of weekly incident RSV hospitalizations or weekly incident RSV ED visit proportions.
 
 
 ### `methods`
@@ -88,12 +92,14 @@ A boolean value (`true` or `false`) that indicates whether a model is an ensembl
 
 ### `ensemble_of_hub_models`
 
-A boolean value (`true` or `false`) that indicates whether a model is an ensemble specifically of other models submitted to the COVID-19 Forecast Hub.
+A boolean value (`true` or `false`) that indicates whether a model is an ensemble specifically of other models submitted to the RSV Forecast Hub.
 
-## Optional fields
+## Optional Fields
+
 The following metadata fields are optional, but encouraged.
 
 ### `model_version`
+
 An identifier of the version of the model. We recommend [semantic versioning](https://semver.org/) style: `X.Y` or `X.Y.Z`, so `1.2` for version 1.2.
 
 ### `website_url`
@@ -113,14 +119,16 @@ citation: "Gibson GC , Reich NG , Sheldon D. Real-time mechanistic bayesian fore
 
 ### `team_funding`
 
-Any information about funding source(s) for the team or members of the team that would be relevant to include in resulting COVID-19 Forecast Hub publications. Example:
+Any information about funding source(s) for the team or members of the team that would be relevant to include in resulting RSV Forecast Hub publications. Example:
+
 ```
 team_funding: "National Institutes of General Medical Sciences (R01GM123456). The content is solely the responsibility of the authors and does not necessarily represent the official views of NIGMS."
 ```
 
 ### `designated_github_users`
 
-GitHub user ids of team members who would be responsible for submitting forecasts as a pull request to the CovidHub repository. Only the pull request from users specified here can get merged automatically after validation. Example:
+GitHub user ids of team members who would be responsible for submitting forecasts as a pull request to the RSV Forecast Hub repository. Only the pull request from users specified here can get merged automatically after validation. Example:
+
 ```
 designated_github_users: [
   "dependabot",
@@ -132,11 +140,11 @@ or
 designated_github_users: ["dependabot"]
 ```
 
-# Metadata validation
+# Metadata Validation
 
 Optionally, you may validate a model metadata file locally before submitting it to the hub in a pull request. Note that this is not required, since the validations will also run on the pull request, but it is encouraged. To run validations locally, follow these steps:
 
-1. Create a fork of the `covid-forecast-hub-2024` repository and then clone the fork to your computer.
+1. Create a fork of the RSV Forecast Hub repository and then clone the fork to your computer.
 2. Create a draft of the model metadata file for your model and place it in the `model-metadata` folder of this clone.
 3. Install the hubValidations package for R by running the following command from within an R session:
 ``` r
@@ -150,6 +158,7 @@ hubValidations::validate_model_metadata(
 ```
 
 For example, if your working directory is the root of the hub repository, you can use a command similar to the following:
+
 ``` r
 hubValidations::validate_model_metadata(hub_path=".", file_path="UMass-trends_ensemble.yml")
 ```
