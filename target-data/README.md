@@ -9,7 +9,6 @@ The following columns are included in `time-series.parquet`:
 |-------------|--------------------------------------------------------------------|
 | `date`      | Date of observation (YYYY-MM-DD)                                   |
 | `location`  | Location code (2 digits FIPS or `"US"` for national data)          |
-| `state`     | State abbreviation or `"US"` for national data                     |
 | `observation` | Numeric value for the target                                     |
 | `as_of`     | Date the data was retrieved or processed                           |
 | `target`    | Description of the metric (e.g., `"wk inc rsv prop ed visits"`) |
