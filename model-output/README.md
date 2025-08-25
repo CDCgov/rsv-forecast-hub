@@ -98,7 +98,7 @@ the directory this file is in. Both `team` and `model` should be less
 than 15 characters, alpha-numeric and underscores only, with no spaces
 or hyphens. Submission of both targets- quantiles and samples must be in the same weekly csv or parquet submission file.
 
-## Forecast file format
+## Forecast File Format
 
 The file must be a comma-separated value (csv) file with the following
 columns (in any order):
@@ -128,8 +128,8 @@ This is the date from which all forecasts should be considered. This date is the
 
 Values in the `target` column must be a character (string) and be either one or both of the following specific target:
 
--   `wk inc covid hosp`
--   `wk inc covid prop ed visits`
+-   `wk inc rsv hosp`
+-   `wk inc rsv prop ed visits`
 
 
 ### `horizon`
@@ -161,7 +161,7 @@ Values in the `output_type` column should be one of
 -   `quantile`
 -   `samples`
 
-This value indicates whether that row corresponds to a quantile forecast or sample trajectories for weekly incident hospital admissions. Samples can either encode both temporal and spatial dependency across forecast `horizon`s and `location`s or just encode temporal dependency across `horizon` but treats each `location` independently.
+This value indicates whether that row corresponds to a quantile forecast or sample trajectories for weekly incident RSV hospital admissions or RSV emergency department visit proportions. Samples can either encode both temporal and spatial dependency across forecast `horizon`s and `location`s or just encode temporal dependency across `horizon` but treats each `location` independently.
 
 ### `output_type_id`
 Values in the `output_type_id` column specify identifying information for the output type.
@@ -253,7 +253,7 @@ More details on sample output can be found in the [hubverse documentation of sam
 
 Values in the `value` column are non-negative numbers indicating the "quantile" or "sample" prediction for this row. For a "quantile" prediction, `value` is the inverse of the cumulative distribution function (CDF) for the target, location, and quantile associated with that row. For example, the 2.5 and 97.5 quantiles for a given target and location should capture 95% of the predicted values and correspond to the central 95% Prediction Interval.
 
-## Forecast validation
+## Forecast Validation
 
 To ensure proper data formatting, pull requests for new data in
 `model-output/` will be automatically run. Optionally, you may also run these validations locally.
@@ -272,12 +272,12 @@ intent for these tests are to validate the requirements above. Please
 Optionally, you may validate a forecast file locally before submitting it to the hub in a pull request. Note that this is not required, since the validations will also run on the pull request. To run the validations locally, follow the steps described [here](https://hubverse-org.github.io/hubValidations/articles/validate-submission.html).
 
 
-## Weekly ensemble build
+## Weekly Ensemble Build
 
-Every  Thursday morning, we will generate a  CovidHub ensemble hospital admission forecast using valid forecast submissions in the current week by the Wednesday 11PM ET deadline. Some or all participant forecasts may be combined into an ensemble forecast to be published in real-time along with the participant forecasts. In addition, some or all forecasts may be displayed alongside the output of a baseline model for comparison.
+Every Thursday morning, we will generate an RSV Forecast Hub ensemble hospital admission forecast using valid forecast submissions in the current week by the Wednesday 11PM ET deadline. Some or all participant forecasts may be combined into an ensemble forecast to be published in real-time along with the participant forecasts. In addition, some or all forecasts may be displayed alongside the output of a baseline model for comparison.
 
 
-## Policy on late or updated submissions
+## Policy On Late Or Updated Submissions
 
 In order to ensure that forecasting is done in real-time, all forecasts are required to be submitted to this repository by 11 PM ET on Wednesdays each week.
 
@@ -295,5 +295,5 @@ Teams wishing to contribute a non-designated baseline model to the Hub may reque
 - The model is non-designated
 - Its status as a retrospective baseline is declared prominently in the model metadata
 
-## Evaluation criteria
+## Evaluation Criteria
 Forecasts will be evaluated using a variety of metrics, including the weighted interval score (WIS).
