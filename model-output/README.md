@@ -29,9 +29,9 @@ We note that other modeling efforts, such as the [Influenza Scenario Modeling Hu
 
 This project treats laboratory-confirmed RSV hospital admissions data, and percent of emergency department visits due to RSV as the target ("gold standard") data for forecasting. The specific forecasting targets are epiweekly total incident hospital admissions and epiweekly proportion of emergency department visits due to RSV.
 
-These data are reported through CDC's NHSN (National Health Safety Network) and NSSP (National Syndromic Surveillance Program) systems.
+These data are reported through NHSN's [Hospital Respiratory Reporting](https://www.cdc.gov/nhsn/psc/hospital-respiratory-reporting.html) and NSSP's [Emergency Department Visit Trajectories](https://data.cdc.gov/Public-Health-Surveillance/NSSP-Emergency-Department-Visit-Trajectories-by-St/rdmq-nq56/about_data) systems.
 
-Further information on the data can be found at the NHSN's [Hospital Respiratory Reporting](https://www.cdc.gov/nhsn/psc/hospital-respiratory-reporting.html) page and NSSP's [Emergency Department Visit Trajectories](https://data.cdc.gov/Public-Health-Surveillance/NSSP-Emergency-Department-Visit-Trajectories-by-St/rdmq-nq56/about_data) page.
+Further information on target data can be found in the [target-data readme](target-data/README.md).
 
 
 ## Forecast Submission Formatting
