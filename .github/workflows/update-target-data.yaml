@@ -1,0 +1,78 @@
+# Workflow that updates RSV target data every Wednesday, by
+# pulling latest NHSN hospital admissions and NSSP
+# emergency department visit data
+
+name: "Update RSV Target Data"
+
+on:
+  # allow manual trigger
+  workflow_dispatch:
+  # run every Wednesday at 4:00 PM UTC (12:00 PM EST)
+  schedule:
+    - cron: "00 16 * * 3"
+
+jobs:
+  update-target-data:
+    if: ${{ github.repository_owner == 'CDCgov' }}
+    runs-on: "ubuntu-latest"
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - name: "Generate Token"
+      id: get_token
+      uses: actions/create-github-app-token@v1
+      with:
+        app-id: ${{ vars.GH_APP_ID }}
+        private-key: ${{ secrets.GH_APP_KEY }}
+    - name: "Check Out Code"
+      uses: actions/checkout@v4
+    - name: "Set Up R"
+      uses: r-lib/actions/setup-r@v2
+      with:
+        install-r: true
+        use-public-rspm: true
+        extra-repositories: "https://hubverse-org.r-universe.dev"
+    - name: "Set Up R Dependencies"
+      uses: r-lib/actions/setup-r-dependencies@v2
+      with:
+        pak-version: "devel"
+        packages: |
+          any::lubridate
+          any::dplyr
+          any::tidyselect
+          any::stringr
+          any::glue
+          any::readr
+          any::fs
+          github::cdcgov/forecasttools
+          github::cdcgov/hubhelpr
+    # pull + process RSV target data using hubHelpR;
+    # updates time-series.parquet with latest NHSN
+    # hospital admissions and NSSP emergency department
+    # visit data
+    - name: "Update RSV Target Data"
+      run: |
+        library(hubhelpr)
+        update_hub_target_data(
+          base_hub_path = ".",
+          disease = "rsv"
+        )
+      shell: Rscript {0}
+    - name: Check For Changes
+      id: check_diff
+      run: |
+        git diff --exit-code target-data/* || echo "changed=true" >> $GITHUB_ENV
+    - name: Commit Changes
+      if: env.changed == 'true'
+      uses: EndBug/add-and-commit@v9
+      with:
+        message: "Update RSV target data"
+        default_author: github_actions
+        push: true
+        new_branch: update-rsv-target-data
+    - name: Create pull request
+      if: env.changed == 'true'
+      run: |
+        gh pr create --base main --head update-rsv-target-data --title "Update RSV Target Data" --body "This PR updates RSV hospital admissions and emergency department visits target data based on the latest released data from NHSN and NSSP datasets."
+      env:
+        GH_TOKEN: ${{ steps.get_token.outputs.token }}
