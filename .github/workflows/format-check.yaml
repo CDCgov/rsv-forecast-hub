@@ -16,8 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Install
+      - name: "Install"
         uses: posit-dev/setup-air@v1
 
-      - name: Check
+      - name: "Check"
         run: air format . --check
