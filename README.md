@@ -94,7 +94,7 @@ We suggest that teams submitting for the first time make a PR adding their model
 
 ## Alignment Between RSV Forecast Hub And Other Forecasting Hubs
 
-We have made changes from previous versions of the [COVID-19 Forecast Hub](https://github.com/reichlab/covid19-forecast-hub) challenges to align RSV forecasting challenges with influenza forecasting run via the [Flusight Forecast Hub](https://github.com/cdcepi/FluSight-forecast-hub).
+We have made some changes from previous version of the [RSV Forecast Hub](https://github.com/HopkinsIDD/rsv-forecast-hub/tree/main) to align RSV forecasting challenges with COVID-19 forecasting via [COVID-19 Forecast Hub](https://github.com/CDCgov/covid19-forecast-hub/tree/main) and influenza forecasting run via the [Flusight Forecast Hub](https://github.com/cdcepi/FluSight-forecast-hub).
 
 All Hubs will require quantile-based forecasts of epiweekly incident hospital admissions reported into NHSN, with the same -1:3 week horizon span. All will accept these forecasts via Github pull requests of files formatted according to the standard [hubverse schema](https://hubverse.io/en/latest/user-guide/model-output.html#model-output). The Hubs also plan to share a forecast deadline of 11pm USA/Eastern time on Wednesdays.
 
