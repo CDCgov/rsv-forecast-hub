@@ -5,13 +5,13 @@ on:
 
 jobs:
   labeler:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
-
+      - name: "Checkout Code"
+        uses: actions/checkout@v4
       - name: "Apply Labels"
         id: label-pr
         uses: actions/labeler@v5
