@@ -34,7 +34,7 @@ The Wednesday data updates contain the same data that are published on Fridays a
 
 The Challenge Period is rolling.
 
-Participants will be asked to submit nowcasts and forecasts by 11PM USA Eastern Time each Wednesday (the "Forecast Due Date"). If it becomes necessary to change the Forecast Due Date or time deadline, RSV Forecast Hub will notify participants at least one week in advance.
+Participants will be asked to submit nowcasts and forecasts by 11PM USA Eastern Time each Wednesday (the "Forecast Due Date"). If it becomes necessary to change the Forecast Due Date or time deadline, we will notify participants at least one week in advance.
 
 Weekly submissions (including file names) will be specified in terms of a "reference date": the Saturday following the Forecast Due Date. This is the last day of the USA/CDC epiweek (Sunday to Saturday) that contains the Forecast Due Date.
 
