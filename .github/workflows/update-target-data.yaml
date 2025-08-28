@@ -44,10 +44,6 @@ jobs:
           any::fs
           github::cdcgov/forecasttools
           github::cdcgov/hubhelpr
-    # pull + process RSV target data using hubHelpR;
-    # updates time-series.parquet with latest NHSN
-    # hospital admissions and NSSP emergency department
-    # visit data
     - name: "Update RSV Target Data"
       run: |
         library(hubhelpr)
@@ -56,11 +52,11 @@ jobs:
           disease = "rsv"
         )
       shell: Rscript {0}
-    - name: Check For Changes
+    - name: "Check For Changes"
       id: check_diff
       run: |
         git diff --exit-code target-data/* || echo "changed=true" >> $GITHUB_ENV
-    - name: Commit Changes
+    - name: "Commit Changes"
       if: env.changed == 'true'
       uses: EndBug/add-and-commit@v9
       with:
@@ -68,7 +64,7 @@ jobs:
         default_author: github_actions
         push: true
         new_branch: update-rsv-target-data
-    - name: Create pull request
+    - name: "Create Pull Request"
       if: env.changed == 'true'
       run: |
         gh pr create --base main --head update-rsv-target-data --title "Update RSV Target Data" --body "This PR updates RSV hospital admissions and emergency department visits target data based on the latest released data from NHSN and NSSP datasets."
