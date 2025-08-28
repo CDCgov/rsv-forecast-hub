@@ -92,7 +92,7 @@ First-time pull requests (PRs) into the Hub repository must be reviewed and merg
 
 We suggest that teams submitting for the first time make a PR adding their model metadata file to the [`model-metadata` directory](model-metadata) by 4 PM USA Eastern Time on the Wednesday they plan to submit their first forecast. This will allow subsequent PRs that submit forecasts to be merged automatically, provided checks pass. We also request that teams sync their PR branch with the `main` branch using the `Update branch` button if their PR is behind the `main` branch, to ensure the automerge action runs smoothly.
 
-## Alignment Between RSV Forecast Hub And FluSight
+## Alignment Between RSV Forecast Hub And Other Forecasting Hubs
 
 We have made changes from previous versions of the [COVID-19 Forecast Hub](https://github.com/reichlab/covid19-forecast-hub) challenges to align RSV forecasting challenges with influenza forecasting run via the [Flusight Forecast Hub](https://github.com/cdcepi/FluSight-forecast-hub).
 
