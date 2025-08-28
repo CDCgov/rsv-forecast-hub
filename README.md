@@ -51,6 +51,9 @@ Participating teams will be able to submit national- and jurisdiction-specific (
 
 Targets 2, 3 and 4 are optional for any submitted location whereas target 1 (quantile predictions for epiweekly RSV hospital admissions) is mandatory for any submitted location and forecast horizon. Teams are encouraged but not required to submit forecasts for all weekly horizons or for all locations.
 
+Note: We are considering introducing samples-based ensembles for the hubs and would encourage teams to submit sample trajectories along with quantile forecasts.
+
+
 ### Horizons
 
 Teams can submit nowcasts or forecasts for these targets for the following temporal "horizons":
