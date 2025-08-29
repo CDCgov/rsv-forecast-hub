@@ -102,6 +102,11 @@ All Hubs will require quantile-based forecasts of epiweekly incident hospital ad
 This repository follows the guidelines and standards outlined by the [hubverse](https://hubdocs.readthedocs.io/en/latest/), which provides a set of data formats and open source tools for modeling hubs.
 
 
+<details markdown=1>
+
+<summary> CDC GitHub Guidelines </summary>
+
+<br>
 
 # CDCgov GitHub Organization Open Source Project Template
 
@@ -157,3 +162,5 @@ This repository is not a source of government records, but is a copy to increase
 
 ## Additional Standard Notices
 Please refer to [CDC's Template Repository](https://github.com/CDCgov/template) for more information about [contributing to this repository](https://github.com/CDCgov/template/blob/main/CONTRIBUTING.md), [public domain notices and disclaimers](https://github.com/CDCgov/template/blob/main/DISCLAIMER.md), and [code of conduct](https://github.com/CDCgov/template/blob/main/code-of-conduct.md).
+
+</details>
