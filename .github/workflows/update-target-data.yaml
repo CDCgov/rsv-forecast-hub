@@ -55,6 +55,8 @@ jobs:
         DATA_CDC_GOV_API_KEY_ID: ${{ secrets.DATA_CDC_GOV_API_KEY_ID }}
         DATA_CDC_GOV_API_KEY_SECRET: ${{ secrets.DATA_CDC_GOV_API_KEY_SECRET }}
       shell: Rscript {0}
+    - name: "Set Date"
+      run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
     - name: "Check For Changes"
       id: check_diff
       run: |
@@ -66,10 +68,10 @@ jobs:
         message: "Update RSV target data"
         default_author: github_actions
         push: true
-        new_branch: update-rsv-target-data
+        new_branch: update-rsv-target-data-${{ env.DATE }}
     - name: "Create Pull Request"
       if: env.changed == 'true'
       run: |
-        gh pr create --base main --head update-rsv-target-data --title "Update RSV Target Data" --body "This PR updates RSV hospital admissions and emergency department visits target data based on the latest released data from NHSN and NSSP datasets."
+        gh pr create --base main --head update-rsv-target-data-${{ env.DATE }} --title "Update RSV Target Data" --body "This PR updates RSV hospital admissions and emergency department visits target data based on the latest released data from NHSN and NSSP datasets."
       env:
         GH_TOKEN: ${{ steps.get_token.outputs.token }}
