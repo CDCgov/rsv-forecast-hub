@@ -51,6 +51,9 @@ jobs:
           base_hub_path = ".",
           disease = "rsv"
         )
+      env:
+        DATA_CDC_GOV_API_KEY_ID: ${{ secrets.DATA_CDC_GOV_API_KEY_ID }}
+        DATA_CDC_GOV_API_KEY_SECRET: ${{ secrets.DATA_CDC_GOV_API_KEY_SECRET }}
       shell: Rscript {0}
     - name: "Check For Changes"
       id: check_diff
