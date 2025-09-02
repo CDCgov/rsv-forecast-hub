@@ -30,7 +30,7 @@ The Wednesday data updates contain the same data that are published on Fridays a
 
 ## Dates And Deadlines
 
-The Challenge Period is rolling.
+The Challenge Period will begin September 17, 2025, and will run until May 2026.
 
 Participants will be asked to submit nowcasts and forecasts by 11PM USA Eastern Time each Wednesday (the "Forecast Due Date"). If it becomes necessary to change the Forecast Due Date or time deadline, we will notify participants at least one week in advance.
 
