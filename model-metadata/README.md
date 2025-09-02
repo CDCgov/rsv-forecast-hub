@@ -1,44 +1,42 @@
-# Model metadata
+# Model Metadata
+
+This folder contains metadata files for the models submitting to the RSV Forecast Hub. The specification for these files has been adapted to be consistent with [model metadata guidelines in the hubverse documentation](https://hubdocs.readthedocs.io/en/latest/user-guide/model-metadata.html).
+
+Each model is required to have metadata in [yaml format](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html).
 
 
-<mark style="background-color: #FFE331">**Below is a template of the README.md file for the model-metadata folder of your hub. Italics in brackets are placeholders for information about your hub. **</mark>
+These instructions provide detail about the [data format](#Data-Format) as well as [validation](#Metadata-Validation) that you can do prior to a pull request with a metadata file.
 
+# Data Format
 
-This folder contains metadata files for the models submitting to the  *[hub name]*. The specification for these files has been adapted to be consistent with [model metadata guidelines in the hubverse documentation](https://docs.hubverse.io/en/latest/user-guide/model-metadata.html).
+This section describes each of the fields (keys) in the YAML document. Please order the variables in this order in your YAML metadata file.
 
-Each model is required to have metadata in
-[yaml format](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html).
+## Required Fields
 
-These instructions provide detail about the [data
-format](#Data-format) as well as [validation](#Data-validation) that
-you can do prior to a pull request with a metadata file.
+The following metadata fields are mandatory.
 
-# Data format
+### `team_name`
 
-## Required variables
+The full name of your team. Must be fewer than 50 characters.
 
-This section describes each of the variables (keys) in the yaml document.
-Please order the variables in this order.
+### `team_abbr`
 
-### team_name
-The name of your team that is less than 50 characters.
+An abbreviated (<21 character) name for your team.
 
-### team_abbr
-The name of your team that is less than 16 characters.
+### `model_name`
 
-### model_name
-The name of your model that is less than 50 characters.
+The full name of your model. Must be fewer than 50 characters.
 
-### model_abbr
-An abbreviated name for your model that is less than 16 alphanumeric characters.
+### `model_abbr`
 
-### model_contributors
+An abbreviated (<21 character) name for your model.
 
-A list of all individuals involved in the forecasting effort.
-A names, affiliations, and email address is required for each contributor. Individuals may also include an optional orcid identifiers.
-All email addresses provided will be added to an email distribution list for model contributors.
+### `model_contributors`
 
-The syntax of this field should be
+A list of all individuals involved in producing the model. For each contributor, please provide a name, affiliation, and email address. Individuals may optionally provide [ORCID](https://orcid.org/) identifiers.
+
+Use the following YAML syntax
+
 ```
 model_contributors: [
   {
@@ -56,70 +54,104 @@ model_contributors: [
 ]
 ```
 
-### license
+All email addresses provided will be added to an email distribution list through which the Hub makes announcements to model contributors. You can unsubscribe from this list at any time.
 
-One of the [accepted licenses](https://github.com/cdcepi/FluSight-forecast-hub/blob/673e983fee54f3a21448071ac46a9f78d27dd164/hub-config/model-metadata-schema.json#L69-L75).
+### `license`
 
-We encourage teams to submit as a "cc-by-4.0" to allow the broadest possible uses
-including private vaccine production (which would be excluded by the "cc-by-nc-4.0" license).
+One of the following accepted licenses by inputting `license: <license code>` with one of the following codes. The license you pick will govern future use of the forecast data you contribute to the Hub.
 
-### designated_model
+ - `CC-BY-4.0`: [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/deed.en)
+ - `CC0-1.0`: [CC0 1.0 Universal (public domain declaration)](https://creativecommons.org/publicdomain/zero/1.0/deed.en)
+ - `CC-BY_SA-4.0`: [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/deed.en)
+ - `PPDL`: [Public Domain Dedication and License](https://opendatacommons.org/licenses/pddl/summary/)
+ - `ODC-by`: [Open Data Commons Attribution License](https://opendatacommons.org/licenses/by/1-0/)
+ - `ODbL`: [Open Data Commons Open Database License](https://opendatacommons.org/licenses/odbl/)
+ - `OGL-3.0`: [UK National Archives Open Government License 3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 
-A team-specified boolean indicator (`true` or `false`) for whether the model should be considered eligible for inclusion in a Hub ensemble and public visualization. A team may specify up to two models as a designated_model for inclusion. Models which have a designated_model value of 'False' will still be included in internal forecasting hub evaluations.
+### `designated_model`
 
-### data_inputs
+A team-specified boolean indicator (`true` or `false`) for whether the model should be considered eligible for inclusion in Hub ensembles and public visualizations. A team may specify up to two models as `designated_model`s for inclusion. Models which have a designated_model value of `false` will still be included in internal forecasting Hub evaluations, but not in published ensembles and visualizations.
 
-List or description of the data sources used to inform the model. Particularly those used beyond the target data of confirmed influenza hospital admissions.
+### `data_inputs`
 
-### methods
+List or description of the data sources used to inform the model, in particular any dataset used that are not the [target dataset](../README.md#target-data-source) of weekly incident RSV hospitalizations or weekly incident RSV ED visit proportions.
 
-A brief description of your forecasting methodology that is less than 200
-characters.
 
-### methods_long
+### `methods`
 
-A full description of the methods used by this model. Among other details, this should include whether spatial correlation is considered and how the model accounts for uncertainty. If the model is modified, this field can also be used to provide the date of the modification and a description of the change.
+A brief description of your forecasting methodology. Must be fewer than 200 characters.
 
-### ensemble_of_models
+### `methods_long`
+
+A full description of your model methods. If the model is modified, you can use this field to provide a changelog, with dates and descriptions of implemented changes.
+
+
+### `ensemble_of_models`
 
 A boolean value (`true` or `false`) that indicates whether a model is an ensemble of any separate component models.
 
-### ensemble_of_hub_models
+### `ensemble_of_hub_models`
 
-A boolean value (`true` or `false`) that indicates whether a model is an ensemble specifically of other models submitted to the forecasting hub.
+A boolean value (`true` or `false`) that indicates whether a model is an ensemble specifically of other models submitted to the RSV Forecast Hub.
 
-## Optional
+### `website_url`
 
-### model_version
-An identifier of the version of the model
+The url of a website with additional information about your model, such as detailed methods, visualizations, or interactive dashboards.
 
-### website_url
 
-A url to a website that has additional data about your model.
-We encourage teams to submit the most user-friendly version of your
-model, e.g. a dashboard, or similar, that displays your model forecasts.
+## Optional Fields
 
-### repo_url
+The following metadata fields are optional, but encouraged.
 
-A github (or similar) repository url containing code for the model.
+### `designated_github_users`
 
-### citation
+GitHub user ids of team members who would be responsible for submitting forecasts as a pull request to the RSV Forecast Hub repository. Only the pull request from users specified here can get merged automatically after validation. Example:
 
-One or more citations to manuscripts or preprints with additional model details. For example, "Gibson GC , Reich NG , Sheldon D. Real-time mechanistic bayesian forecasts of Covid-19 mortality. medRxiv. 2020. https://doi.org/10.1101/2020.12.22.20248736".
+```
+designated_github_users: [
+  "dependabot",
+  "octocat"
+]
+```
+or
+```
+designated_github_users: ["dependabot"]
+```
 
-### team_funding
+### `model_version`
 
-Any information about funding source(s) for the team or members of the team that would be natural to include on any resulting publications. For example, "National Institutes of General Medical Sciences (R01GM123456). The content is solely the responsibility of the authors and does not necessarily represent the official views of NIGMS."
+An identifier of the version of the model. We recommend [semantic versioning](https://semver.org/) style: `X.Y` or `X.Y.Z`, so `1.2` for version 1.2.
 
-# Data validation
+### `repo_url`
 
-Optionally, you may validate a model metadata file locally before submitting it to the hub in a pull request. Note that this is not required, since the validations will also run on the pull request. To run the validations locally, follow these steps:
+The URL of a Github (or similar) code repository containing model source code.
 
-1. Create a fork of the `*[insert hub name]*` repository and then clone the fork to your computer.
+### `citation`
+
+Citations for one or more publications, preprints, et cetera with additional model details. Example:
+```
+citation: "Gibson GC , Reich NG , Sheldon D. Real-time mechanistic bayesian forecasts of Covid-19 mortality. medRxiv. 2020. https://doi.org/10.1101/2020.12.22.20248736".
+```
+
+### `team_funding`
+
+Any information about funding source(s) for the team or members of the team that would be relevant to include in resulting RSV Forecast Hub publications. Example:
+
+```
+team_funding: "National Institutes of General Medical Sciences (R01GM123456). The content is solely the responsibility of the authors and does not necessarily represent the official views of NIGMS."
+```
+
+
+
+# Metadata Validation
+
+Optionally, you may validate a model metadata file locally before submitting it to the hub in a pull request. Note that this is not required, since the validations will also run on the pull request, but it is encouraged. To run validations locally, follow these steps:
+
+1. Create a fork of the RSV Forecast Hub repository and then clone the fork to your computer.
 2. Create a draft of the model metadata file for your model and place it in the `model-metadata` folder of this clone.
 3. Install the hubValidations package for R by running the following command from within an R session:
 ``` r
-remotes::install_github("hubverse-org/hubValidations")
+install.packages("hubValidations", repos = c("https://hubverse-org.r-universe.dev", "https://cloud.r-project.org"))
 ```
 4. Validate your draft metadata file by running the following command in an R session:
 ``` r
@@ -129,11 +161,13 @@ hubValidations::validate_model_metadata(
 ```
 
 For example, if your working directory is the root of the hub repository, you can use a command similar to the following:
+
 ``` r
 hubValidations::validate_model_metadata(hub_path=".", file_path="UMass-trends_ensemble.yml")
 ```
 
 If all is well, you should see output similar to the following:
+
 ```
 ✔ model-metadata-schema.json: File exists at path hub-config/model-metadata-schema.json.
 ✔ UMass-trends_ensemble.yml: File exists at path model-metadata/UMass-trends_ensemble.yml.
@@ -144,5 +178,3 @@ If all is well, you should see output similar to the following:
 ```
 
 If there are any errors, you will see a message describing the problem.
-
-<mark style="background-color: #FFE331">**As an example, here is a link to the [Flusight-Forecast_Hub model-metadata README](https://github.com/cdcepi/FluSight-forecast-hub/blob/master/model-metadata/README.md).**</mark>

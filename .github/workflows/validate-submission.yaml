@@ -20,7 +20,7 @@ jobs:
           use-public-rspm: true
           extra-repositories: 'https://hubverse-org.r-universe.dev'
 
-      - name: Update R
+      - name: "Update R"
         run: |
           sudo apt-get update
 
@@ -50,7 +50,7 @@ jobs:
       # skip_submit_window_check = Sys.getenv("model") == "ensemble"
       # # was removed from after pr_number line
 
-      - name: Run Validations
+      - name: "Run Validations"
         env:
           PR_NUMBER: ${{ github.event.number }}
         run: |
