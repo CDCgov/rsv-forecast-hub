@@ -1,0 +1,78 @@
+# Workflow that updates RSV target data every Wednesday, by
+# pulling latest NHSN hospital admissions and NSSP
+# emergency department visit data
+
+name: "Update RSV Target Data"
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "00 16 * * 3" # run every Wednesday at 4:00 PM UTC (12:00 PM EST)
+
+jobs:
+  update-target-data:
+    if: ${{ github.repository_owner == 'cdcent' }}
+    runs-on: "ubuntu-latest"
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - name: "Generate Token"
+      id: get_token
+      uses: actions/create-github-app-token@v1
+      with: # will change when CDCgov online
+        app-id: ${{ secrets.CFA_CDCENT_APP_TOKEN_GH_APP_ID }}
+        private-key: ${{ secrets.CFA_CDCENT_APP_TOKEN_GH_APP_KEY }}
+    - name: "Check Out Code"
+      uses: actions/checkout@v4
+    - name: "Set Up R"
+      uses: r-lib/actions/setup-r@v2
+      with:
+        install-r: true
+        use-public-rspm: true
+        extra-repositories: "https://hubverse-org.r-universe.dev"
+    - name: "Set Up R Dependencies"
+      uses: r-lib/actions/setup-r-dependencies@v2
+      with:
+        pak-version: "devel"
+        packages: |
+          any::lubridate
+          any::dplyr
+          any::tidyselect
+          any::stringr
+          any::glue
+          any::readr
+          any::fs
+          github::cdcgov/forecasttools
+          github::cdcgov/hubhelpr
+    - name: "Update RSV Target Data"
+      run: |
+        library(hubhelpr)
+        update_hub_target_data(
+          base_hub_path = ".",
+          disease = "rsv"
+        )
+      env:
+        DATA_CDC_GOV_API_KEY_ID: ${{ secrets.DATA_CDC_GOV_API_KEY_ID }}
+        DATA_CDC_GOV_API_KEY_SECRET: ${{ secrets.DATA_CDC_GOV_API_KEY_SECRET }}
+      shell: Rscript {0}
+    - name: "Set Date"
+      run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
+    - name: "Check For Changes"
+      id: check_diff
+      run: |
+        git diff --exit-code target-data/* || echo "changed=true" >> $GITHUB_ENV
+    - name: "Commit Changes"
+      if: env.changed == 'true'
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git checkout -b update-rsv-target-data-${{ env.DATE }}
+        git add .
+        git commit -m "Update RSV target data"
+        git push origin update-rsv-target-data-${{ env.DATE }}
+    - name: "Create Pull Request"
+      if: env.changed == 'true'
+      run: |
+        gh pr create --base main --head update-rsv-target-data-${{ env.DATE }} --title "Update RSV Target Data" --body "This PR updates RSV hospital admissions and emergency department visits target data based on the latest released data from NHSN and NSSP datasets."
+      env:
+        GH_TOKEN: ${{ steps.get_token.outputs.token }}
