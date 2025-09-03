@@ -19,9 +19,9 @@ jobs:
     - name: "Generate Token"
       id: get_token
       uses: actions/create-github-app-token@v1
-      with:
-        app-id: ${{ vars.GH_APP_ID }}
-        private-key: ${{ secrets.GH_APP_KEY }}
+      with: # will change when CDCgov online
+        app-id: ${{ secrets.CFA_CDCENT_APP_TOKEN_GH_APP_ID }}
+        private-key: ${{ secrets.CFA_CDCENT_APP_TOKEN_GH_APP_KEY }}
     - name: "Check Out Code"
       uses: actions/checkout@v4
     - name: "Set Up R"
