@@ -1,265 +1,342 @@
-
-
 > [!IMPORTANT]
 > This repository is currently under construction!
 
-# *[Insert title of hub]*
+# RSV Forecast Hub
 
-*[Describe overall purpose of hub.]* Anyone interested in using these data for additional research or publications is
-requested to contact *[insert email]* for information regarding attribution of the source forecasts.
+This repository is designed to collect forecast data for the RSV Forecast Hub run by the US CDC. The project collects forecasts for two datasets:
 
-## *[Insert title of forecasts]*
+    1. weekly new hospitalizations due to RSV, and
+   2. weekly incident percentage of emergency department visits due to RSV.
 
-*[Describe forecasts]*
+If you are interested in using these data for additional research or publications, please contact [rsvhub@cdc.gov](mailto:rsvhub@cdc.gov) for information regarding attribution of the source forecasts.
 
-**Dates:** The Challenge Period will begin *[insert start date]* and will run until *[insert start date]*. Participants
-are currently asked to submit *[insert description of forecasts]*  by *[insert timing]* .(herein referred to as the
-Forecast Due Date). In the event that timelines of data availability change, *[insert name of hub]*  may change the
-day of week that forecasts are due. In this case, participants would be notified at least one week in advance.
-*[insert temporal period]* submissions (including file names) will be specified in terms of the reference date, which
-is the Saturday following the Forecast Due Date. The reference date is the last day of the epidemiological week (EW)
-(Sunday to Saturday) containing the Forecast Due Date.
+## Nowcasts And Forecasts Of Confirmed RSV Hospital Admissions
 
-**Prediction Targets:**
-Participating teams are asked to provide *[insert geographical requirements]* predictions for targets
-*[insert name of target(s)]*.
+During the submission period, participating teams will be invited to submit national- and jurisdiction-specific (all 50 states, Washington DC, and Puerto Rico) probabilistic nowcasts and forecasts of the weekly number of confirmed RSV hospital admissions during the preceding [epidemiological week ("epiweek")](https://epiweeks.readthedocs.io/en/stable/background.html), the current epiweek, and the following three epiweeks.
 
-Teams will submit *[insert description of forecasts]* for the epidemiological week (EW) ending on the reference date
-as well as *[insert horizons]*. Teams can but are not required to submit forecasts for all *[insert temporal period]*
-horizons or for all locations. The evaluation data for forecasts will be the *[insert temporal period]* aggregate of
-*[insert description of evaluation data]*. We will use the specification of EWs defined by the
-[CDC](https://wwwn.cdc.gov/nndss/document/MMWR_Week_overview.pdf), which run Sunday through Saturday. The target end
-date for a prediction is the Saturday that ends an EW of interest, and can be calculated using the expression:
-**target end date = reference date + horizon * (*[insert # days in temporal period]* days)**.
+The weekly total RSV admissions counts can be found in the `totalconfrsvnewadm` column of the [National Healthcare Safety Network](https://www.cdc.gov/nhsn/index.html) (NHSN) [Hospital Respiratory Data (HRD) dataset](https://www.cdc.gov/nhsn/psc/hospital-respiratory-reporting.html).
 
-There are standard software packages to convert from dates to epidemic weeks and vice versa (*e.g.*,
-[MMWRweek](https://cran.r-project.org/web/packages/MMWRweek/) and
-[lubridate](https://lubridate.tidyverse.org/reference/week.html) for R and [pymmwr](https://pypi.org/project/pymmwr/)
-and [epiweeks](https://pypi.org/project/epiweeks/) for Python).
+NHSN provides a preliminary release of each week's HRD data on Wednesdays [here](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metrics-by-Ju/mpgq-jmmr/about_data). Official weekly data is released on Fridays [here](https://data.cdc.gov/Public-Health-Surveillance/Weekly-Hospital-Respiratory-Data-HRD-Metrics-by-Ju/ua7e-t2fy/about_data). For more details on this dataset, its release schedule, and its schema, see the [NHSN Hospital Respiratory Data page](https://www.cdc.gov/nhsn/psc/hospital-respiratory-reporting.html).
 
-If you have questions aboutthis target, please reach out to *[insert name]* (*[insert email]*).
+## Nowcasts And Forecasts Of RSV Emergency Department Visits
 
-## Accessing hub data on the cloud
+The RSV Forecast Hub also accepts probabilistic nowcasts and forecasts of the proportion of emergency department visits due to RSV. This target represents RSV as a proportion of emergency department (ED) visits, aggregated by epiweek (Sunday-Saturday) and jurisdiction (states, DC, United States). The numerator is the number of visits with a discharge diagnosis of RSV, and the denominator is total visits. This target is optional for any submitted location and forecast horizon.
 
-*[Remove this section if you're not planning to host your hub's data on the Hubverse's AWS infrastructure]*
+The weekly percent of ED visits due to RSV can be found in the `percent_visits_rsv` column of the [National Syndromic Surveillance Program](https://www.cdc.gov/nssp/index.html) (NSSP) [Emergency Department Visits - COVID-19, Flu, RSV, Sub-state](https://data.cdc.gov/Public-Health-Surveillance/NSSP-Emergency-Department-Visit-Trajectories-by-St/rdmq-nq56/about_data) dataset. Although these numbers are reported in the percentage form, we will accept forecasts as decimal proportions (i.e., `percent_visits_rsv / 100`). To obtain state-level data, we filter the dataset to include only the rows where the `county` column is equal to `All`.
 
-To ensure greater access to the data created by and submitted to this hub, real-time copies of its model-output,
-target, and configuration files are hosted on the Hubverse's Amazon Web Services (AWS) infrastructure,
-in a public S3 bucket:
-*[insert S3 bucket name, as specified in admin.json cloud.host.storage_location]*
+This dataset will be updated on Wednesdays (preliminary release to facilitate forecasting) and Fridays (official weekly release) [here](https://data.cdc.gov/Public-Health-Surveillance/NSSP-Emergency-Department-Visit-Trajectories-by-St/rdmq-nq56/about_data).
 
-**Note**: For efficient storage, all model-output files in S3 are stored in parquet format, even if the original
-versions in the GitHub repository are .csv.
+The Wednesday data updates contain the same data that are published on Fridays at [NSSP Emergency Department Visit trajectories](https://data.cdc.gov/Public-Health-Surveillance/NSSP-Emergency-Department-Visit-Trajectories-by-St/rdmq-nq56/about_data) and underlie the percentage ED visit reported on the PRISM Data Channel's [Respiratory Activity Levels page](https://www.cdc.gov/respiratory-viruses/data/activity-levels.html), which is also refreshed every Friday. The data represent the information available as of Wednesday morning through the previous Saturday. For example, the most recent data available on the 2025-06-11 release (Wednesday) will be for the week ending 2025-06-07 (Saturday).
 
-GitHub remains the primary interface for operating the hub and collecting forecasts from modelers.
-However, the mirrors of hub files on S3 are the most convenient way to access hub data without using git/GitHub or
-cloning the entire hub to your local machine.
+## Dates And Deadlines
+
+The Challenge Period will begin September 17, 2025, and will run until May 2026.
+
+Participants will be asked to submit nowcasts and forecasts by 11PM USA Eastern Time each Wednesday (the "Forecast Due Date"). If it becomes necessary to change the Forecast Due Date or time deadline, we will notify participants at least one week in advance.
+
+Weekly submissions (including file names) will be specified in terms of a "reference date": the Saturday following the Forecast Due Date. This is the last day of the USA/CDC epiweek (Sunday to Saturday) that contains the Forecast Due Date.
+
+## Prediction Targets And Horizons
+
+Participating teams will be able to submit national- and jurisdiction-specific (all 50 states, Washington DC, and Puerto Rico) predictions for following targets.
+
+### Targets
+
+   1. Quantile predictions for epiweekly total laboratory-confirmed RSV hospital admissions.
+   2. Individual forecast trajectories for epiweekly total laboratory-confirmed RSV hospitalizations over time (i.e sampled trajectories).
+   3. Quantile predictions for epiweekly percent of emergency department visits due to RSV.
+   4. Individual forecast trajectories for epiweekly percent of emergency department visits due to RSV over time (i.e sampled trajectories).
+
+Targets 2, 3 and 4 are optional for any submitted location whereas target 1 (quantile predictions for epiweekly RSV hospital admissions) is mandatory for any submitted location and forecast horizon. Teams are encouraged but not required to submit forecasts for all weekly horizons or for all locations.
+
+> [!NOTE]
+>
+> We are considering introducing samples-based ensembles for the hubs and would encourage teams to submit sample trajectories along with quantile forecasts.
+
+
+### Horizons
+
+Teams can submit nowcasts or forecasts for these targets for the following temporal "horizons":
+
+- `horizon = -1`: the epiweek preceding the reference date
+- `horizon = 0`: the current epiweek
+- `horizon = 1, 2, 3`: each of the three upcoming epiweeks
+
+### Epiweeks
+
+We use epiweeks as defined by the [US CDC](https://wwwn.cdc.gov/nndss/document/MMWR_Week_overview.pdf), which run Sunday through Saturday. The `target_end_date` for a prediction is the Saturday that ends the epiweek of interest. That is:
+
+```python
+target_end_date = reference_date + (horizon * 7)
+```
+
+Standard software packages for R and Python can help you convert from dates to epiweeks and vice versa:
+
+#### R
+
+- [`lubridate`](https://lubridate.tidyverse.org/reference/week.html)
+- [`MMWRweek`](https://cran.r-project.org/web/packages/MMWRweek/)
+
+#### Python
+
+- [`epiweeks`](https://pypi.org/project/epiweeks/)
+- [`pymmwr`](https://pypi.org/project/pymmwr/)
+
+## Further Submission Information
+
+Detailed guidelines for formatting and submitting forecasts are available in the [`model-output` directory README](model-output/README.md). Detailed guidelines for formatting and submitting model metadata can be found in the [`model-metadata` directory README](model-metadata/README.md).
+
+## Suggested Workflow For First Time Submitters
+
+First-time pull requests (PRs) into the Hub repository must be reviewed and merged manually; subsequent ones can be merged automatically if they pass appropriate checks.
+
+We suggest that teams submitting for the first time make a PR adding their model metadata file to the [`model-metadata` directory](model-metadata) by 4 PM USA Eastern Time on the Wednesday they plan to submit their first forecast. This will allow subsequent PRs that submit forecasts to be merged automatically, provided checks pass. We also request that teams sync their PR branch with the `main` branch using the `Update branch` button if their PR is behind the `main` branch, to ensure the automerge action runs smoothly.
+
+## Alignment Between RSV Forecast Hub And Other Forecasting Hubs
+
+We have made some changes from previous version of the [RSV Forecast Hub](https://github.com/HopkinsIDD/rsv-forecast-hub/tree/main) to align RSV forecasting challenges with COVID-19 forecasting via [COVID-19 Forecast Hub](https://github.com/CDCgov/covid19-forecast-hub/tree/main) and influenza forecasting run via the [Flusight Forecast Hub](https://github.com/cdcepi/FluSight-forecast-hub).
+
+All Hubs will require quantile-based forecasts of epiweekly incident hospital admissions reported into NHSN, with the same -1:3 week horizon span. The COVIDhub and RSVhub optionally accept forecasts of proportion of Emergency department visits reported into NSSP. The Hubs also plan to share a forecast deadline of 11pm USA/Eastern time on Wednesdays.
+
+
+
+
+## Accessing RSV Data On The Cloud
+
+To ensure greater access to the data created by and submitted to this hub, real-time copies of files in the following directories are hosted on the Hubverse's Amazon Web Services (AWS) infrastructure, in a public S3 bucket: [bucket pending].
+
+- `auxiliary-data`
+- `hub-config`
+- `model-metadata`
+- `model-output`
+- `target-data`
+
+GitHub remains the primary interface for operating the RSV hub and collecting forecasts from modelers. However, the mirrors of hub files on S3 are the most convenient way to access hub data without using `git`/GitHub or cloning the entire hub to your local machine.
 
 The sections below provide examples for accessing hub data on the cloud, depending on your goals and
 preferred tools. The options include:
 
 | Access Method              | Description                                                                           |
 | -------------------------- | ------------------------------------------------------------------------------------- |
-| hubData (R)                | Hubverse R client and R code for accessing hub data                                   |
-| Polars (Python)            | Python open-source library for data manipulation                                      |
-| AWS command line interface | Download hub data to your machine and use hubData or Polars for local access          |
+| hubData (R)                | Hubverse R client and R code for accessing hub data.                                  |
+| Pyarrow (Python)           | Python open-source library for data manipulation.                                     |
+| AWS command line interface | Download data and use hubData, Pyarrow, or another tool for fast local access.        |
 
-In general, accessing the data directly from S3 (instead of downloading it first) is more convenient. However, if
-performance is critical (for example, you're building an interactive visualization), or if you need to work offline,
+In general, accessing the data directly from S3 (instead of downloading it first) is more convenient. However, if performance is critical (for example, you're building an interactive visualization), or if you need to work offline,
 we recommend downloading the data first.
 
-<!-------------------------------------------------- hubData ------------------------------------------------------->
-
-<details>
+<details markdown=1>
 
 <summary>hubData (R)</summary>
 
-[hubData](https://hubverse-org.github.io/hubData), the Hubverse R client, can create an interactive session
-for accessing, filtering, and transforming hub model output data stored in S3.
+[hubData](https://hubverse-org.github.io/hubData), the Hubverse R client, can create an interactive session for accessing, filtering, and transforming hub model output data stored in S3.
 
 hubData is a good choice if you:
 
 - already use R for data analysis
 - want to interactively explore hub data from the cloud without downloading it
 - want to save a subset of the hub's data (*e.g.*, forecasts for a specific date or target) to your local machine
-- want to save hub data in a different file format (*e.g.*, parquet to .csv)
+- want to save hub data in a different file format (*e.g.*, `.parquet` to `.csv`)
 
 ### Installing hubData
 
-To install hubData and its dependencies (including the dplyr and arrow packages), follow the [instructions in the hubData documentation](https://hubverse-org.github.io/hubData/#installation).
+To install `hubData` and its dependencies (including the `dplyr` and `arrow` packages), follow the [instructions in the hubData documentation](https://hubverse-org.github.io/hubData/#installation).
 
 ### Using hubData
 
-hubData's [`connect_hub()` function](https://hubverse-org.github.io/hubData/reference/connect_hub.html) returns an [Arrow
-multi-file dataset](https://arrow.apache.org/docs/r/reference/Dataset.html) that represents a hub's model output data.
-The dataset can be filtered and transformed using dplyr and then materialized into a local data frame
-using the [`collect_hub()` function](https://hubverse-org.github.io/hubData/reference/collect_hub.html).
+hubData's [`connect_hub()` function](https://hubverse-org.github.io/hubData/reference/connect_hub.html) returns an [Arrow multi-file dataset](https://arrow.apache.org/docs/r/reference/Dataset.html) that represents a hub's model output data. The dataset can be filtered and transformed using dplyr and then materialized into a local data frame using the [`collect_hub()` function](https://hubverse-org.github.io/hubData/reference/collect_hub.html).
 
+#### Accessing Model Output Data
 
-#### Accessing target data
-
-*[hubData will be updated to access target data once the Hubverse target data standards are finalized.]*
-
-#### Accessing model output data
-
-Below is an example of using hubData to connect to a hub on S3 and filter the model output data.
+Use hubData to connect to a hub on S3 and retrieve all model-output files into a local dataframe. (note: depending on the size of the hub, this operation will take a few minutes):
 
 ```r
 library(dplyr)
 library(hubData)
 
-bucket_name <- "hub-bucket-name"
+bucket_name <- "pending..."
+hub_bucket <- s3_bucket(bucket_name)
+hub_con <- hubData::connect_hub(hub_bucket, file_format = "parquet", skip_checks = TRUE)
+model_output <- hub_con %>%
+  hubData::collect_hub()
+
+model_output
+# pending...
+```
+
+Use hubData to connect to a hub on S3 and filter model output data before "collecting" it into a local dataframe:
+
+```r
+library(dplyr)
+library(hubData)
+
+bucket_name <- "pending..."
 hub_bucket <- s3_bucket(bucket_name)
 hub_con <- hubData::connect_hub(hub_bucket, file_format = "parquet", skip_checks = TRUE)
 hub_con %>%
-  dplyr::filter(location == "MA", output_type == "quantile") %>%
-  hubData::collect_hub()
+  dplyr::filter(target == "wk inc rsv hosp", location == "25", output_type == "quantile") %>%
+  hubData::collect_hub() %>%
+  dplyr::select(reference_date, model_id, target_end_date, location, output_type_id, value)
 
+
+# pending...
 ```
 
-- [full hubData documentation](https://hubverse-org.github.io/hubData/)
+- [Full hubData documentation](https://hubverse-org.github.io/hubData/)
 
 </details>
 
-<!--------------------------------------------------- Polars ------------------------------------------------------->
+<details markdown=1>
 
-<details>
+<summary>Pyarrow (Python)</summary>
 
-<summary>Polars (Python)</summary>
+Python users can use [Pyarrow](https://arrow.apache.org/docs/python/index.html) to work with hub data in S3.
 
-The Hubverse team is currently developing a Python client (hubDataPy). Until hubDataPy is ready,
-the [Polars](https://pola.rs/) library is a good option for working with hub data in S3.
-Similar to pandas, Polars is based on dataframes and series. However, Polars has a more straightforward API and is
-designed to work with larger-than-memory datasets.
+Pandas users can access hub data as described below and then use the `to_pandas()` method to get a Pandas dataframe.
 
-Pandas users can access hub data as described below and then use the `to_pandas()` method to convert a Polars dataframe
-to pandas format.
-
-Polars is a good choice if you:
+Pyarrow is a good choice if you:
 
 - already use Python for data analysis
 - want to interactively explore hub data from the cloud without downloading it
 - want to save a subset of the hub's data (*e.g.*, forecasts for a specific date or target) to your local machine
-- want to save hub data in a different file format (*e.g.*, parquet to .csv)
+- want to save hub data in a different file format (*e.g.*, `.parquet` to `.csv`)
 
-### Installing polars
+### Installing Pyarrow
 
-Use pip to install Polars:
+Use `pip` to install Pyarrow:
 
 ```sh
-pip install polars
+python -m pip install pyarrow
 ```
 
-### Using Polars
+### Using Pyarrow
 
-The examples below use the Polars
-[`scan_parquet()` function](https://docs.pola.rs/api/python/dev/reference/api/polars.scan_parquet.html), which returns a
-[LazyFrame](https://docs.pola.rs/api/python/stable/reference/lazyframe/index.html).
-LazyFrames do not perform computations until necessary, so any filtering and transforms you apply to the data are
-deferred until an explicit
-[`collect()` operation](https://docs.pola.rs/api/python/stable/reference/lazyframe/api/polars.LazyFrame.collect.html#polars.LazyFrame.collect).
+The examples below start by creating a Pyarrow dataset that references the hub files on S3.
 
-#### Accessing target data
 
-Get all oracle-output files into a single DataFrame.
+#### Accessing Model Output Data
+
+Get all model-output files. This example creates an in-memory [Pyarrow table](https://arrow.apache.org/docs/python/generated/pyarrow.Table.html) with all model-output files from the hub (it will take a few minutes to run).
 
 ```python
-import polars as pl
+import pyarrow.dataset as ds
+import pyarrow.fs as fs
 
-oracle_data = pl.scan_parquet(
-    # the structure of the s3 link below will depend on how your hub organizes target data
-    "s3://[hub-bucket-name]/target-data/oracle-output/*/*.parquet",
-    storage_options={"skip_signature": "true"}
-)
 
-# filter and transform as needed and collect into a dataframe, for example:
-oracle_dataframe = oracle_data.filter(pl.col("location") == "MA").collect()
+# define an S3 filesystem with anonymous access (no credentials required)
+s3 = fs.S3FileSystem(access_key=None, secret_key=None, anonymous=True)
+
+# create a Pyarrow dataset that references the hub's model-output files
+# and convert it to an in-memory Pyarrow table
+mo = ds.dataset("rsv-forecast-hub/model-output/", filesystem=s3, format="parquet").to_table()
+
+# to convert the Pyarrow table to a Pandas dataframe:
+df = mo.to_pandas()
 ```
-
-#### Accessing model output data
 
 Get the model-output files for a specific team (all rounds).
-This example uses
-[glob patterns to read from data multiple files into a single dataset](https://docs.pola.rs/user-guide/io/multiple/#reading-into-a-single-dataframe).
 
 ```python
-import polars as pl
+import pandas as pd
+import pyarrow.dataset as ds
+import pyarrow.fs as fs
 
-lf = pl.scan_parquet(
-    "s3://[hub-bucket-name]/model-output/[modeling team name]/*.parquet",
-    storage_options={"skip_signature": "true"}
-)
+
+# define an S3 filesystem with anonymous access (no credentials required)
+s3 = fs.S3FileSystem(access_key=None, secret_key=None, anonymous=True)
+
+# create a Pyarrow dataset that references a team's model-output files
+# and convert it to an in-memory Pyarrow table
+mo = ds.dataset("rsv-forecast-hub/model-output/pending.../", filesystem=s3, format="parquet").to_table()
+
+# to convert the Pyarrow table to a Pandas dataframe:
+df = mo.to_pandas()
+df.head()
+
+# pending...
 ```
 
-#### Using partitions (hive-style)
+- [Full documentation of Pyarrow table API](https://arrow.apache.org/docs/python/generated/pyarrow.Table.html)
 
-If your data uses hive-style partitioning, Polars can use the partitions to filter the data before reading it.
+Add a filter to model output data before converting it to a Pyarrow table. Filters are expressed as a [Pyarrow dataset Expression](https://arrow.apache.org/docs/python/generated/pyarrow.dataset.Expression.html#pyarrow.dataset.Expression).
 
 ```python
 from datetime import datetime
-import polars as pl
+import pandas as pd
+import pyarrow as pa
+import pyarrow.compute as pc
+import pyarrow.dataset as ds
+import pyarrow.fs as fs
 
-oracle_data = pl.scan_parquet(
-    "s3://[hub-bucket-name]/target-data/oracle-output/",
-    hive_partitioning=True,
-    storage_options={"skip_signature": "true"}) \
-.filter(pl.col("nowcast_date") == datetime(2025, 2, 5)) \
-.collect()
+
+# define an S3 filesystem with anonymous access (no credentials required)
+s3 = fs.S3FileSystem(access_key=None, secret_key=None, anonymous=True)
+
+# create a Pyarrow dataset that references a team's model-output files, apply filters,
+# and convert it to an in-memory Pyarrow table
+mo = ds.dataset("rsv-forecast-hub/model-output/", filesystem=s3, format="parquet").to_table(
+  filter=(
+    pc.field("target") == "wk inc rsv hosp") &
+    pc.equal(pc.field("reference_date"), pa.scalar(datetime(2023, 10, 14), type=pa.date32())))
+
+# to convert the Pyarrow table to a Pandas dataframe:
+df = mo.to_pandas()
+df.head()
+
+# pending...
 ```
-
-- [Full documentation of the Polars Python API](https://docs.pola.rs/api/python/stable/reference/)
 
 </details>
 
-<!--------------------------------------------------- AWS CLI ------------------------------------------------------->
 
-<details>
+<details markdown=1>
 
 <summary>AWS CLI</summary>
 
 AWS provides a terminal-based command line interface (CLI) for exploring and downloading S3 files.
+
 This option is ideal if you:
 
 - plan to work with hub data offline but don't want to use git or GitHub
 - want to download a subset of the data (instead of the entire hub)
 - are using the data for an application that requires local storage or fast response times
 
-### Installing the AWS CLI
+### Installing AWS CLI
 
-- Install the AWS CLI using the
-[instructions here](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+- Install the AWS CLI using the [instructions here](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 - You can skip the instructions for setting up security credentials, since Hubverse data is public
 
-### Using the AWS CLI
+### Using AWS CLI
 
 When using the AWS CLI, the `--no-sign-request` option is required, since it tells AWS to bypass a credential check
 (*i.e.*, `--no-sign-request` allows anonymous access to public S3 data).
 
 > [!NOTE]
+>
 > Files in the bucket's `raw` directory should not be used for analysis (they're for internal use only).
 
 List all directories in the hub's S3 bucket:
 
 ```sh
-aws s3 ls [hub-bucket-name] --no-sign-request
+aws s3 ls rsv-forecast-hub --no-sign-request
 ```
 
 List all files in the hub's bucket:
 
 ```sh
-aws s3 ls [hub-bucket-name] --recursive --no-sign-request
+aws s3 ls rsv-forecast-hub --recursive --no-sign-request
 ```
 
 Download all of target-data contents to your current working directory:
 
 ```sh
-aws s3 cp s3://[hub-bucket-name]/target-data/ . --recursive --no-sign-request
+aws s3 cp s3://rsv-forecast-hub/target-data/ . --recursive --no-sign-request
 ```
 
 Download the model-output files for a specific team:
 
 ```sh
-aws s3 cp s3://[hub-bucket-name]/[modeling-team-name]/UMass-flusion/ . --recursive --no-sign-request
+aws s3 cp s3://rsv-forecast-hub/model-output/pending/ . --recursive --no-sign-request
 ```
 
 - [Full documentation for `aws s3 ls`](https://docs.aws.amazon.com/cli/latest/reference/s3/ls.html)
@@ -267,11 +344,12 @@ aws s3 cp s3://[hub-bucket-name]/[modeling-team-name]/UMass-flusion/ . --recursi
 
 </details>
 
+
+
+
+
 ## Acknowledgments
-
-This repository follows the guidelines and standards outlined by [the
-[hubverse](https://hubverse.io), which provides a set of data formats and open source tools for modeling hubs.
-
+This repository follows the guidelines and standards outlined by the [hubverse](https://hubdocs.readthedocs.io/en/latest/), which provides a set of data formats and open source tools for modeling hubs.
 
 
 <details markdown=1>
