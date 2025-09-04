@@ -5,7 +5,7 @@
 
 This repository is designed to collect forecast data for the RSV Forecast Hub run by the US CDC. The project collects forecasts for two datasets:
 
-1. Weekly new hospitalizations, due to RSV
+1. Weekly new hospitalizations, due to RSV.
 2. Weekly incident percentage of emergency department visits, due to RSV.
 
 If you are interested in using these data for additional research or publications, please contact [rsvhub@cdc.gov](mailto:rsvhub@cdc.gov) for information regarding attribution of the source forecasts.
