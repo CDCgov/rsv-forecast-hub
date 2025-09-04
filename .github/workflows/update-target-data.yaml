@@ -18,7 +18,7 @@ jobs:
     steps:
     - name: "Generate Token"
       id: get_token
-      uses: actions/create-github-app-token@v1
+      uses: actions/create-github-app-token@v2
       with: # will change when CDCgov online
         app-id: ${{ secrets.CFA_CDCENT_APP_TOKEN_GH_APP_ID }}
         private-key: ${{ secrets.CFA_CDCENT_APP_TOKEN_GH_APP_KEY }}
