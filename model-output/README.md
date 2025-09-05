@@ -5,7 +5,7 @@ This folder contains a set of subdirectories, one for each model, that contains 
 
 # Data Submission Instructions
 
-All forecasts should be submitted directly to the `model-output` folder (i.e. this current folder). Data in this directory should be added to the repository through [a pull request](https://github.com/cdcent/cfa-internal-rsv-forecast-hub/pulls) so that automatic data validation checks are run.
+All forecasts should be submitted directly to the `model-output` folder (i.e. this current folder). Data in this directory should be added to the repository through [a pull request](https://github.com/CDCgov/rsv-forecast-hub/pulls) so that automatic data validation checks are run.
 
 These instructions provide detail about the [data format](#Data-Formatting) as well as [validation](#Forecast-Validation) that you can do prior to this pull request. In addition, we describe [metadata](https://github.com/hubverse-org/hubTemplate/blob/master/model-metadata/README.md) that each model should provide in the model-metadata folder.
 
