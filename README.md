@@ -5,8 +5,8 @@
 
 This repository is designed to collect forecast data for the RSV Forecast Hub run by the US CDC. The project collects forecasts for two datasets:
 
-    1. weekly new hospitalizations due to RSV, and
-   2. weekly incident percentage of emergency department visits due to RSV.
+1. Weekly new hospitalizations, due to RSV.
+2. Weekly incident percentage of emergency department visits, due to RSV.
 
 If you are interested in using these data for additional research or publications, please contact [rsvhub@cdc.gov](mailto:rsvhub@cdc.gov) for information regarding attribution of the source forecasts.
 
@@ -42,10 +42,10 @@ Participating teams will be able to submit national- and jurisdiction-specific (
 
 ### Targets
 
-   1. Quantile predictions for epiweekly total laboratory-confirmed RSV hospital admissions.
-   2. Individual forecast trajectories for epiweekly total laboratory-confirmed RSV hospitalizations over time (i.e sampled trajectories).
-   3. Quantile predictions for epiweekly percent of emergency department visits due to RSV.
-   4. Individual forecast trajectories for epiweekly percent of emergency department visits due to RSV over time (i.e sampled trajectories).
+1. Quantile predictions for epiweekly total laboratory-confirmed RSV hospital admissions.
+2. Individual forecast trajectories for epiweekly total laboratory-confirmed RSV hospitalizations over time (i.e sampled trajectories).
+3. Quantile predictions for epiweekly percent of emergency department visits due to RSV.
+4. Individual forecast trajectories for epiweekly percent of emergency department visits due to RSV over time (i.e sampled trajectories).
 
 Targets 2, 3 and 4 are optional for any submitted location whereas target 1 (quantile predictions for epiweekly RSV hospital admissions) is mandatory for any submitted location and forecast horizon. Teams are encouraged but not required to submit forecasts for all weekly horizons or for all locations.
 
