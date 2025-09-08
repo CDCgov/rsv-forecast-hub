@@ -37,14 +37,6 @@ jobs:
       with:
         pak-version: "devel"
         packages: |
-          any::lubridate
-          any::dplyr
-          any::tidyselect
-          any::stringr
-          any::glue
-          any::readr
-          any::fs
-          github::cdcgov/forecasttools
           github::cdcgov/hubhelpr
 
     - name: "Update RSV Target Data"

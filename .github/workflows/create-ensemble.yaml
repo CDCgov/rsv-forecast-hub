@@ -40,19 +40,6 @@ jobs:
       with:
         pak-version: "devel"
         packages: |
-          any::fs
-          any::dplyr
-          any::lubridate
-          any::purrr
-          any::yaml
-          any::argparser
-          any::checkmate
-          any::stringr
-          any::glue
-          any::cli
-          any::hubEnsembles
-          github::hubverse-org/hubData
-          github::cdcgov/forecasttools
           github::cdcgov/hubhelpr
 
     - name: "Generate Ensemble"

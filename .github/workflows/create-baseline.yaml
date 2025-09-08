@@ -32,22 +32,6 @@ jobs:
       with:
         pak-version: "devel"
         packages: |
-          any::lubridate
-          any::dplyr
-          any::tidyselect
-          any::stringr
-          any::glue
-          any::readr
-          any::fs
-          any::cli
-          any::tidyr
-          any::checkmate
-          any::withr
-          any::hardhat
-          github::cmu-delphi/epiprocess
-          github::cmu-delphi/epipredict
-          github::cdcgov/forecasttools
-          github::hubverse-org/hubData
           github::cdcgov/hubhelpr
 
     - name: "Generate Baseline"
