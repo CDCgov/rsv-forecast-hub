@@ -16,12 +16,13 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    - name: "Generate Token"
+    - name: "Generate Installation Token"
       id: get_token
-      uses: actions/create-github-app-token@v2
-      with: # will change when CDCgov online
-        app-id: ${{ secrets.CFA_CDCENT_APP_TOKEN_GH_APP_ID }}
-        private-key: ${{ secrets.CFA_CDCENT_APP_TOKEN_GH_APP_KEY }}
+      uses: actions/create-github-app-token@v1
+      with:
+        app-id: ${{ vars.CDCGOV_HUB_BOT_APP_ID }}
+        private-key: ${{ secrets.CDCGOV_HUB_BOT_APP_KEY }}
+
     - name: "Check Out Code"
       uses: actions/checkout@v5
     - name: "Set Up R"
@@ -30,20 +31,14 @@ jobs:
         install-r: true
         use-public-rspm: true
         extra-repositories: "https://hubverse-org.r-universe.dev"
+
     - name: "Set Up R Dependencies"
       uses: r-lib/actions/setup-r-dependencies@v2
       with:
         pak-version: "devel"
         packages: |
-          any::lubridate
-          any::dplyr
-          any::tidyselect
-          any::stringr
-          any::glue
-          any::readr
-          any::fs
-          github::cdcgov/forecasttools
           github::cdcgov/hubhelpr
+
     - name: "Update RSV Target Data"
       run: |
         library(hubhelpr)
@@ -55,12 +50,15 @@ jobs:
         DATA_CDC_GOV_API_KEY_ID: ${{ secrets.DATA_CDC_GOV_API_KEY_ID }}
         DATA_CDC_GOV_API_KEY_SECRET: ${{ secrets.DATA_CDC_GOV_API_KEY_SECRET }}
       shell: Rscript {0}
+
     - name: "Set Date"
       run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
+
     - name: "Check For Changes"
       id: check_diff
       run: |
         git diff --exit-code target-data/* || echo "changed=true" >> $GITHUB_ENV
+
     - name: "Commit Changes"
       if: env.changed == 'true'
       run: |
@@ -70,6 +68,7 @@ jobs:
         git add .
         git commit -m "Update RSV target data"
         git push origin update-rsv-target-data-${{ env.DATE }}
+
     - name: "Create Pull Request"
       if: env.changed == 'true'
       run: |
