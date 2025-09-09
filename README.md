@@ -190,15 +190,17 @@ hub_con %>%
 
 <summary>hub-data (Python)</summary>
 
-The Hubverse team is developing a Python client which provides some initial tools for accessing Hubverse data. The repository is located at https://github.com/hubverse-org/hub-data .
+The Hubverse team is developing a Python client which provides some initial tools for accessing Hubverse data. The repository is located at <https://github.com/hubverse-org/hub-data>.
 
 
 ### Installing hub-data
 
-Use pip to install hub-data (the pypi package is https://pypi.org/project/hubdata ):
+Use `pip` to install `hub-data` (the `pypi` package is <https://pypi.org/project/hubdata>):
 
 ```sh
-pip install hubdata
+
+`pip install hubdata`
+
 ```
 
 ### Using hub-data
