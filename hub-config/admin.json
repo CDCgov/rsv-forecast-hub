@@ -8,8 +8,8 @@
   },
   "repository": {
     "host": "github",
-    "owner": "cdcent",
-    "name": "cfa-internal-rsv-forecast-hub"
+    "owner": "CDCgov",
+    "name": "rsv-forecast-hub"
   },
   "file_format": [
     "csv",
@@ -21,7 +21,7 @@
     "host": {
       "name": "aws",
       "storage_service": "s3",
-      "storage_location": "cfa-internal-rsv-forecast-hub"
+      "storage_location": "rsv-forecast-hub"
     }
   }
 }
