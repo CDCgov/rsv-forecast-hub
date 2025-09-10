@@ -119,7 +119,7 @@ preferred tools. The options include:
 | Access Method              | Description                                                                           |
 | -------------------------- | ------------------------------------------------------------------------------------- |
 | hubData (R)                | Hubverse R client and R code for accessing hub data.                                  |
-| Pyarrow (Python)           | Python open-source library for data manipulation.                                     |
+| hub-data (Python)          | Python package for working with hubverse data                                         |
 | AWS command line interface | Download data and use hubData, Pyarrow, or another tool for fast local access.        |
 
 In general, accessing the data directly from S3 (instead of downloading it first) is more convenient. However, if performance is critical (for example, you're building an interactive visualization), or if you need to work offline,
@@ -188,103 +188,24 @@ hub_con %>%
 
 <details markdown=1>
 
-<summary>Pyarrow (Python)</summary>
+<summary>hub-data (Python)</summary>
 
-Python users can use [Pyarrow](https://arrow.apache.org/docs/python/index.html) to work with hub data in S3.
+The Hubverse team is developing a Python client which provides some initial tools for accessing Hubverse data. The repository is located at <https://github.com/hubverse-org/hub-data>.
 
-Pandas users can access hub data as described below and then use the `to_pandas()` method to get a Pandas dataframe.
 
-Pyarrow is a good choice if you:
+### Installing hub-data
 
-- already use Python for data analysis
-- want to interactively explore hub data from the cloud without downloading it
-- want to save a subset of the hub's data (*e.g.*, forecasts for a specific date or target) to your local machine
-- want to save hub data in a different file format (*e.g.*, `.parquet` to `.csv`)
-
-### Installing Pyarrow
-
-Use `pip` to install Pyarrow:
+Use `pip` to install `hub-data` (the `pypi` package is <https://pypi.org/project/hubdata>):
 
 ```sh
-python -m pip install pyarrow
+
+`pip install hubdata`
+
 ```
 
-### Using Pyarrow
+### Using hub-data
 
-The examples below start by creating a Pyarrow dataset that references the hub files on S3.
-
-
-#### Accessing Model Output Data
-
-Get all model-output files. This example creates an in-memory [Pyarrow table](https://arrow.apache.org/docs/python/generated/pyarrow.Table.html) with all model-output files from the hub (it will take a few minutes to run).
-
-```python
-import pyarrow.dataset as ds
-import pyarrow.fs as fs
-
-
-# define an S3 filesystem with anonymous access (no credentials required)
-s3 = fs.S3FileSystem(access_key=None, secret_key=None, anonymous=True)
-
-# create a Pyarrow dataset that references the hub's model-output files
-# and convert it to an in-memory Pyarrow table
-mo = ds.dataset("rsv-forecast-hub/model-output/", filesystem=s3, format="parquet").to_table()
-
-# to convert the Pyarrow table to a Pandas dataframe:
-df = mo.to_pandas()
-```
-
-Get the model-output files for a specific team (all rounds).
-
-```python
-import pandas as pd
-import pyarrow.dataset as ds
-import pyarrow.fs as fs
-
-
-# define an S3 filesystem with anonymous access (no credentials required)
-s3 = fs.S3FileSystem(access_key=None, secret_key=None, anonymous=True)
-
-# create a Pyarrow dataset that references a team's model-output files
-# and convert it to an in-memory Pyarrow table
-mo = ds.dataset("rsv-forecast-hub/model-output/pending.../", filesystem=s3, format="parquet").to_table()
-
-# to convert the Pyarrow table to a Pandas dataframe:
-df = mo.to_pandas()
-df.head()
-
-# pending...
-```
-
-- [Full documentation of Pyarrow table API](https://arrow.apache.org/docs/python/generated/pyarrow.Table.html)
-
-Add a filter to model output data before converting it to a Pyarrow table. Filters are expressed as a [Pyarrow dataset Expression](https://arrow.apache.org/docs/python/generated/pyarrow.dataset.Expression.html#pyarrow.dataset.Expression).
-
-```python
-from datetime import datetime
-import pandas as pd
-import pyarrow as pa
-import pyarrow.compute as pc
-import pyarrow.dataset as ds
-import pyarrow.fs as fs
-
-
-# define an S3 filesystem with anonymous access (no credentials required)
-s3 = fs.S3FileSystem(access_key=None, secret_key=None, anonymous=True)
-
-# create a Pyarrow dataset that references a team's model-output files, apply filters,
-# and convert it to an in-memory Pyarrow table
-mo = ds.dataset("rsv-forecast-hub/model-output/", filesystem=s3, format="parquet").to_table(
-  filter=(
-    pc.field("target") == "wk inc rsv hosp") &
-    pc.equal(pc.field("reference_date"), pa.scalar(datetime(2023, 10, 14), type=pa.date32())))
-
-# to convert the Pyarrow table to a Pandas dataframe:
-df = mo.to_pandas()
-df.head()
-
-# pending...
-```
+Please see the [hub-data package documentation](https://hubverse-org.github.io/hub-data) for examples of how to use the CLI, and the `hubdata.connect_hub()` and `hubdata.create_hub_schema()` functions.
 
 </details>
 
