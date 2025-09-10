@@ -41,7 +41,7 @@ jobs:
 
       - name: "Check Modified Output Directories"
         run: |
-          if [ "${{ steps.get_changed_files_in_model_output.outputs.all_modified_files }}" == "RsvHub-ensemble" ]; then
+          if [ "${{ steps.get_changed_files_in_model_output.outputs.all_modified_files }}" == "RSVHub-ensemble" ]; then
             { echo "model=ensemble" | tee -a $GITHUB_ENV; }
           else
             { echo "model=other" | tee -a $GITHUB_ENV; }
