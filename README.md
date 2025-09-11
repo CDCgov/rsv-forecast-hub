@@ -99,11 +99,9 @@ We have made some changes from previous version of the [RSV Forecast Hub](https:
 All Hubs will require quantile-based forecasts of epiweekly incident hospital admissions reported into NHSN, with the same -1:3 week horizon span. The COVIDhub and RSVhub optionally accept forecasts of proportion of Emergency department visits reported into NSSP. The Hubs also plan to share a forecast deadline of 11pm USA/Eastern time on Wednesdays.
 
 
-
-
 ## Accessing RSV Data On The Cloud
 
-To ensure greater access to the data created by and submitted to this hub, real-time copies of files in the following directories are hosted on the Hubverse's Amazon Web Services (AWS) infrastructure, in a public S3 bucket: [bucket pending].
+To ensure greater access to the data created by and submitted to this hub, real-time copies of files in the following directories are hosted on the Hubverse's Amazon Web Services (AWS) infrastructure, in a public S3 bucket: `rsv-forecast-hub`.
 
 - `auxiliary-data`
 - `hub-config`
@@ -154,14 +152,14 @@ Use hubData to connect to a hub on S3 and retrieve all model-output files into a
 library(dplyr)
 library(hubData)
 
-bucket_name <- "pending..."
+bucket_name <- "rsv-forecast-hub"
 hub_bucket <- s3_bucket(bucket_name)
 hub_con <- hubData::connect_hub(hub_bucket, file_format = "parquet", skip_checks = TRUE)
 model_output <- hub_con %>%
   hubData::collect_hub()
 
 model_output
-# pending...
+# does not yet exist, given no public forecast submissions
 ```
 
 Use hubData to connect to a hub on S3 and filter model output data before "collecting" it into a local dataframe:
@@ -170,7 +168,7 @@ Use hubData to connect to a hub on S3 and filter model output data before "colle
 library(dplyr)
 library(hubData)
 
-bucket_name <- "pending..."
+bucket_name <- "rsv-forecast-hub"
 hub_bucket <- s3_bucket(bucket_name)
 hub_con <- hubData::connect_hub(hub_bucket, file_format = "parquet", skip_checks = TRUE)
 hub_con %>%
@@ -178,8 +176,7 @@ hub_con %>%
   hubData::collect_hub() %>%
   dplyr::select(reference_date, model_id, target_end_date, location, output_type_id, value)
 
-
-# pending...
+# does not yet exist, given no public forecast submissions
 ```
 
 - [Full hubData documentation](https://hubverse-org.github.io/hubData/)
