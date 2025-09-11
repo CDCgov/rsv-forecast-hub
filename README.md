@@ -157,9 +157,6 @@ hub_bucket <- s3_bucket(bucket_name)
 hub_con <- hubData::connect_hub(hub_bucket, file_format = "parquet", skip_checks = TRUE)
 model_output <- hub_con %>%
   hubData::collect_hub()
-
-model_output
-# does not yet exist, given no public forecast submissions
 ```
 
 Use hubData to connect to a hub on S3 and filter model output data before "collecting" it into a local dataframe:
@@ -175,8 +172,6 @@ hub_con %>%
   dplyr::filter(target == "wk inc rsv hosp", location == "25", output_type == "quantile") %>%
   hubData::collect_hub() %>%
   dplyr::select(reference_date, model_id, target_end_date, location, output_type_id, value)
-
-# does not yet exist, given no public forecast submissions
 ```
 
 - [Full hubData documentation](https://hubverse-org.github.io/hubData/)
