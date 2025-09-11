@@ -28,9 +28,9 @@ jobs:
         # save cloud-related fields from admin config as environment variables
         # (jq json parser is installed on Github-hosted runners)
         run: |
-          cloud_enabled=$(cat ./hub-config/admin.json | jq -r '.cloud.enabled') \
+          cloud_enabled=$(jq -r '.cloud.enabled' ./hub-config/admin.json) \
             && echo "CLOUD_ENABLED=$cloud_enabled"
-          cloud_storage_location=$(cat ./hub-config/admin.json | jq -r '.cloud.host.storage_location') \
+          cloud_storage_location=$(jq -r '.cloud.host.storage_location' ./hub-config/admin.json) \
             && echo "CLOUD_STORAGE_LOCATION=$cloud_storage_location"
           echo "CLOUD_ENABLED=$cloud_enabled" >> $GITHUB_ENV
           echo "CLOUD_STORAGE_LOCATION=$cloud_storage_location" >> $GITHUB_ENV
