@@ -1,5 +1,9 @@
 name: "Lint GitHub Actions Workflows"
-on: [push]
+on:
+  pull_request:
+  push:
+    branches: [main]
+
 
 jobs:
   actionlint:
