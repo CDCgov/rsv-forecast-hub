@@ -1,4 +1,4 @@
-name: Update Authorized Users
+name: "Update Authorized Users"
 
 on:
   workflow_dispatch:
@@ -12,43 +12,62 @@ on:
 jobs:
   update-users-list:
     if: ${{ github.repository_owner == 'CDCgov' }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    - name: Generate Installation Token
+    - name: "Generate Installation Token"
       id: get_token
-      uses: actions/create-github-app-token@v1
+      uses: actions/create-github-app-token@v2
       with:
-        app-id: ${{ vars.GH_APP_ID }}
-        private-key: ${{ secrets.GH_APP_KEY }}
-    - name: Checkout Code
-      uses: actions/checkout@v4
-    - name: Setup R
+        app-id: ${{ vars.CDCGOV_HUB_BOT_APP_ID }}
+        private-key: ${{ secrets.CDCGOV_HUB_BOT_APP_KEY }}
+
+    - name: "Checkout Code"
+      uses: actions/checkout@v5
+
+    - name: "Setup R"
       uses: r-lib/actions/setup-r@v2
       with:
-        install-r: false
         use-public-rspm: true
-    - name: Install Dependencies
+        extra-repositories: "https://hubverse-org.r-universe.dev"
+
+    - name: "Set Up R Dependencies"
+      uses: r-lib/actions/setup-r-dependencies@v2
+      with:
+        pak-version: "devel"
+        packages: |
+          github::cdcgov/hubhelpr
+
+    - name: "Update Authorized Users"
       run: |
-        install.packages(c("yaml", "purrr", "glue", "jsonlite", "fs"))
+        library(hubhelpr)
+        update_authorized_users(
+          base_hub_path = "."
+        )
       shell: Rscript {0}
-    - name: "Generate Users List"
-      run: |
-        Rscript src/get_authorized_users.R
+
+    - name: "Set Date"
+      run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
+
     - name: "Check For Changes"
       id: check_diff
       run: |
         git diff --exit-code auxiliary-data/authorized_users.json || { echo "changed=true" | tee -a $GITHUB_ENV; }
+
     - name: "Commit Changes"
       if: env.changed == 'true'
-      uses: EndBug/add-and-commit@v9
-      with:
-        message: "Update authorized users"
-        default_author: github_actions
-        push: true
-        new_branch: update-authorized-users
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git checkout -b update-authorized-users-${{ env.DATE }}
+        git add auxiliary-data/authorized_users.json
+        git commit -m "Update authorized users"
+        git push origin update-authorized-users-${{ env.DATE }}
+
     - name: "Create Pull Request"
       if: env.changed == 'true'
       run: |
-        gh pr create --base main --head update-authorized-users --title "Update authorized users" --body "This PR updates the authorized users list based on the latest metadata."
+        gh pr create --base main --head update-authorized-users-${{ env.DATE }} --title "Update authorized users" --body "This PR updates the authorized users list based on the latest metadata."
       env:
         GH_TOKEN: ${{ steps.get_token.outputs.token }}
