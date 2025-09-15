@@ -1,4 +1,4 @@
-name: Build Dependency Cache On main Branch
+name: "Build Dependency Cache On main Branch"
 on:
   push:
     branches: [main, master]
@@ -10,7 +10,7 @@ on:
 jobs:
   build-deps-cache-on-main:
     if: ${{ github.repository_owner == 'CDCgov' }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
