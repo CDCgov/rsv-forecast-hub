@@ -1,4 +1,4 @@
-name: Hub Submission Validation (R)
+name: "Hub Submission Validation (R)"
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   validate-submission:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
