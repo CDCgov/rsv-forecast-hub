@@ -40,11 +40,7 @@ jobs:
           github::cdcgov/hubhelpr
 
     - name: "Update Authorized Users"
-      run: |
-        library(hubhelpr)
-        update_authorized_users(
-          base_hub_path = "."
-        )
+      run: "hubhelpr::update_authorized_users('.')"
       shell: Rscript {0}
 
     - name: "Set Date"
