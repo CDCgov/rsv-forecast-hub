@@ -36,4 +36,5 @@ extend-exclude = [
     "*.css",
     "*.ipynb",
     "*.json",
+    "*.csv",
 ]
