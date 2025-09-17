@@ -6,8 +6,8 @@ name: "Update RSV Target Data"
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "00 16 * * 3" # run every Wednesday at 4:00 PM UTC (12:00 PM EST)
+#  schedule:
+#    - cron: "00 16 * * 3" # run every Wednesday at 4:00 PM UTC (12:00 PM EST)
 
 jobs:
   update-target-data:
