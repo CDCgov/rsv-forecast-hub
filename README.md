@@ -1,6 +1,3 @@
-> [!IMPORTANT]
-> This repository is currently under construction!
-
 # RSV Forecast Hub
 
 This repository is designed to collect forecast data for the RSV Forecast Hub run by the US CDC. The project collects forecasts for two datasets:
