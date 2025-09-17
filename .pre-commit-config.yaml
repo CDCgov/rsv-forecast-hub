@@ -63,7 +63,7 @@ repos:
     # detect-secrets scan > .secrets.baseline
     -   id: detect-secrets
         args: ["--baseline", ".secrets.baseline"]
-        exclude: package.lock.json
+        exclude: "package.lock.json|model-output/.*|auxiliary-data/nssp-raw-data/.*"
 -   repo: https://github.com/crate-ci/typos
     rev: v1
     hooks:
