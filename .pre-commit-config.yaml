@@ -63,7 +63,7 @@ repos:
     # detect-secrets scan > .secrets.baseline
     -   id: detect-secrets
         args: ["--baseline", ".secrets.baseline"]
-        exclude: "package.lock.json|.*\\.csv$|.*\\.parquet$"
+        exclude: "package.lock.json|^model-output/.*\\.(csv|parquet)$|^target-data/.*\\.(csv|parquet)$|^auxiliary-data/nssp-raw-data/.*\\.(csv|parquet)$"
 -   repo: https://github.com/crate-ci/typos
     rev: v1
     hooks:
