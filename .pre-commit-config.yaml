@@ -65,7 +65,7 @@ repos:
         args: ["--baseline", ".secrets.baseline"]
         exclude: "package.lock.json|model-output/.*|auxiliary-data/nssp-raw-data/.*"
 -   repo: https://github.com/crate-ci/typos
-    rev: v1
+    rev: v1.36.2
     hooks:
     -   id: typos
         args: ["--force-exclude"]
