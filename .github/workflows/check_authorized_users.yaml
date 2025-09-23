@@ -51,6 +51,14 @@ jobs:
 
           # Check if there are any changes outside model-output
           NON_MODEL_CHANGES=false
+          HAS_MODEL_CHANGES=false
+
+          # Check if we have model-output changes
+          if [ -n "$MODEL_OUTPUT_FILES" ]; then
+            HAS_MODEL_CHANGES=true
+          fi
+
+          # Check for changes outside model-output
           for file in $ALL_FILES; do
             if [[ ! "$file" =~ ^model-output/ ]]; then
               NON_MODEL_CHANGES=true
@@ -59,6 +67,7 @@ jobs:
           done
 
           echo "non_model_changes=$NON_MODEL_CHANGES" >> $GITHUB_OUTPUT
+          echo "has_model_changes=$HAS_MODEL_CHANGES" >> $GITHUB_OUTPUT
 
       - name: "Check User Authorization"
         if: steps.check_other_changes.outputs.non_model_changes == 'false'
