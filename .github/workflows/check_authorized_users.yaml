@@ -2,7 +2,7 @@ name: "Check Authorized Users"
 
 on:
   workflow_dispatch:
-  pull_request:
+  pull_request_target:
     branches: main
     paths:
       - "model-output/**"
@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: "Checkout Code"
         uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: "Setup R"
         uses: r-lib/actions/setup-r@v2
@@ -30,15 +32,48 @@ jobs:
           packages: |
             github::cdcgov/hubhelpr
 
-      - name: "Get Changed Model Output Directories"
+      - name: "Get Model Output Changes"
         id: get_changed_files_in_model_output
         uses: step-security/changed-files@v46
         with:
           path: model-output
           dir_names: "true"
 
+      - name: "Get All Changes"
+        id: get_all_changed_files
+        uses: step-security/changed-files@v46
+
+      - name: "Check Changes Outside model-output"
+        id: check_other_changes
+        run: |
+          ALL_FILES="${{ steps.get_all_changed_files.outputs.all_modified_files }}"
+          MODEL_OUTPUT_FILES="${{ steps.get_changed_files_in_model_output.outputs.all_modified_files }}"
+
+          # Check if there are any changes outside model-output
+          NON_MODEL_CHANGES=false
+          for file in $ALL_FILES; do
+            if [[ ! "$file" =~ ^model-output/ ]]; then
+              NON_MODEL_CHANGES=true
+              echo "Found changes outside model-output: $file"
+            fi
+          done
+
+          echo "non_model_changes=$NON_MODEL_CHANGES" >> $GITHUB_OUTPUT
+
       - name: "Check User Authorization"
+        if: steps.check_other_changes.outputs.non_model_changes == 'false'
         run: |
           changed_dirs <- strsplit("${{ steps.get_changed_files_in_model_output.outputs.all_modified_files }}", " ")[[1]]
-          hubhelpr::check_authorized_users(changed_dirs, "${{ github.actor }}", ".")
+          if (length(changed_dirs) > 0 && changed_dirs[1] != "") {
+            hubhelpr::check_authorized_users(changed_dirs, "${{ github.actor }}", ".")
+          } else {
+            stop("No model-output directories were changed")
+          }
         shell: Rscript {0}
+
+      - name: "Fail Changes Outside model-output"
+        if: steps.check_other_changes.outputs.non_model_changes == 'true'
+        run: |
+          echo "This PR contains changes outside of model-output/"
+          echo "Auto-merge is only available for PRs that exclusively modify model-output directories."
+          exit 1
