@@ -37,7 +37,7 @@ model_contributors: [
 ]
 
 license: "CC-BY-4.0"
-designated_model: false
+designated_model: true
 methods: "Renewal model using the Pyrenew-HEW framework fit to hospital admissions and emergency department visits."
 data_inputs: "Daily incident RSV hospital admissions via the National Healthcare Safety Network (NHSN) and emergency department visits via the National Syndromic Surveillance Program (NSSP)."
 methods_long: "Renewal model fit to hospital admissions and emergency department visits and used to forecast hospital admissions and proportion of ed visits targets (NHSN and NSSP) signals."
