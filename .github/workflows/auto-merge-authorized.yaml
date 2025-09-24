@@ -1,0 +1,53 @@
+name: "Auto Merge Authorized PRs"
+
+on:
+  workflow_run:
+    workflows: ["Check Authorized Users"]
+    types:
+      - completed
+
+jobs:
+  auto-merge:
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Generate Installation Token"
+        id: get_token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.CDCGOV_HUB_BOT_APP_ID }}
+          private-key: ${{ secrets.CDCGOV_HUB_BOT_APP_KEY }}
+
+      - name: "Get PR Number"
+        id: get_pr
+        run: |
+          # Extract PR number from the workflow run
+          PR_NUMBER=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.event.workflow_run.id }}" | \
+            jq -r '.pull_requests[0].number // empty')
+
+          if [ -z "$PR_NUMBER" ]; then
+            echo "No PR associated with this workflow run"
+            exit 1
+          fi
+
+          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          echo "Found PR #$PR_NUMBER"
+
+      - name: "Approve PR"
+        env:
+          GH_TOKEN: ${{ steps.get_token.outputs.token }}
+        run: |
+          gh pr review ${{ steps.get_pr.outputs.pr_number }} --approve \
+            --body "Auto-approved: User is authorized to modify these model directories ✅"
+
+      - name: "Merge PR"
+        env:
+          GH_TOKEN: ${{ steps.get_token.outputs.token }}
+        run: |
+          gh pr merge ${{ steps.get_pr.outputs.pr_number }} --squash \
+            --subject "Auto-merge authorized model output from PR #${{ steps.get_pr.outputs.pr_number }}" \
+            --body "This PR was automatically merged because the user is authorized to modify these model directories."
+
+          echo "PR #${{ steps.get_pr.outputs.pr_number }} has been automatically merged"
