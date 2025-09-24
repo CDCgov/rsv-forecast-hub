@@ -51,7 +51,6 @@ jobs:
       run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
 
     - name: "Commit Changes"
-      if: env.changed == 'true'
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
