@@ -23,6 +23,7 @@ clien = "clien"
 AKS = "AKS"
 HSA = "HSA"
 RTO = "RTO"
+OT = "OT"
 
 [files]
 extend-exclude = [
