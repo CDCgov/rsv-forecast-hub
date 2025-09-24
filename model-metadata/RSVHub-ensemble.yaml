@@ -13,7 +13,6 @@ model_contributors:
   ]
 website_url: "https://github.com/CDCgov/rsv-forecast-hub"
 license: "CC-BY-4.0"
-license: "CC-BY-4.0"
 designated_model: false
 methods: "Median-based ensemble of quantile forecasts submissions."
 data_inputs: "Quantile forecasts submissions to the RSVHub"
