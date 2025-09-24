@@ -30,5 +30,4 @@ methods_long: A spatial time-series model that uses the R-INLA package for estim
 website_url: https://www.medrxiv.org/content/10.1101/2025.03.03.25323259v1
 ensemble_of_models: false
 ensemble_of_hub_models: false
-team_funding: CSTE/CDC award NU38OT000297 
-
+team_funding: CSTE/CDC award NU38OT000297
