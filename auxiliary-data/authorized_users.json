@@ -1,0 +1,41 @@
+[
+  {
+    "model_id": "CFA_Pyrenew-Pyrenew_E_RSV",
+    "authorized_github_users": [
+      "dylanhmorris",
+      "damonbayer",
+      "sbidari",
+      "O957"
+    ]
+  },
+  {
+    "model_id": "CFA_Pyrenew-Pyrenew_HE_RSV",
+    "authorized_github_users": [
+      "dylanhmorris",
+      "damonbayer",
+      "sbidari",
+      "O957"
+    ]
+  },
+  {
+    "model_id": "CFA_Pyrenew-Pyrenew_H_RSV",
+    "authorized_github_users": [
+      "dylanhmorris",
+      "damonbayer",
+      "sbidari",
+      "O957"
+    ]
+  },
+  {
+    "model_id": "RSVHub-baseline",
+    "authorized_github_users": []
+  },
+  {
+    "model_id": "RSVHub-ensemble",
+    "authorized_github_users": []
+  },
+  {
+    "model_id": "UGA_flucast-INFLAenza",
+    "authorized_github_users": []
+  }
+]

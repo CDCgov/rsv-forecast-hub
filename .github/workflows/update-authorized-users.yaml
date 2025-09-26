@@ -49,15 +49,15 @@ jobs:
     - name: "Check For Changes"
       id: check_diff
       run: |
-        git diff --exit-code auxiliary-data/authorized_users.json || { echo "changed=true" | tee -a $GITHUB_ENV; }
-
-    - name: "Commit Changes"
-      if: env.changed == 'true'
-      run: |
         git config user.name "github-actions[bot]"
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git checkout -b update-authorized-users-${{ env.DATE }}
         git add auxiliary-data/authorized_users.json
+        git diff --cached --exit-code auxiliary-data/authorized_users.json || echo "changed=true" >> $GITHUB_ENV
+
+    - name: "Commit Changes"
+      if: env.changed == 'true'
+      run: |
         git commit -m "Update authorized users"
         git push origin update-authorized-users-${{ env.DATE }}
 
