@@ -17,8 +17,6 @@ concurrency:
 jobs:
   check-authorization:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       contents: read
       pull-requests: read
