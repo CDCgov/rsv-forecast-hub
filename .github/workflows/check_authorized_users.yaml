@@ -6,6 +6,9 @@ on:
     branches: main
     paths:
       - "model-output/**"
+      - "!model-output/README.md"
+      - "!model-output/CovidHub-ensemble/**"
+      - "!model-output/CovidHub-baseline/**"
 
 jobs:
   check-authorization:
