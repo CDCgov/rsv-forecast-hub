@@ -49,7 +49,6 @@ jobs:
           GH_TOKEN: ${{ steps.get_token.outputs.token }}
         run: |
           gh pr merge ${{ steps.get_pr.outputs.pr_number }} --squash \
-            --subject "Auto-merge authorized model output from PR #${{ steps.get_pr.outputs.pr_number }}" \
-            --body "This PR was automatically merged because the user is authorized to modify these model directories."
+            --body "PR #${{ steps.get_pr.outputs.pr_number }} was automatically merged because the user is authorized to modify these directories."
 
           echo "PR #${{ steps.get_pr.outputs.pr_number }} has been automatically merged"
