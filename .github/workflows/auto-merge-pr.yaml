@@ -42,7 +42,7 @@ jobs:
           GH_TOKEN: ${{ steps.get_token.outputs.token }}
         run: |
           gh pr review ${{ steps.get_pr.outputs.pr_number }} --approve \
-            --body "Auto-approved: User is authorized to modify these model directories."
+            --body "Changes approved. Thank you for your contribution."
 
       - name: "Merge PR"
         env:
