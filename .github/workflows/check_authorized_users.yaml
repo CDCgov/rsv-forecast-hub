@@ -10,6 +10,10 @@ on:
       - "!model-output/CovidHub-ensemble/**"
       - "!model-output/CovidHub-baseline/**"
 
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   check-authorization:
     runs-on: ubuntu-latest
