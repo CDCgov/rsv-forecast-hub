@@ -35,6 +35,13 @@ jobs:
           echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
           echo "Found PR #$PR_NUMBER"
 
+      - name: "Approve PR"
+        env:
+          GH_TOKEN: ${{ steps.get_token.outputs.token }}
+        run: |
+          gh pr review ${{ steps.get_pr.outputs.pr_number }} --approve \
+            --body "Auto-approved: User is authorized to modify these model directories."
+
       - name: "Merge PR"
         env:
           GH_TOKEN: ${{ steps.get_token.outputs.token }}
