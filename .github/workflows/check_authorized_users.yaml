@@ -47,3 +47,19 @@ jobs:
             base_hub_path = "."
           )
         shell: Rscript {0}
+
+      - name: "Generate Installation Token"
+        if: success()
+        id: get_token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.CDCGOV_HUB_BOT_APP_ID }}
+          private-key: ${{ secrets.CDCGOV_HUB_BOT_APP_KEY }}
+
+      - name: "Approve PR"
+        if: success()
+        env:
+          GH_TOKEN: ${{ steps.get_token.outputs.token }}
+        run: |
+          gh pr review ${{ github.event.pull_request.number }} --approve \
+            --body "Auto-approved: User is authorized to modify these model directories."
