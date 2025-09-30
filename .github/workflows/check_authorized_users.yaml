@@ -32,57 +32,18 @@ jobs:
           packages: |
             github::cdcgov/hubhelpr
 
-      - name: "Get Model Output Changes"
-        id: get_changed_files_in_model_output
-        uses: step-security/changed-files@v46
-        with:
-          path: model-output
-          dir_names: "true"
-
       - name: "Get All Changes"
         id: get_all_changed_files
         uses: step-security/changed-files@v46
+        with:
+          json: true
 
-      - name: "Check Changes Outside model-output"
-        id: check_other_changes
+      - name: "Check Changes for Auto-Approval"
         run: |
-          ALL_FILES="${{ steps.get_all_changed_files.outputs.all_modified_files }}"
-          MODEL_OUTPUT_FILES="${{ steps.get_changed_files_in_model_output.outputs.all_modified_files }}"
-
-          # Check if there are any changes outside model-output
-          NON_MODEL_CHANGES=false
-          HAS_MODEL_CHANGES=false
-
-          # Check if we have model-output changes
-          if [ -n "$MODEL_OUTPUT_FILES" ]; then
-            HAS_MODEL_CHANGES=true
-          fi
-
-          # Check for changes outside model-output
-          for file in $ALL_FILES; do
-            if [[ ! "$file" =~ ^model-output/ ]]; then
-              NON_MODEL_CHANGES=true
-              echo "Found changes outside model-output: $file"
-            fi
-          done
-
-          echo "non_model_changes=$NON_MODEL_CHANGES" >> $GITHUB_OUTPUT
-          echo "has_model_changes=$HAS_MODEL_CHANGES" >> $GITHUB_OUTPUT
-
-      - name: "Check User Authorization"
-        if: steps.check_other_changes.outputs.non_model_changes == 'false'
-        run: |
-          changed_dirs <- strsplit("${{ steps.get_changed_files_in_model_output.outputs.all_modified_files }}", " ")[[1]]
-          if (length(changed_dirs) > 0 && changed_dirs[1] != "") {
-            hubhelpr::check_authorized_users(changed_dirs, "${{ github.actor }}", ".")
-          } else {
-            stop("No model-output directories were changed")
-          }
+          changed_files <- jsonlite::fromJSON('${{ steps.get_all_changed_files.outputs.all_modified_files }}')
+          hubhelpr::check_changes_for_autoapproval(
+            changed_files = changed_files,
+            gh_actor = "${{ github.actor }}",
+            base_hub_path = "."
+          )
         shell: Rscript {0}
-
-      - name: "Fail Changes Outside model-output"
-        if: steps.check_other_changes.outputs.non_model_changes == 'true'
-        run: |
-          echo "This PR contains changes outside of model-output/"
-          echo "Auto-merge is only available for PRs that exclusively modify model-output directories."
-          exit 1
