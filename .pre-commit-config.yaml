@@ -66,7 +66,7 @@ repos:
         args: ["--baseline", ".secrets.baseline"]
         exclude: "package.lock.json|^model-output/.*\\.(csv|parquet)$|^target-data/.*\\.(csv|parquet)$|^auxiliary-data/nssp-raw-data/.*\\.(csv|parquet)$"
 -   repo: https://github.com/crate-ci/typos
-    rev: v1.36.2
+    rev: v1
     hooks:
     -   id: typos
         args: ["--force-exclude"]
