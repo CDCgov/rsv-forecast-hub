@@ -41,7 +41,7 @@ jobs:
         hubhelpr::update_hub_target_data(
           base_hub_path = ".",
           disease = "rsv",
-          nssp_update_local = TRUE
+          nssp_update_local = FALSE
           )
       env:
         DATA_CDC_GOV_API_KEY_ID: ${{ secrets.DATA_CDC_GOV_API_KEY_ID }}
