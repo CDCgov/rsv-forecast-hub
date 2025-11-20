@@ -7,8 +7,8 @@ on:
     paths:
       - "model-output/**"
       - "!model-output/README.md"
-      - "!model-output/CovidHub-ensemble/**"
-      - "!model-output/CovidHub-baseline/**"
+      - "!model-output/RSVHub-ensemble/**"
+      - "!model-output/RSVHub-baseline/**"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
