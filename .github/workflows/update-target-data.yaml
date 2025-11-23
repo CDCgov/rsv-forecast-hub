@@ -20,7 +20,7 @@ jobs:
         private-key: ${{ secrets.CDCGOV_HUB_BOT_APP_KEY }}
 
     - name: "Check Out Code"
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
 
     - name: "Set Up R"
       uses: r-lib/actions/setup-r@v2

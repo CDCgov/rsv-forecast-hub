@@ -22,7 +22,7 @@ jobs:
       pull-requests: read
     steps:
       - name: "Checkout Code"
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: "Setup R"
         uses: r-lib/actions/setup-r@v2

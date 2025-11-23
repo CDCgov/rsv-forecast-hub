@@ -11,7 +11,7 @@ jobs:
       pull-requests: write
     steps:
       - name: "Checkout Code"
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: "Apply Labels"
         id: label-pr
