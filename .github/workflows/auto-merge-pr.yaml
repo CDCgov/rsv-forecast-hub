@@ -53,7 +53,7 @@ jobs:
 
       - name: "Verify Validation Status"
         run: |
-          STATUS=$(cat "artifacts_dir/status" | tr -d '[:space:]')
+          STATUS=$(tr -d '[:space:]' < "artifacts_dir/status")
           if [ "$STATUS" != "success" ]; then
             echo "Validation status mismatch: $STATUS"
             exit 1
