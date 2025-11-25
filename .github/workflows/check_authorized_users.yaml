@@ -52,3 +52,14 @@ jobs:
             base_hub_path = "."
           )
         shell: Rscript {0}
+
+      - name: "Save Validation Status"
+        if: success()
+        run: echo "success" > status
+
+      - name: "Upload Validation Status"
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "validation_status"
+          path: status
