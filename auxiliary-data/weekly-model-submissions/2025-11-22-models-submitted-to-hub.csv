@@ -1,0 +1,8 @@
+model_id,designated_model,target
+CFA_Pyrenew-Pyrenew_HE_RSV,TRUE,wk inc rsv hosp
+CFA_Pyrenew-Pyrenew_H_RSV,FALSE,wk inc rsv hosp
+UGA_flucast-INFLAenza,TRUE,wk inc rsv hosp
+UM-DeepOutbreak,TRUE,wk inc rsv hosp
+CFA_Pyrenew-Pyrenew_E_RSV,FALSE,wk inc rsv prop ed visits
+CFA_Pyrenew-Pyrenew_HE_RSV,TRUE,wk inc rsv prop ed visits
+UGA_flucast-INFLAenza,TRUE,wk inc rsv prop ed visits
