@@ -2,6 +2,12 @@ name: "Update RSV Target Data"
 
 on:
   workflow_dispatch:
+    inputs:
+      nssp_update_local:
+        description: 'Update NSSP data from the auxiliary data raw file (TRUE) or from the data.cdc.gov endpoint (FALSE)?'
+        type: boolean
+        default: false
+
   schedule:
     - cron: "00 16 * * 3" # run every Wednesday at 4:00 PM UTC (12:00 PM EST)
 
@@ -41,7 +47,8 @@ jobs:
         hubhelpr::update_hub_target_data(
           base_hub_path = ".",
           disease = "rsv",
-          nssp_update_local = FALSE
+          nssp_update_local = as.logical(${{ inputs.nssp_update_local || 'false' }})
+
           )
       env:
         DATA_CDC_GOV_API_KEY_ID: ${{ secrets.DATA_CDC_GOV_API_KEY_ID }}
