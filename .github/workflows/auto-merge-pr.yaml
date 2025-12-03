@@ -41,7 +41,7 @@ jobs:
           fi
           echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_ENV
           echo "PR number from workflow_run event: ${PR_NUMBER}"
-          
+
       - name: "Checkout code"
         uses: actions/checkout@v6
 
