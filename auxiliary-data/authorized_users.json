@@ -36,6 +36,12 @@
   },
   {
     "model_id": "UGA_flucast-INFLAenza",
+    "authorized_github_users": [
+      "MayaSal"
+    ]
+  },
+  {
+    "model_id": "UM-DeepOutbreak",
     "authorized_github_users": []
   }
 ]
