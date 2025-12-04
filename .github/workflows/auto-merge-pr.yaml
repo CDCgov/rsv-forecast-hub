@@ -43,7 +43,7 @@ jobs:
           echo "PR number from workflow_run event: ${PR_NUMBER}"
 
       - name: "Download Validation Artifact"
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: "validation_status"
           path: artifacts_dir
