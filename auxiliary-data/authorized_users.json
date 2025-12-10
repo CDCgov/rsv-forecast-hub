@@ -1,5 +1,13 @@
 [
   {
+    "model_id": "CEPH-Rtrend_rsv",
+    "authorized_github_users": [
+      "paulocv",
+      "shreeyamhade",
+      "allisandrak"
+    ]
+  },
+  {
     "model_id": "CFA_Pyrenew-Pyrenew_E_RSV",
     "authorized_github_users": [
       "dylanhmorris",
@@ -36,7 +44,9 @@
   },
   {
     "model_id": "UGA_flucast-INFLAenza",
-    "authorized_github_users": []
+    "authorized_github_users": [
+      "MayaSal"
+    ]
   },
   {
     "model_id": "UM-DeepOutbreak",
