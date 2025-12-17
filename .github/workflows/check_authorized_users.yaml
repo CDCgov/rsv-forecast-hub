@@ -58,7 +58,7 @@ jobs:
         run: echo "success" > status
 
       - name: "Upload Validation Status"
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: "validation_status"
           path: status
