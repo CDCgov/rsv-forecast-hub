@@ -49,3 +49,4 @@ ensemble_of_models: false
 ensemble_of_hub_models: false
 website_url: https://github.com/CEPH-Lab
 designated_github_users: ["paulocv", "shreeyamhade", "allisandrak"]
+team_funding: "We acknowledge support from the CDC-RFA-FT-23-0069 cooperative agreement from the CDC's Center for Forecasting and Outbreak Analytics."
