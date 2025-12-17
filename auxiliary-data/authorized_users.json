@@ -1,38 +1,19 @@
 [
   {
     "model_id": "CEPH-Rtrend_rsv",
-    "authorized_github_users": [
-      "paulocv",
-      "shreeyamhade",
-      "allisandrak"
-    ]
+    "authorized_github_users": ["paulocv", "shreeyamhade", "allisandrak"]
   },
   {
     "model_id": "CFA_Pyrenew-Pyrenew_E_RSV",
-    "authorized_github_users": [
-      "dylanhmorris",
-      "damonbayer",
-      "sbidari",
-      "O957"
-    ]
+    "authorized_github_users": ["dylanhmorris", "damonbayer", "sbidari", "O957"]
   },
   {
     "model_id": "CFA_Pyrenew-Pyrenew_HE_RSV",
-    "authorized_github_users": [
-      "dylanhmorris",
-      "damonbayer",
-      "sbidari",
-      "O957"
-    ]
+    "authorized_github_users": ["dylanhmorris", "damonbayer", "sbidari", "O957"]
   },
   {
     "model_id": "CFA_Pyrenew-Pyrenew_H_RSV",
-    "authorized_github_users": [
-      "dylanhmorris",
-      "damonbayer",
-      "sbidari",
-      "O957"
-    ]
+    "authorized_github_users": ["dylanhmorris", "damonbayer", "sbidari", "O957"]
   },
   {
     "model_id": "RSVHub-baseline",
@@ -44,9 +25,7 @@
   },
   {
     "model_id": "UGA_flucast-INFLAenza",
-    "authorized_github_users": [
-      "MayaSal"
-    ]
+    "authorized_github_users": ["MayaSal"]
   },
   {
     "model_id": "UM-DeepOutbreak",
