@@ -1,0 +1,46 @@
+team_name: "Google Science AI"
+team_abbr: "Google_SAI"
+model_name: "RSVEnsemble"
+model_abbr: "RSVEns"
+model_contributors: [
+  {
+    "name": "Zahra Shamsi",
+    "affiliation": "Google",
+    "email": "shamsiz@google.com"
+  },
+  {
+    "name": "Sarah Martinson",
+    "affiliation": "Google",
+    "email": "martinsons@google.com"
+  },
+  {
+    "name": "Nicholas Reich",
+    "affiliation": "Google",
+    "email": "reichn@xwf.google.com"
+  }
+  {
+    "name": "Martyna Plomecka",
+    "affiliation": "Google",
+    "email": "mplomecka@google.com"
+  },
+  {
+    "name": "Brian Williams",
+    "affiliation": "Google",
+    "email": "bpw@goole.com"
+  },
+  {
+    "name": "Michael Brenner",
+    "affiliation": "Google",
+    "email": "mbrenner@google.com"
+  },
+]
+
+license: "CC-BY-4.0"
+designated_model: false
+methods: "An ensemble of different models."
+data_inputs: "Influenza/Covid-19/RSV Hospital Admissions data (NHSN), ILINet historical values, and the National Syndromic Surveillance Program (NSSP)."
+methods_long: "An esemble of a diverse set of models; ML, mechanistic, and statistical."
+website_url: "https://ai.google/applied-ai/science/"
+ensemble_of_models: true
+ensemble_of_hub_models: false
+designated_github_users: ["zshamsi2", "sarahmart"]
