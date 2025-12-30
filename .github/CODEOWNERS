@@ -1,3 +1,10 @@
-* @dylanhmorris @O957 @sbidari
 
-/model-output/
+/src/* @sbidari @dylanhmorris @O957
+/.github/** @sbidari @dylanhmorris @O957
+/hub-config/* @sbidari @dylanhmorris @O957
+/auxiliary_data/weekly-model-submissions/ @sbidari @dylanhmorris @O957
+/model-output/RSVHub-baseline/ @sbidari @dylanhmorris @O957
+/model-output/RSVHub-ensemble/ @sbidari @dylanhmorris @O957
+README.md @sbidari @dylanhmorris @O957
+.pre-commit-config.yaml @sbidari @dylanhmorris @O957
+.gitignore @sbidari @dylanhmorris @O957
