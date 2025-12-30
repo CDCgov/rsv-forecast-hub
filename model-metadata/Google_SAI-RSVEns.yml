@@ -36,7 +36,7 @@ model_contributors: [
 ]
 
 license: "CC-BY-4.0"
-designated_model: false
+designated_model: true
 methods: "An ensemble of different models."
 data_inputs: "Influenza/Covid-19/RSV Hospital Admissions data (NHSN), ILINet historical values, and the National Syndromic Surveillance Program (NSSP)."
 methods_long: "An esemble of a diverse set of models; ML, mechanistic, and statistical."
