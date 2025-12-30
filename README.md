@@ -87,9 +87,9 @@ Detailed guidelines for formatting and submitting forecasts are available in the
 
 ## Suggested Workflow For First Time Submitters
 
-Pull requests (PRs) into the Hub repository  to register a new model or modify an existing model's metadata must always be reviewed and merged manually.
+Pull requests (PRs) into the Hub repository to register a new model or modify an existing model's metadata must always be reviewed and merged manually.
 
-PR that submit forecasts for an existing model can be reviewed and merged automatically if the submission content passes automated validation checks and the submitting individual has been preregistered as an authorized submitter for the model.
+PRs that submit forecasts for an existing model can be reviewed and merged automatically if the submission content passes automated validation checks and the submitting individual has been preregistered as an authorized submitter for the model.
 
 To authorize one or more individuals to submit forecasts for a given model, add their github usernames to the [`designated_github_users` field](model-metadata/README.md#designated_github_users) in the model's metadata.
 
