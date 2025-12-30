@@ -1,23 +1,45 @@
 [
   {
     "model_id": "CEPH-Rtrend_rsv",
-    "authorized_github_users": ["paulocv", "shreeyamhade", "allisandrak"]
+    "authorized_github_users": [
+      "paulocv",
+      "shreeyamhade",
+      "allisandrak"
+    ]
   },
   {
     "model_id": "CFA_Pyrenew-Pyrenew_E_RSV",
-    "authorized_github_users": ["dylanhmorris", "damonbayer", "sbidari", "O957"]
+    "authorized_github_users": [
+      "dylanhmorris",
+      "damonbayer",
+      "sbidari",
+      "O957"
+    ]
   },
   {
     "model_id": "CFA_Pyrenew-Pyrenew_HE_RSV",
-    "authorized_github_users": ["dylanhmorris", "damonbayer", "sbidari", "O957"]
+    "authorized_github_users": [
+      "dylanhmorris",
+      "damonbayer",
+      "sbidari",
+      "O957"
+    ]
   },
   {
     "model_id": "CFA_Pyrenew-Pyrenew_H_RSV",
-    "authorized_github_users": ["dylanhmorris", "damonbayer", "sbidari", "O957"]
+    "authorized_github_users": [
+      "dylanhmorris",
+      "damonbayer",
+      "sbidari",
+      "O957"
+    ]
   },
   {
     "model_id": "Google_SAI-RSVEns",
-    "authorized_github_users": ["zshamsi2", "sarahmart"]
+    "authorized_github_users": [
+      "zshamsi2",
+      "sarahmart"
+    ]
   },
   {
     "model_id": "RSVHub-baseline",
@@ -29,10 +51,15 @@
   },
   {
     "model_id": "UGA_flucast-INFLAenza",
-    "authorized_github_users": ["MayaSal", "rajathprabhakar100"]
+    "authorized_github_users": [
+      "MayaSal",
+      "rajathprabhakar100"
+    ]
   },
   {
     "model_id": "UM-DeepOutbreak",
-    "authorized_github_users": ["RRemixx"]
+    "authorized_github_users": [
+      "RRemixx"
+    ]
   }
 ]
