@@ -1,0 +1,3 @@
+model_id,designated_model,target
+RSVHub-baseline,FALSE,wk inc rsv hosp
+RSVHub-baseline,FALSE,wk inc rsv prop ed visits
