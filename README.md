@@ -31,6 +31,10 @@ Participants will be asked to submit nowcasts and forecasts by 11PM USA Eastern 
 
 Weekly submissions (including file names) will be specified in terms of a "reference date": the Saturday following the Forecast Due Date. This is the last day of the USA/CDC epiweek (Sunday to Saturday) that contains the Forecast Due Date.
 
+Please note the following updated deadlines during the holiday period:
+- Forecasts for reference date **2025-12-27** are due on **2025-12-29** (extended deadline), with expected data release on **2025-12-29** (holiday schedule).
+- Forecasts for reference date **2026-01-03** are due on **2026-01-04** (extended deadline), with expected data release on **2025-12-31** (regular schedule).
+
 ## Prediction Targets And Horizons
 
 Participating teams will be able to submit national- and jurisdiction-specific (all 50 states, Washington DC, and Puerto Rico) predictions for following targets.
@@ -83,9 +87,21 @@ Detailed guidelines for formatting and submitting forecasts are available in the
 
 ## Suggested Workflow For First Time Submitters
 
-First-time pull requests (PRs) into the Hub repository must be reviewed and merged manually; subsequent ones can be merged automatically if they pass appropriate checks.
+Pull requests (PRs) into the Hub repository to register a new model or modify an existing model's metadata must always be reviewed and merged manually.
 
-We suggest that teams submitting for the first time make a PR adding their model metadata file to the [`model-metadata` directory](model-metadata) by 4 PM USA Eastern Time on the Wednesday they plan to submit their first forecast. This will allow subsequent PRs that submit forecasts to be merged automatically, provided checks pass. We also request that teams sync their PR branch with the `main` branch using the `Update branch` button if their PR is behind the `main` branch, to ensure the automerge action runs smoothly.
+PRs that submit forecasts for an existing model can be reviewed and merged automatically if the submission content passes automated validation checks and the submitting individual has been preregistered as an authorized submitter for the model.
+
+To authorize one or more individuals to submit forecasts for a given model, add their github usernames to the [`designated_github_users` field](model-metadata/README.md#designated_github_users) in the model's metadata.
+
+To facilitate auto-merge of valid PRs, we suggest the following workflow:
+- *Submit metadata first*: Create a PR adding your model metadata file to the [`model-metadata` directory](model-metadata) by 4 PM USA Eastern Time on the Wednesday you plan to submit your first forecast.
+- *Include `designated_github_users`*: In your metadata YAML file, include the GitHub usernames of all team members responsible for forecast submission in the [`designated_github_users`](model-metadata/README.md#designated_github_users) field. We use this to ensure changes to model outputs are made by valid model contributors.
+
+Once initial metadata PR is approved and merged, subsequent PRs that submit forecasts will be merged automatically, provided all checks pass.
+
+> [!NOTE]
+> Please sync your PR branch with the `main` branch using the `Update branch` button if your PR falls behind the main branch. This ensures the automerge action runs smoothly.
+
 
 ## Alignment Between RSV Forecast Hub And Other Forecasting Hubs
 

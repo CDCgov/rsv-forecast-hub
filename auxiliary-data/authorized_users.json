@@ -35,6 +35,13 @@
     ]
   },
   {
+    "model_id": "Google_SAI-RSVEns",
+    "authorized_github_users": [
+      "zshamsi2",
+      "sarahmart"
+    ]
+  },
+  {
     "model_id": "RSVHub-baseline",
     "authorized_github_users": []
   },
@@ -45,11 +52,14 @@
   {
     "model_id": "UGA_flucast-INFLAenza",
     "authorized_github_users": [
-      "MayaSal"
+      "MayaSal",
+      "rajathprabhakar100"
     ]
   },
   {
     "model_id": "UM-DeepOutbreak",
-    "authorized_github_users": []
+    "authorized_github_users": [
+      "RRemixx"
+    ]
   }
 ]
