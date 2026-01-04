@@ -30,7 +30,7 @@ jobs:
           use-public-rspm: true
           extra-repositories: 'https://hubverse-org.r-universe.dev'
 
-      - name: Update R
+      - name: "Update R"
         run: |
           sudo apt-get update
 

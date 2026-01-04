@@ -1,6 +1,11 @@
 name: "RSV Hub Ensemble Model"
 on:
   workflow_dispatch:
+    inputs:
+      reference_date:
+        description: "Reference date (YYYY-MM-DD, must be Saturday). Leave empty for auto-calculation."
+        required: false
+        type: string
   schedule:
     - cron: "30 13 * * 4"
 
@@ -44,7 +49,12 @@ jobs:
 
     - name: "Generate Ensemble"
       run: |
-        REF_DATE=$(Rscript -e "cat(strftime(lubridate::ceiling_date(lubridate::today(), 'week', week_start = 6, change_on_boundary = FALSE)))")
+        if [ -n "${{ inputs.reference_date }}" ]; then
+          REF_DATE="${{ inputs.reference_date }}"
+        else
+          REF_DATE=$(Rscript -e "cat(strftime(lubridate::ceiling_date(lubridate::today(), 'week', week_start = 6, change_on_boundary = FALSE)))")
+        fi
+        echo "Using reference date: $REF_DATE"
         Rscript -e "hubhelpr::generate_hub_ensemble('.', '$REF_DATE', 'rsv', c('hosp', 'prop ed visits'))"
 
     - name: "Set Date"
