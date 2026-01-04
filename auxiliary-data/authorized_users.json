@@ -35,6 +35,13 @@
     ]
   },
   {
+    "model_id": "Google_SAI-RSVEns",
+    "authorized_github_users": [
+      "zshamsi2",
+      "sarahmart"
+    ]
+  },
+  {
     "model_id": "RSVHub-baseline",
     "authorized_github_users": []
   },
