@@ -1,0 +1,30 @@
+name: "Send a dispatch to cfa-forecast-hub-reports"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "model-output/RSVHub-ensemble/*"
+
+jobs:
+  update-visualization-data:
+    if: ${{ github.repository_owner == 'CDCgov' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Generate Installation Token"
+        id: get_token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.GH_APP_ID }}
+          private-key: ${{ secrets.GH_APP_KEY }}
+          owner: CDCgov
+          repositories: cfa-forecast-hub-reports
+
+      - name: "Repository Dispatch"
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ steps.get_token.outputs.token }}
+          repository: CDCgov/cfa-forecast-hub-reports
+          event-type: rsv-ensemble-added
