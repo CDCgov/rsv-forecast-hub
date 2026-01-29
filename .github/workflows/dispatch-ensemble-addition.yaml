@@ -28,4 +28,3 @@ jobs:
           token: ${{ steps.get_token_ent.outputs.token }}
           repository: cdcent/cfa-forecast-hub-internal-reports
           event-type: rsv-ensemble-added
-
