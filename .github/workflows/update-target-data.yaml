@@ -6,7 +6,7 @@ on:
       nssp_update_local:
         description: "Update NSSP data from the Hub-hosted raw data file?"
         type: boolean
-        default: false
+        default: true
   schedule:
     - cron: "00 17 * * 3" # run every Wednesday at 5:00 PM UTC (1:00 PM EST)
 
@@ -37,4 +37,4 @@ jobs:
         github_token: ${{ steps.get_token.outputs.token }}
         api_key_id: ${{ secrets.DATA_CDC_GOV_API_KEY_ID }}
         api_key_secret: ${{ secrets.DATA_CDC_GOV_API_KEY_SECRET }}
-        nssp_update_local: ${{ inputs.nssp_update_local || 'false' }}
+        nssp_update_local: ${{ inputs.nssp_update_local || 'true' }}
