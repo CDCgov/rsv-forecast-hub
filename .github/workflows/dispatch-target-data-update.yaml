@@ -1,4 +1,4 @@
-name: "Send a dispatch after target data update"
+name: "Send Dispatch For RSV Target Data Update"
 
 on:
   workflow_dispatch:
