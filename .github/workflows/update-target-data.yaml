@@ -4,10 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       nssp_update_local:
-        description: 'Update NSSP data from the Hub-hosted raw data file?'
+        description: "Update NSSP data from the Hub-hosted raw data file?"
         type: boolean
-        default: false
-
+        default: true
   schedule:
     - cron: "00 17 * * 3" # run every Wednesday at 5:00 PM UTC (1:00 PM EST)
 
@@ -25,62 +24,17 @@ jobs:
         app-id: ${{ vars.CDCGOV_HUB_BOT_APP_ID }}
         private-key: ${{ secrets.CDCGOV_HUB_BOT_APP_KEY }}
 
-    - name: "Check Out Code"
+    - name: "Checkout Code"
       uses: actions/checkout@v6
 
-    - name: "Set Up R"
-      uses: r-lib/actions/setup-r@v2
+    - name: "Set Up hubhelpr"
+      uses: cdcgov/hubhelpr/actions/setup-hubhelpr@main
+
+    - name: "Update Target Data"
+      uses: cdcgov/hubhelpr/actions/update-target-data@main
       with:
-        install-r: true
-        use-public-rspm: true
-        extra-repositories: "https://hubverse-org.r-universe.dev"
-
-    - name: "Set Up R Dependencies"
-      uses: r-lib/actions/setup-r-dependencies@v2
-      with:
-        pak-version: "devel"
-        packages: |
-          github::cdcgov/hubhelpr
-
-    - name: "Update RSV Target Data Timeseries"
-      run: |
-        hubhelpr::update_hub_target_data(
-          base_hub_path = ".",
-          disease = "rsv",
-          nssp_update_local = as.logical('${{ inputs.nssp_update_local || false }}')
-
-          )
-      env:
-        DATA_CDC_GOV_API_KEY_ID: ${{ secrets.DATA_CDC_GOV_API_KEY_ID }}
-        DATA_CDC_GOV_API_KEY_SECRET: ${{ secrets.DATA_CDC_GOV_API_KEY_SECRET }}
-      shell: Rscript {0}
-
-    - name: "Update oracle output from timeseries data"
-      run: |
-        hubhelpr::generate_oracle_output('.')
-      shell: Rscript {0}
-
-    - name: "Set Date"
-      run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
-
-    - name: "Check For Changes"
-      id: check_diff
-      run: |
-        git diff --exit-code target-data/* || echo "changed=true" >> $GITHUB_ENV
-
-    - name: "Commit Changes"
-      if: env.changed == 'true'
-      run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git checkout -b update-rsv-target-data-${{ env.DATE }}
-        git add .
-        git commit -m "Update RSV target data"
-        git push origin update-rsv-target-data-${{ env.DATE }}
-
-    - name: "Create Pull Request"
-      if: env.changed == 'true'
-      run: |
-        gh pr create --base main --head update-rsv-target-data-${{ env.DATE }} --title "Update RSV Target Data" --body "This PR updates timeseries target data and oracle data based on the latest NHSN and NSSP datasets."
-      env:
-        GH_TOKEN: ${{ steps.get_token.outputs.token }}
+        disease: "rsv"
+        github_token: ${{ steps.get_token.outputs.token }}
+        api_key_id: ${{ secrets.DATA_CDC_GOV_API_KEY_ID }}
+        api_key_secret: ${{ secrets.DATA_CDC_GOV_API_KEY_SECRET }}
+        nssp_update_local: ${{ inputs.nssp_update_local || 'true' }}
