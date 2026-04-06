@@ -210,7 +210,8 @@
                 "min_samples_per_task": 200,
                 "max_samples_per_task": 200,
                 "compound_taskid_set": [
-                  "location"
+                  "location",
+                  "target"
                 ]
               },
               "is_required": false,
@@ -439,7 +440,8 @@
                 "min_samples_per_task": 200,
                 "max_samples_per_task": 200,
                 "compound_taskid_set": [
-                  "location"
+                  "location",
+                  "target"
                 ]
               },
               "is_required": false,
