@@ -201,9 +201,7 @@ The Hubverse team is developing a Python client which provides some initial tool
 Use `pip` to install `hub-data` (the `pypi` package is <https://pypi.org/project/hubdata>):
 
 ```sh
-
-`pip install hubdata`
-
+pip install hubdata
 ```
 
 ### Using hub-data
@@ -257,10 +255,10 @@ Download all of target-data contents to your current working directory:
 aws s3 cp s3://rsv-forecast-hub/target-data/ . --recursive --no-sign-request
 ```
 
-Download the model-output files for a specific team:
+Download the model-output files for a specific team (e.g., the hub baseline):
 
 ```sh
-aws s3 cp s3://rsv-forecast-hub/model-output/pending/ . --recursive --no-sign-request
+aws s3 cp s3://rsv-forecast-hub/model-output/RSVHub-baseline/ . --recursive --no-sign-request
 ```
 
 - [Full documentation for `aws s3 ls`](https://docs.aws.amazon.com/cli/latest/reference/s3/ls.html)
