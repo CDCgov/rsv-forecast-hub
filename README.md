@@ -131,8 +131,7 @@ preferred tools. The options include:
 | hub-data (Python)          | Python package for working with hubverse data                                         |
 | AWS command line interface | Download data and use hubData, Pyarrow, or another tool for fast local access.        |
 
-In general, accessing the data directly from S3 (instead of downloading it first) is more convenient. However, if performance is critical (for example, you're building an interactive visualization), or if you need to work offline,
-we recommend downloading the data first.
+In general, accessing the data directly from S3 (instead of downloading it first) is more convenient. However, if performance is critical (for example, you're building an interactive visualization), or if you need to work offline, we recommend downloading the data first.
 
 <details markdown=1>
 
@@ -201,9 +200,7 @@ The Hubverse team is developing a Python client which provides some initial tool
 Use `pip` to install `hub-data` (the `pypi` package is <https://pypi.org/project/hubdata>):
 
 ```sh
-
-`pip install hubdata`
-
+pip install hubdata
 ```
 
 ### Using hub-data
@@ -257,10 +254,10 @@ Download all of target-data contents to your current working directory:
 aws s3 cp s3://rsv-forecast-hub/target-data/ . --recursive --no-sign-request
 ```
 
-Download the model-output files for a specific team:
+Download the model-output files for a specific model (e.g., the hub baseline):
 
 ```sh
-aws s3 cp s3://rsv-forecast-hub/model-output/pending/ . --recursive --no-sign-request
+aws s3 cp s3://rsv-forecast-hub/model-output/RSVHub-baseline/ . --recursive --no-sign-request
 ```
 
 - [Full documentation for `aws s3 ls`](https://docs.aws.amazon.com/cli/latest/reference/s3/ls.html)
@@ -269,10 +266,37 @@ aws s3 cp s3://rsv-forecast-hub/model-output/pending/ . --recursive --no-sign-re
 </details>
 
 
+## Using Hub Data In Downstream Products
 
+If you are building a product (e.g., a dashboard, analysis pipeline, or evaluation) downstream of `rsv-forecast-hub` that uses data from this hub, please follow the guidance in this section.
+
+### Prefer Hubverse Tooling Over Direct File Paths
+
+We recommend accessing hub data through official [hubverse](https://hubverse.io) tooling rather than by hard-coding paths into this repository's file tree. The hubverse R and Python packages (e.g., [`hubData`](https://hubverse-org.github.io/hubData/) and [`hub-data`](https://github.com/hubverse-org/hub-data)) provide interfaces to the RSVHub model output, target data, and model metadata, which all follow the [hubverse schema](https://hubverse.io/en/latest/user-guide/model-output.html#model-output).
+
+### Hubverse schema version
+The specific version of the Hubverse schema currently used by the Hub is specified in the Hub's [`admin.json`](hub-config/admin.json) file. We notify users in advance of planned schema version update.
+
+### File Structure And Guarantees
+
+> [!WARNING]
+>
+> The layout of this repository is **not a stable public API**. Directories, file names, and schemas outside the hubverse-managed paths may change at any time, possibly without formal notice.
+
+Specifically:
+
+- Hubverse-managed directories (`model-output/`, `model-metadata/`, `target-data/`, `hub-config/`) follow the [hubverse schema](https://hubverse.io/en/latest/user-guide/model-output.html#model-output). Changes here are guided by hubverse conventions; we will communicate planned changes in advance.
+- `auxiliary-data/` is a catch-all for supporting files (e.g., location tables, raw NSSP snapshots, weekly submission summaries). Files within have no formal schema and no guarantee of consistency across time (e.g. they may be renamed, restructured, or removed). Please do not rely on specific filenames or columns in `auxiliary-data/`.
+
+If you need a file only available through `auxiliary-data/` for a downstream product, please [open an issue](https://github.com/CDCgov/rsv-forecast-hub/issues) with your use case so we can consider making its presence more stable.
+
+### Following Changes
+
+If you maintain a downstream product and want to be notified of planned changes to hub data or structure, please email [rsvhub@cdc.gov](mailto:rsvhub@cdc.gov) to be added to our announcement list.
 
 
 ## Acknowledgments
+
 This repository follows the guidelines and standards outlined by the [hubverse](https://hubdocs.readthedocs.io/en/latest/), which provides a set of data formats and open source tools for modeling hubs.
 
 
