@@ -268,11 +268,11 @@ aws s3 cp s3://rsv-forecast-hub/model-output/RSVHub-baseline/ . --recursive --no
 
 ## Using Hub Data In Downstream Products
 
-If you are building a product (e.g., a dashboard, analysis pipeline, or evaluation) downstream of `covid19-forecast-hub` that uses data from this hub, please follow the guidance in this section.
+If you are building a product (e.g., a dashboard, analysis pipeline, or evaluation) downstream of `rsv-forecast-hub` that uses data from this hub, please follow the guidance in this section.
 
 ### Prefer Hubverse Tooling Over Direct File Paths
 
-We recommend accessing hub data through official [hubverse](https://hubverse.io) tooling rather than by hard-coding paths into this repository's file tree. The hubverse R and Python packages (e.g., [`hubData`](https://hubverse-org.github.io/hubData/) and [`hub-data`](https://github.com/hubverse-org/hub-data)) provide interfaces to the COVIDHub model output, target data, and model metadata, which all follow the [hubverse schema](https://hubverse.io/en/latest/user-guide/model-output.html#model-output).
+We recommend accessing hub data through official [hubverse](https://hubverse.io) tooling rather than by hard-coding paths into this repository's file tree. The hubverse R and Python packages (e.g., [`hubData`](https://hubverse-org.github.io/hubData/) and [`hub-data`](https://github.com/hubverse-org/hub-data)) provide interfaces to the RSVHub model output, target data, and model metadata, which all follow the [hubverse schema](https://hubverse.io/en/latest/user-guide/model-output.html#model-output).
 
 ### Hubverse schema version
 The specific version of the Hubverse schema currently used by the Hub is specified in the Hub's [`admin.json`](hub-config/admin.json) file. We notify users in advance of planned schema version update.
@@ -288,11 +288,11 @@ Specifically:
 - Hubverse-managed directories (`model-output/`, `model-metadata/`, `target-data/`, `hub-config/`) follow the [hubverse schema](https://hubverse.io/en/latest/user-guide/model-output.html#model-output). Changes here are guided by hubverse conventions; we will communicate planned changes in advance.
 - `auxiliary-data/` is a catch-all for supporting files (e.g., location tables, raw NSSP snapshots, weekly submission summaries). Files within have no formal schema and no guarantee of consistency across time (e.g. they may be renamed, restructured, or removed). Please do not rely on specific filenames or columns in `auxiliary-data/`.
 
-If you need a file only available through `auxiliary-data/` for a downstream product, please [open an issue](https://github.com/CDCgov/covid19-forecast-hub/issues) with your use case so we can consider making its presence more stable.
+If you need a file only available through `auxiliary-data/` for a downstream product, please [open an issue](https://github.com/CDCgov/rsv-forecast-hub/issues) with your use case so we can consider making its presence more stable.
 
 ### Following Changes
 
-If you maintain a downstream product and want to be notified of planned changes to hub data or structure, please email [covidhub@cdc.gov](mailto:covidhub@cdc.gov) to be added to our announcement list.
+If you maintain a downstream product and want to be notified of planned changes to hub data or structure, please email [rsvhub@cdc.gov](mailto:rsvhub@cdc.gov) to be added to our announcement list.
 
 
 ## Acknowledgments
