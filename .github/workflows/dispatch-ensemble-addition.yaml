@@ -28,7 +28,6 @@ jobs:
           token: ${{ steps.get_token_ent.outputs.token }}
           repository: cdcent/cfa-forecast-hub-internal-reports
           event-type: rsv-ensemble-added
-          client-payload: '{"disease":"rsv"}'
 
   dispatch-visualization-data:
     if: ${{ github.repository_owner == 'CDCgov' }}
@@ -49,3 +48,4 @@ jobs:
           token: ${{ steps.get_token_gov.outputs.token }}
           repository: CDCgov/cfa-forecast-hub-reports
           event-type: rsv-ensemble-added
+          client-payload: '{"disease":"rsv"}'
