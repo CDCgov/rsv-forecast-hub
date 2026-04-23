@@ -72,8 +72,6 @@ One of the following accepted licenses by inputting `license: <license code>` wi
 
 A team-specified boolean indicator (`true` or `false`) for whether the model should be considered eligible for inclusion in Hub ensembles and public visualizations. A team may specify up to two models as `designated_model`s for inclusion. Models which have a designated_model value of `false` will still be included in internal forecasting Hub evaluations, but not in published ensembles and visualizations.
 
-Designation applies to every target the model submits to unless narrowed by the optional `designated_targets` field (see [Optional Fields](#optional-fields)).
-
 ### `data_inputs`
 
 List or description of the data sources used to inform the model, in particular any dataset used that are not the [target dataset](../README.md#target-data-source) of weekly incident RSV hospitalizations or weekly incident RSV ED visit proportions.
@@ -101,23 +99,9 @@ A boolean value (`true` or `false`) that indicates whether a model is an ensembl
 The url of a website with additional information about your model, such as detailed methods, visualizations, or interactive dashboards.
 
 
-## Optional fields
+## Optional Fields
 
 The following metadata fields are optional, but encouraged.
-
-### `designated_targets`
-
-A list of target names for which the model is designated. When present, narrows the effect of `designated_model: true` to only the listed targets. When absent or empty, a designated model is eligible for every target it submits to. Has no effect when `designated_model` is `false`. Example:
-
-```
-designated_targets: ["wk inc covid hosp"]
-```
-
-or for multiple targets:
-
-```
-designated_targets: ["wk inc covid hosp", "wk inc covid prop ed visits"]
-```
 
 ### `designated_github_users`
 
