@@ -72,7 +72,7 @@ One of the following accepted licenses by inputting `license: <license code>` wi
 
 A team-specified boolean indicator (`true` or `false`) for whether the model should be considered eligible for inclusion in Hub ensembles and public visualizations. A team may specify up to two models as `designated_model`s for inclusion. Models which have a designated_model value of `false` will still be included in internal forecasting Hub evaluations, but not in published ensembles and visualizations.
 
-Designation applies to every target the model submits to unless narrowed by the optional `designated_targets` field (see [Optional Fields](#optional-fields)).
+Designation applies to every target the model submits unless narrowed by the optional `designated_targets` field (see [Optional Fields](#optional-fields)).
 
 ### `data_inputs`
 
