@@ -101,7 +101,7 @@ A boolean value (`true` or `false`) that indicates whether a model is an ensembl
 The url of a website with additional information about your model, such as detailed methods, visualizations, or interactive dashboards.
 
 
-## Optional fields
+## Optional Fields
 
 The following metadata fields are optional, but encouraged.
 
