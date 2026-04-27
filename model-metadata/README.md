@@ -107,7 +107,7 @@ The following metadata fields are optional, but encouraged.
 
 ### `designated_targets`
 
-A list of target names for which the model is designated. When present, narrows the effect of `designated_model: true` to only the listed targets. When absent or empty, a designated model is eligible for every target it submits to. Has no effect when `designated_model` is `false`. Example:
+A list of target names for which the model is designated. When present, narrows the effect of `designated_model: true` to only the listed targets. When absent or empty, a designated model is eligible for every target it submits. Has no effect when `designated_model` is `false`. Example:
 
 ```
 designated_targets: ["wk inc covid hosp"]
