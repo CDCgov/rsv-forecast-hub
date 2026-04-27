@@ -116,7 +116,7 @@ designated_targets: ["wk inc rsv hosp"]
 or for multiple targets:
 
 ```
-designated_targets: ["wk inc covid hosp", "wk inc covid prop ed visits"]
+designated_targets: ["wk inc rsv hosp", "wk inc rsv prop ed visits"]
 ```
 
 ### `designated_github_users`
