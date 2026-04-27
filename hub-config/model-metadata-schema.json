@@ -91,16 +91,16 @@
           "items": {
             "type": "string",
             "enum": [
-              "wk inc covid hosp",
-              "wk inc covid prop ed visits"
+              "wk inc rsv hosp",
+              "wk inc rsv prop ed visits"
             ]
           }
         },
         {
           "type": "string",
           "enum": [
-            "wk inc covid hosp",
-            "wk inc covid prop ed visits"
+            "wk inc rsv hosp",
+            "wk inc rsv prop ed visits"
           ]
         }
       ]
