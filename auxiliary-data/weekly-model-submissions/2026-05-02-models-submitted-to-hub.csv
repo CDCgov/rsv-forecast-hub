@@ -1,0 +1,13 @@
+model_id,target,designated
+CEPH-Rtrend_rsv,wk inc rsv hosp,TRUE
+CFA_Pyrenew-Pyrenew_H_RSV,wk inc rsv hosp,FALSE
+CFA_Pyrenew-Pyrenew_HE_RSV,wk inc rsv hosp,TRUE
+Google_SAI-RSVEns,wk inc rsv hosp,TRUE
+RSVHub-baseline,wk inc rsv hosp,FALSE
+RSVHub-ensemble,wk inc rsv hosp,FALSE
+UGA_flucast-INFLAenza,wk inc rsv hosp,TRUE
+CFA_Pyrenew-Pyrenew_E_RSV,wk inc rsv prop ed visits,TRUE
+CFA_Pyrenew-Pyrenew_HE_RSV,wk inc rsv prop ed visits,FALSE
+RSVHub-baseline,wk inc rsv prop ed visits,FALSE
+RSVHub-ensemble,wk inc rsv prop ed visits,FALSE
+UGA_flucast-INFLAenza,wk inc rsv prop ed visits,TRUE
