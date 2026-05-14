@@ -25,7 +25,7 @@ We are actively working to make the Wednesday release of this dataset available 
 
 ## Dates And Deadlines
 
-The Challenge Period will begin September 17, 2025, and will run until May 2026.
+The Challenge Period will begin September 17, 2025, and will run until May 30, 2026, with May 27, 2026, as the last submission deadline for this season.
 
 Participants will be asked to submit nowcasts and forecasts by 11PM USA Eastern Time each Wednesday (the "Forecast Due Date"). If it becomes necessary to change the Forecast Due Date or time deadline, we will notify participants at least one week in advance.
 
