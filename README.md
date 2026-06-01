@@ -25,7 +25,7 @@ We are actively working to make the Wednesday release of this dataset available 
 
 ## Dates And Deadlines
 
-The 2025-2026 Challenge Period has concluded. We anticipate starting the challenge for 2026-2027 season in September, 2026.
+The 2025-2026 Challenge Period has concluded. We anticipate starting the challenge for 2026-2027 season in September 2026.
 
 Participants will be asked to submit nowcasts and forecasts by 11PM USA Eastern Time each Wednesday (the "Forecast Due Date"). If it becomes necessary to change the Forecast Due Date or time deadline, we will notify participants at least one week in advance.
 
