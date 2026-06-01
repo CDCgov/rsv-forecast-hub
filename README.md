@@ -25,15 +25,11 @@ We are actively working to make the Wednesday release of this dataset available 
 
 ## Dates And Deadlines
 
-The Challenge Period will begin September 17, 2025, and will run until May 30, 2026, with May 27, 2026, as the last submission deadline for this season.
+The 2025-2026 Challenge Period has concluded. We anticipate starting the challenge for 2026-2027 season in September, 2026.
 
 Participants will be asked to submit nowcasts and forecasts by 11PM USA Eastern Time each Wednesday (the "Forecast Due Date"). If it becomes necessary to change the Forecast Due Date or time deadline, we will notify participants at least one week in advance.
 
 Weekly submissions (including file names) will be specified in terms of a "reference date": the Saturday following the Forecast Due Date. This is the last day of the USA/CDC epiweek (Sunday to Saturday) that contains the Forecast Due Date.
-
-Please note the following updated deadlines during the holiday period:
-- Forecasts for reference date **2025-12-27** are due on **2025-12-29** (extended deadline), with expected data release on **2025-12-29** (holiday schedule).
-- Forecasts for reference date **2026-01-03** are due on **2026-01-04** (extended deadline), with expected data release on **2025-12-31** (regular schedule).
 
 ## Prediction Targets And Horizons
 
@@ -50,7 +46,7 @@ Targets 2, 3 and 4 are optional for any submitted location whereas target 1 (qua
 
 > [!NOTE]
 >
-> We are considering introducing samples-based ensembles for the hubs and would encourage teams to submit sample trajectories along with quantile forecasts.
+> We are considering introducing samples-based ensembles for the hubs and encourage teams to submit sample trajectories along with quantile forecasts.
 
 
 ### Horizons
