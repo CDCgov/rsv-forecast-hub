@@ -20,11 +20,6 @@ model_contributors: [
     "email": "malitv@iu.edu",
   },
   {
-    "name": "Allisandra G. Kummer",
-    "affiliation": "Indiana University Bloomington",
-    "email": "alkummer@iu.edu",
-  },
-  {
     "name": "Shreeya Mhade",
     "affiliation": "Indiana University Bloomington",
     "email": "smhade@iu.edu",
@@ -47,6 +42,6 @@ methods_long: <
   estimated Rt to forecast RSV hospitalization trajectories.
 ensemble_of_models: false
 ensemble_of_hub_models: false
-website_url: https://github.com/CEPH-Lab
-designated_github_users: ["paulocv", "shreeyamhade", "allisandrak"]
+website_url: https://ceph-lab.github.io/
+designated_github_users: ["paulocv", "shreeyamhade"]
 team_funding: "We acknowledge support from the CDC-RFA-FT-23-0069 cooperative agreement from the CDC's Center for Forecasting and Outbreak Analytics."
