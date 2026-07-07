@@ -7,6 +7,17 @@ This repository is designed to collect forecast data for the RSV Forecast Hub ru
 
 If you are interested in using these data for additional research or publications, please contact [rsvhub@cdc.gov](mailto:rsvhub@cdc.gov) for information regarding attribution of the source forecasts.
 
+
+> [!NOTE]
+>
+> [Respiratory syncytial virus (RSV)](https://www.cdc.gov/rsv/index.html) is the [leading cause of infant hospitalization](https://www.cdc.gov/rsv/research/) in the United States and a major cause of respiratory illness, hospitalization, and death, especially among infants and adults aged 65 and older. CDC [preliminary burden estimates](https://www.cdc.gov/rsv/php/surveillance/burden-estimates.html) attribute roughly 190,000–370,000 hospitalizations and 11,000–24,000 deaths to RSV during the 2024–2025 season (October 12, 2024–September 27, 2025). Tracking RSV hospital admissions and emergency department visits helps public health professionals understand trends in virus circulation[^circulation], estimate disease burden[^burden], and respond to outbreaks[^response]. Accurate nowcasts and forecasts of hospital admissions linked to RSV help support appropriate public health interventions and planning, as RSV, [influenza](https://github.com/cdcepi/FluSight-forecast-hub), [COVID-19](https://github.com/CDCgov/covid19-forecast-hub), and other [respiratory pathogens](https://www.cdc.gov/respiratory-viruses/data/activity-levels.html) co-circulate.
+
+[^circulation]: For example, CDC's [RSV-NET](https://www.cdc.gov/rsv/php/surveillance/rsv-net.html) dashboard and weekly [Respiratory Virus Activity Levels](https://www.cdc.gov/respiratory-viruses/data/activity-levels.html) show when and where RSV hospital admissions and emergency department visits are rising or falling across jurisdictions, which can signal changes in transmission.
+
+[^burden]: For example, CDC combines RSV-NET surveillance data with statistical models into [preliminary in-season burden estimates](https://www.cdc.gov/rsv/php/surveillance/burden-estimates.html) of RSV outpatient visits, hospitalizations, and deaths ([dataset](https://data.cdc.gov/d/sumd-iwm8)); the season totals cited above are the latest cumulative estimates from these data.
+
+[^response]: Hospital admission forecasts inform bed and staffing capacity planning during surges (e.g., the strained pediatric capacity during the fall 2022 RSV surge) and support immunization policy decisions, such as ACIP's recommendations for [infant nirsevimab](https://www.cdc.gov/mmwr/volumes/72/wr/mm7234a4.htm) and [maternal RSV vaccination during pregnancy](https://www.cdc.gov/mmwr/volumes/72/wr/mm7241e1.htm).
+
 ## Nowcasts And Forecasts Of Confirmed RSV Hospital Admissions
 
 During the submission period, participating teams will be invited to submit national- and jurisdiction-specific (all 50 states, Washington DC, and Puerto Rico) probabilistic nowcasts and forecasts of the weekly number of confirmed RSV hospital admissions during the preceding [epidemiological week ("epiweek")](https://epiweeks.readthedocs.io/en/stable/background.html), the current epiweek, and the following three epiweeks.
