@@ -28,3 +28,4 @@ jobs:
         with:
           aws_account: "767397675902"
           dry_run: true
+          enforce_default_branch: false
