@@ -1,12 +1,10 @@
-name: "Upload Hub Data to Hubverse-hosted AWS S3 Bucket"
+name: "Upload Hub data to Hubverse-hosted AWS S3 Bucket"
 
 on:
   workflow_dispatch:
   push:
     branches:
       - main
-  pull_request:
-
 
 permissions:
   contents: read
@@ -24,8 +22,8 @@ jobs:
         uses: actions/checkout@v7
 
       - name: "Upload to S3 bucket"
-        uses: cdcgov/hubhelpr/actions/s3-bucket-upload@dhm-s3-upload-action
+        uses: cdcgov/hubhelpr/actions/s3-bucket-upload@main
         with:
           aws_account: "767397675902"
-          dry_run: true
-          enforce_default_branch: false
+          dry_run: "true"
+          enforce_default_branch: "true"
