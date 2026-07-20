@@ -13,7 +13,8 @@ on:
         default: ""
         type: string
   schedule:
-    - cron: "30 20 * * 3" # run every Wednesday at 8:30 PM UTC (3:30 PM EST)
+    - cron: "30 15 * * 3" # run every Wednesday at 3:30 PM ET
+      timezone: "America/New_York"
 
 jobs:
   generate-baseline-forecasts:
@@ -24,13 +25,13 @@ jobs:
     steps:
     - name: "Generate Installation Token"
       id: get_token
-      uses: actions/create-github-app-token@v2
+      uses: actions/create-github-app-token@v3
       with:
         app-id: ${{ vars.CDCGOV_HUB_BOT_APP_ID }}
         private-key: ${{ secrets.CDCGOV_HUB_BOT_APP_KEY }}
 
     - name: "Checkout Code"
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
 
     - name: "Set Up hubhelpr"
       uses: cdcgov/hubhelpr/actions/setup-hubhelpr@main

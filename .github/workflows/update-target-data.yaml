@@ -8,7 +8,8 @@ on:
         type: boolean
         default: true
   schedule:
-    - cron: "00 17 * * 3" # run every Wednesday at 5:00 PM UTC (1:00 PM EST)
+    - cron: "00 13 * * 3" # run every Wednesday at 1:00 PM ET
+      timezone: "America/New_York"
 
 jobs:
   update-target-data:
@@ -19,13 +20,13 @@ jobs:
     steps:
     - name: "Generate Installation Token"
       id: get_token
-      uses: actions/create-github-app-token@v2
+      uses: actions/create-github-app-token@v3
       with:
         app-id: ${{ vars.CDCGOV_HUB_BOT_APP_ID }}
         private-key: ${{ secrets.CDCGOV_HUB_BOT_APP_KEY }}
 
     - name: "Checkout Code"
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
 
     - name: "Set Up hubhelpr"
       uses: cdcgov/hubhelpr/actions/setup-hubhelpr@main
@@ -38,3 +39,7 @@ jobs:
         api_key_id: ${{ secrets.DATA_CDC_GOV_API_KEY_ID }}
         api_key_secret: ${{ secrets.DATA_CDC_GOV_API_KEY_SECRET }}
         nssp_update_local: ${{ inputs.nssp_update_local || 'true' }}
+        # JSON array (e.g., '["VI", "GU"]') excludes from all targets.
+        # JSON object (e.g., '{"all": ["VI"], "wk inc rsv hosp": ["GU"]}')
+        # supports target-specific exclusions.
+        excluded_locations: '["VI", "GU", "AS", "MP", "UM"]'
