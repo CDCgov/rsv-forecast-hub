@@ -25,5 +25,5 @@ jobs:
         uses: cdcgov/hubhelpr/actions/s3-bucket-upload@main
         with:
           aws_account: "767397675902"
-          dry_run: "true"
+          dry_run: "false"
           enforce_default_branch: "true"
