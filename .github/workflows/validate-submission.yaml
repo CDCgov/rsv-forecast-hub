@@ -1,13 +1,9 @@
-name: Hub Submission Validation (R)
+name: "Hub Submission Validation (R)"
 
 on:
   workflow_dispatch:
   pull_request:
     branches: main
-    paths:
-      - 'model-output/**'
-      - 'model-metadata/*'
-      - '!**README**'
 
 permissions:
   contents: read
@@ -15,18 +11,18 @@ permissions:
 
 jobs:
   validate-submission:
-    runs-on: ubuntu-22.04
+    runs-on: "ubuntu-latest"
 
     steps:
       - uses: actions/checkout@v7
 
-      - name: "Get Model Output Changes"
-        id: get_changed_files_in_model_output
+      - name: "Get model output directory changes"
+        id: "model_output_diffs"
         uses: step-security/changed-files@v47
         with:
           path: model-output
           dir_names: "true"
 
-      - uses: hubverse-org/hubverse-actions/validate-submission@main
+      - uses: hubverse-org/hubverse-actions/validate-submission@cbccdba4164bfb6fc5ab1a852cde4d4273181b31
         with:
-          skip_submit_window_check: ${{ steps.get_changed_files_in_model_output.outputs.all_modified_files == 'RSVHub-ensemble' }}
+          skip_submit_window_check: ${{ steps.model_output_diffs.outputs.all_modified_files == 'RSVHub-ensemble' }}
