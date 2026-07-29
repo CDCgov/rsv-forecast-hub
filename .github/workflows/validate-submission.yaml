@@ -26,5 +26,5 @@ jobs:
       # point at fork until install R option merged to main or rejected
       - uses: dylanhmorris/hubverse-actions/validate-submission@9a6fa991f6ff350cd5c51737532fc36cc3dbe23d
         with:
-          install-r: true
+          install_r: true
           skip_submit_window_check: ${{ steps.model_output_diffs.outputs.all_modified_files == 'RSVHub-ensemble' }}
