@@ -1,0 +1,28 @@
+# Model metadata for CDCgov/rsv-forecast-hub — submit as its own PR to model-metadata/ in the hub repo
+# by 4 PM ET on the Wednesday of your first forecast. Fields verified against hub-config/model-metadata-schema.json.
+team_name: "Ward Weather"
+team_abbr: "fonz"
+model_name: "Ward Weather flat baseline"
+model_abbr: "wardweather"
+model_version: "0.1.0"
+model_contributors:
+  - name: "Alfonso Garcia"
+    affiliation: "NewYork-Presbyterian / Weill Cornell Medicine, Department of Pediatrics"
+    email: "garec99054@gmail.com"
+website_url: "https://github.com/garec99054/ward-weather"
+repo_url: "https://github.com/garec99054/ward-weather"
+license: "CC-BY-4.0"
+designated_model: true
+designated_github_users: ["garec99054"]
+data_inputs: "NHSN weekly laboratory-confirmed RSV hospital admissions (hub target data, versioned); NYC DOHMH respiratory surveillance for local context."
+methods: "Flat baseline: last observed week with empirical relative-change quantiles; revision-aware nowcast for horizon -1."
+methods_long: >
+  Shadow-season baseline. Point forecast equals the most recently reported week. Uncertainty for k-week-ahead
+  targets is the empirical distribution of historical k-week changes on the log1p scale (symmetrized), so interval
+  width scales with the current level. The horizon -1 target (an already-published week) is widened by the
+  empirical distribution of revision ratios (latest ÷ first-reported value) over the last 52 matured weeks,
+  estimated from the hub's versioned target data. A frozen selection rule (docs/selection_rule.yaml, committed
+  before the season) determines which models form the submission; in-season model changes are scored but not
+  submitted. Vintage-honest backtests use only the data version available on each submission Wednesday.
+ensemble_of_models: false
+ensemble_of_hub_models: false
