@@ -40,7 +40,7 @@ license: "CC-BY-4.0"
 designated_model: false
 methods: "Renewal model using the PyRenew-HEW framework fit to hospital admissions."
 data_inputs: "Daily incident RSV hospital admissions via the National Healthcare Safety Network (NHSN)."
-methods_long: "Renewal model fit to hospital admissions and used to forecast hospital admissions target (NHSN) signal. This is the renamed successor to model ID `CFA_Pyrenew-Pyrenew_H_RSV`; historical submissions retain that identifier."
+methods_long: "Renewal model fit to hospital admissions and used to forecast hospital admissions target (NHSN) signal. This is the renamed successor to model ID `CFA_Pyrenew-Pyrenew_H_RSV`; historical submissions retain that identifier. For additional information on the pipeline that produces these forecasts, see https://github.com/CDCgov/cfa-stf-routine-forecasting."
 website_url: "https://github.com/CDCgov/pyrenew-multisignal"
 repo_url: "https://github.com/CDCgov/pyrenew-multisignal"
 ensemble_of_models: false
