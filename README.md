@@ -9,7 +9,7 @@ If you are interested in using these data for additional research or publication
 
 > [!IMPORTANT]
 >
-> See upcoming information on the _[sunset of `latest.parquet`](https://github.com/CDCgov/rsv-forecast-hub#sunset-of-latest.parquet)_
+> See upcoming information on the **[sunset of `latest.parquet`](https://github.com/CDCgov/rsv-forecast-hub#sunset-of-latestparquet)**
 
 ## Nowcasts And Forecasts Of Confirmed RSV Hospital Admissions
 
