@@ -1,0 +1,54 @@
+team_name: "Northern Arizona University"
+team_abbr: "NAU"
+model_name: "epymorph RSV compartmental model"
+model_abbr: "epymorph"
+model_version: "1.0"
+model_contributors: [
+        {
+            "name": "Kayode Oshinubi",
+            "affiliation": "Northern Arizona University",
+            "email": "Kayode-Isaac.Oshinubi@nau.edu",
+        },
+        {
+            "name": "Jeffrey Moore Covington",
+            "affiliation": "Northern Arizona University",
+            "email": "Jeffrey.Covington@nau.edu",
+        },
+        {
+            "name": "Ye Chen",
+            "affiliation": "Northern Arizona University",
+            "email": "Ye.Chen@nau.edu",
+        },
+        {
+            "name": "Eck Doerry",
+            "affiliation": "Northern Arizona University",
+            "email": "Eck.Doerry@nau.edu",
+        },
+        {
+            "name": "Tyler R Coles",
+            "affiliation": "Northern Arizona University",
+            "email": "Tyler.Coles@nau.edu",
+        },
+        {
+            "name": "Joseph R Mihaljevic",
+            "affiliation": "Northern Arizona University",
+            "email": "Joseph.Mihaljevic@nau.edu",
+        }
+    ]
+website_url: "https://www.epimorph.org/"
+license: "CC-BY-4.0"
+designated_model: true
+designated_targets: ["wk inc rsv hosp"]
+methods: "A stochastic SIRH compartmental model for RSV with a time-varying transmission rate, fit to state-level hospital admissions with an ensemble Kalman filter."
+data_inputs: "State-level weekly confirmed RSV hospital admissions from NHSN, adjusted for the percentage of hospitals reporting."
+methods_long: "We run an independent stochastic SIRH (susceptible, infectious, recovered, hospitalized) compartmental model for each state and the District of Columbia using the epymorph simulation framework. Recovery, waning immunity and hospital stay are modeled as constant rates, and the hospitalization probability and recovery rate are estimated as slowly varying unknown parameters. The transmission rate follows an Ornstein-Uhlenbeck process on the log scale, which allows it to change through the season while remaining anchored to a prior level during fitting. Each week the model state and unknown parameters are updated with an ensemble Kalman filter (100 realizations) using a negative binomial observation model for weekly admissions. During the forecast period the transmission process is parameterized entirely by the fitted ensemble: its mean and standard deviation are recomputed each week from the ensemble of log transmission rates in each state, with a small floor on the standard deviation, so transmission persists around its most recently estimated level and the forecast carries the uncertainty of the nowcast forward; only the reversion time scale (28 days) is fixed. Forecasts are produced by simulating the fitted ensemble forward for the target horizons, and quantiles are computed from the realizations; national forecasts are obtained by summing state realizations before taking quantiles. The ensemble is initialized each season from fixed compartment proportions and run without observations for a warm-up period before assimilation begins."
+ensemble_of_models: false
+ensemble_of_hub_models: false
+team_funding: "NIH/R01 award R01AI168144"
+designated_github_users:
+  [
+    "kayodeoshinubi", 
+    "JeffreyCovington",
+    "JavadocMD",
+    "joseph-mihaljevic"
+  ]
