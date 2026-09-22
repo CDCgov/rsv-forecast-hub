@@ -7,6 +7,10 @@ This repository is designed to collect forecast data for the RSV Forecast Hub ru
 
 If you are interested in using these data for additional research or publications, please contact [rsvhub@cdc.gov](mailto:rsvhub@cdc.gov) for information regarding attribution of the source forecasts.
 
+> [!IMPORTANT]
+>
+> See upcoming information on the **[removal of `latest.parquet` from the Hub](https://github.com/CDCgov/rsv-forecast-hub#latestparquet-will-be-removed-on-2026-10-12)** scheduled for 2026-10-12
+
 ## Nowcasts And Forecasts Of Confirmed RSV Hospital Admissions
 
 During the submission period, participating teams will be invited to submit national- and jurisdiction-specific (all 50 states, Washington DC, and Puerto Rico) probabilistic nowcasts and forecasts of the weekly number of confirmed RSV hospital admissions during the preceding [epidemiological week ("epiweek")](https://epiweeks.readthedocs.io/en/stable/background.html), the current epiweek, and the following three epiweeks.
@@ -21,7 +25,13 @@ The RSV Forecast Hub also accepts probabilistic nowcasts and forecasts of the pr
 
 The weekly percent of ED visits due to RSV can be found in the `percent_visits_rsv` column of the [National Syndromic Surveillance Program](https://www.cdc.gov/nssp/index.html) (NSSP) [Emergency Department Visits - COVID-19, Flu, RSV, Sub-state](https://data.cdc.gov/Public-Health-Surveillance/NSSP-Emergency-Department-Visit-Trajectories-by-St/rdmq-nq56/about_data) dataset. Although these numbers are reported in the percentage form, we will accept forecasts as decimal proportions (i.e., `percent_visits_rsv / 100`). To obtain state-level data, we filter the dataset to include only the rows where the `county` column is equal to `All`.
 
-We are actively working to make the Wednesday release of this dataset available on [`data.cdc.gov`](https://data.cdc.gov). In the meantime, we will update the dataset every Wednesday in the [`auxiliary-data/nssp-raw-data`](auxiliary-data/nssp-raw-data) directory of our GitHub repository as a file named `latest.csv`. These Wednesday data update contain the same data that are published Fridays on `data.cdc.gov` here: [NSSP Emergency Department Visit trajectories](https://data.cdc.gov/Public-Health-Surveillance/NSSP-Emergency-Department-Visit-Trajectories-by-St/rdmq-nq56/about_data). Those data underlie the percentage ED visits reported on the [PRISM Data Channel's Respiratory Activity Levels page](https://www.cdc.gov/respiratory-viruses/data/index.html), which is also refreshed every Friday. The data represent the information available as of Wednesday morning through the previous Saturday. For example, the most recent data available as of the 2025-06-11 release were for the week ending 2025-06-07.
+The Wednesday release of this dataset is available on `data.cdc.gov` at [NSSP Emergency Department Visit trajectories](https://data.cdc.gov/Public-Health-Surveillance/NSSP-Emergency-Department-Visit-Trajectories-by-St/rdmq-nq56/about_data), and the Hub's weekly target data updates are built from it. These data underlie the percentage ED visits reported on the PRISM Data Channel's [Respiratory Activity Levels page](https://www.cdc.gov/respiratory-viruses/data/index.html) (refreshed every Friday). The data represent the information available as of Wednesday morning through the previous Saturday. For example, the most recent data available as of the 2025-06-11 release were for the week ending 2025-06-07.
+
+### `latest.parquet` will be removed on 2026-10-12
+
+Before Wednesday `data.cdc.gov` releases of this dataset were routine, the Hub provided a Wednesday release at [`auxiliary-data/nssp-raw-data/latest.parquet`](auxiliary-data/nssp-raw-data). `latest.parquet` has a slightly different schema from the `data.cdc.gov` release, but all columns corresponding to forecast targets are identical.
+
+We plan to remove `latest.parquet` on `2026-10-12`. We are removing it rather than no longer updating it so that it cannot be used by mistake once out of date. Please migrate any workflows that use it to point at the `data.cdc.gov` endpoint prior to `2026-10-12`.
 
 ## Dates And Deadlines
 
