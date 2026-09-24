@@ -4,7 +4,9 @@ CFA-PyRenew_H,wk inc rsv hosp,FALSE
 CFA-PyRenew_HE,wk inc rsv hosp,TRUE
 NAU-epymorph,wk inc rsv hosp,TRUE
 RSVHub-baseline,wk inc rsv hosp,FALSE
+RSVHub-ensemble,wk inc rsv hosp,FALSE
 CFA-NowcastAutoGP,wk inc rsv prop ed visits,TRUE
 CFA-PyRenew_E,wk inc rsv prop ed visits,TRUE
 CFA-PyRenew_HE,wk inc rsv prop ed visits,FALSE
 RSVHub-baseline,wk inc rsv prop ed visits,FALSE
+RSVHub-ensemble,wk inc rsv prop ed visits,FALSE
