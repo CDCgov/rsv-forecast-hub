@@ -50,7 +50,7 @@ jobs:
         id: get_token
         uses: actions/create-github-app-token@v3
         with:
-          app-id: ${{ vars.CDCGOV_HUB_BOT_APP_ID }}
+          client-id: ${{ vars.CDCGOV_HUB_BOT_APP_ID }}
           private-key: ${{ secrets.CDCGOV_HUB_BOT_APP_KEY }}
 
       - name: "Approve PR"
