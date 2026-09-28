@@ -1,0 +1,15 @@
+team_name: "docxology"
+team_abbr: "docxology"
+model_name: "docxology timesfm"
+model_abbr: "timesfm"
+model_contributors: [{"name": "Daniel Ari Friedman", "affiliation": "Private Investigator", "email": "danielarifriedman@gmail.com"}]
+license: "CC0-1.0"
+designated_model: true
+data_inputs: "Retained weekly wk inc rsv hosp target observations from the CDCgov/rsv-forecast-hub hub/NHSN. No other submitted hub forecasts are model inputs. External pretrained checkpoint google/timesfm-2.5-200m-pytorch at revision 1d952420fba87f3c6dee4f240de0f1a0fbc790e3; its pretraining corpus is external."
+methods: "Frozen TimesFM 2.5 point forecasts with training-prefix empirical residual quantiles"
+methods_long: "Proposed candidate docxology-timesfm; implementation hum_disease.forecasting, model ID hum-timesfm-conformal, version 1.0.0. Frozen TimesFM 2.5 point forecasts with training-prefix empirical residual quantiles Frozen pretrained TimesFM weights produce point forecasts; matured training-prefix residuals supply predictive quantiles. There is no local gradient fine-tuning or explicit geographic covariance model. Pretraining data are an external information source. Target: wk inc rsv hosp. Requested forecast horizons: [0, 1, 2, 3]. Submission value policy: float; the submission adapter enforces nonnegative monotone quantiles. Each future submission must retain its actual input vintage, source/config identities and local validation. This draft does not assert scientific superiority, prospective selection/freeze, organizer registration or acceptance. Development-based configuration choices do not establish performance on this disease. Registered model identity: e9b0fdb9bdd77b48299513eca681a1d86bfc727d141199d0ba772a3ee89de2e9. Canonical configuration: {\"backend\": \"2.5\", \"calibration_window_weeks\": 26, \"checkpoint\": \"google/timesfm-2.5-200m-pytorch\", \"checkpoint_license\": \"Apache-2.0\", \"checkpoint_revision\": \"1d952420fba87f3c6dee4f240de0f1a0fbc790e3\", \"checkpoint_weight_sha256\": \"2f776efe6245e42b24bc4153ffdf61810140210e4bd3b01fb21f7aa779ab6ce8\", \"clamp_negative\": true, \"context_window_weeks\": 104, \"input_scale\": \"raw weekly admission counts\", \"max_lead\": 11, \"min_history_weeks\": 40, \"min_pool_residuals\": 12, \"per_core_batch_size\": 32, \"quantile_method\": \"type7_linear\", \"runtime_contract\": \"config/timesfm-runtime.json\", \"runtime_contract_sha256\": \"14b5005d5f6056ac901fdd54e47bf32989d7fa858e0e552abf33b2a1247607b6\", \"scale\": \"log1p\", \"source_method\": \"TimesFM 2.5 point forecast with training-prefix empirical residual quantiles\", \"source_repo\": \"hum-timesfm\", \"torch_threads\": 1, \"uncertainty\": \"training-prefix-empirical-residual-quantiles\", \"upstream_pretrained\": true}"
+ensemble_of_models: false
+ensemble_of_hub_models: false
+website_url: "https://github.com/docxology"
+model_version: "1.0.0"
+designated_github_users: ["docxology"]
