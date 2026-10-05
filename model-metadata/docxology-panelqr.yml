@@ -1,0 +1,16 @@
+team_name: "docxology"
+team_abbr: "docxology"
+model_name: "docxology panelqr"
+model_abbr: "panelqr"
+model_contributors: [{"name": "Daniel Ari Friedman", "affiliation": "Private Investigator", "email": "danielarifriedman@gmail.com"}]
+license: "CC0-1.0"
+designated_model: false
+data_inputs: "Retained weekly wk inc rsv hosp target observations from the CDCgov/rsv-forecast-hub hub/NHSN. No other submitted hub forecasts are model inputs."
+methods: "Direct pooled quantile regression on fourth-root, per-location standardized weekly histories within a seasonal window, with frozen log-scale widening. Undesignated."
+methods_long: "Undesignated second docxology model on this hub, version 1.0.0 (registry ID hum-window-quantile-panel; the same method as the docxology-panelqr FluSight entry). It is submitted for a public, prospective comparison with the designated docxology-timesfm model under a switch rule registered before any comparison round is scored; it is not proposed for the hub ensemble. All declared locations (50 states, DC, Puerto Rico and US) are pooled on one contiguous weekly grid; a gap blocks the forecast. Each location's history is fourth-root transformed and robustly standardized (centre: median; scale: 5-95% range of that location's training history). For each target week a separate (direct) quantile regression is fitted on rows from every location whose target ISO week lies within 3 weeks of the target's, with an intercept and the 4 most recent standardized values as features. Seven quantile knots (0.01, 0.1, 0.25, 0.5, 0.75, 0.9, 0.99) are fitted by ridge-stabilized (1e-4) iteratively reweighted pinball-loss steps; coefficients are shared by all locations. Each location's knots are interpolated onto the 23 hub quantile levels, back-transformed, capped at 1.75 times the location's historical maximum plus 10, clamped at zero, then widened in log1p space by a frozen centre shift (0.05) and spread factor (1.5) fixed in an earlier development screen (2023/24 and 2024/25 seasons) and not re-tuned for RSV. There is no residual calibration, covariate, explicit geographic covariance model or joint sample trajectory. Target: wk inc rsv hosp. Horizons: [0, 1, 2, 3]. Values are nonnegative monotone floats. Each submission retains its input vintage, source and configuration identities and local validation. Retrospective comparisons do not establish prospective performance. The implementation, fitted-state records and detailed configuration are retained privately. This methods description does not grant a source-code license."
+ensemble_of_models: false
+ensemble_of_hub_models: false
+website_url: "https://github.com/docxology"
+model_version: "1.0.0"
+designated_github_users: ["docxology"]
+designated_targets: ["wk inc rsv hosp"]
