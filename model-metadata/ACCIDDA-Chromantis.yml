@@ -1,0 +1,38 @@
+team_name: Atlantic Coast Center for Infectious Disease Dynamics and Analytics
+team_abbr: ACCIDDA
+model_name: Chromantis
+model_abbr: Chromantis
+model_version: '0.1'
+model_contributors:
+- name: Joseph Lemaitre
+  affiliation: University of North Carolina at Chapel Hill
+  email: jo.lemaitresamra@gmail.com
+- name: Justin Lessler
+  affiliation: University of North Carolina at Chapel Hill
+  email: jlessler@unc.edu
+website_url: https://github.com/ACCIDDA/chromantis
+repo_url: https://github.com/ACCIDDA/chromantis
+license: CC-BY-4.0
+designated_model: true
+team_funding: J.L. and J.C.L. disclose support from the Insight Net cooperative agreement
+  CDC-RFA-FT-23-0069 from the CDC’s Center for Forecasting and Outbreak Analytics.
+methods: Mixture of four neural-network recipes forecasting RSV admissions and ED visit share,
+  trained on revision-degraded reported histories, with information shared across locations.
+data_inputs: NHSN RSV, flu and COVID-19 hospital admissions and NSSP RSV, flu and COVID-19 ED
+  visit shares as reported at the forecast date (RSV Hub target data and Delphi Epidata revision
+  archives), Kinsa smart-thermometer ILI (PopHIVE).
+methods_long: Chromantis mixes four multilayer-perceptron recipes trained on the 2022-23 through
+  2025-26 seasons to predict finalized weekly RSV hospital admissions and RSV ED visit proportions
+  in every state, DC and the US. NHSN RSV admissions before November 2024 (voluntary reporting)
+  are treated as unobserved. Training input histories are the archived preliminary reports (one
+  recipe) or are made preliminary with artificial reporting errors drawn from the 2025-26 RSV
+  reporting process (the others). Two recipes predict quantiles
+  directly (one with information exchange between neighboring states, one using flu, COVID-19 and
+  RSV histories); two generate predictive sample trajectories (one with corrected histories and
+  Kinsa ILI, one using flu, COVID-19 and RSV histories). Each recipe has ten independently seeded
+  fits. Predictive distributions are mixed with equal weight per recipe and per seed. Submitted
+  sample trajectories take the sampling recipes' own draws; the direct-quantile recipes contribute
+  values drawn from their quantiles and ordered across horizons and targets by the sampling
+  recipes' trajectories (Schaake shuffle). Forecasts cover horizons 0 through 3.
+ensemble_of_models: true
+ensemble_of_hub_models: false
