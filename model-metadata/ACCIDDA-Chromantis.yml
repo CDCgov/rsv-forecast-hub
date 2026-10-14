@@ -36,3 +36,4 @@ methods_long: Chromantis mixes four multilayer-perceptron recipes trained on the
   recipes' trajectories (Schaake shuffle). Forecasts cover horizons 0 through 3.
 ensemble_of_models: true
 ensemble_of_hub_models: false
+designated_github_users: ["jcblemai", "emprzy", "jlessler"]
