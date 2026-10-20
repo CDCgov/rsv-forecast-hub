@@ -87,7 +87,7 @@ others deemed as necessary.
 For those individuals within the CDC, adherence to the following policies are
 required:
 * CDC ["Clearance of Information Products Disseminated Outside CDC for Public Use"](http://www.cdc.gov/maso/Policy/PublicUse.pdf)
-* HHS ["Ensuring the Quality of Information Disseminated by HHS agencies"](http://aspe.hhs.gov/infoquality)
+* HHS ["Ensuring the Quality of Information Disseminated by HHS agencies"](https://aspe.hhs.gov/topics/data/information-quality-guidelines)
 
 All collaborative materials will be controlled by the rules contained within
 this document. This will allow for the real-time collaboration opportunities
