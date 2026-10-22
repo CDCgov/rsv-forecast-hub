@@ -1,0 +1,33 @@
+team_name: "Carnegie Mellon Delphi Group"
+team_abbr: "CMU"
+model_name: "AR ensemble with auxiliary data"
+model_abbr: "TimeSeries"
+model_version: "1.0"
+model_contributors:
+  [
+    { "name": "Logan Brooks", "affiliation": "UC Berkeley", "email": "lcbrooks@berkeley.edu" },
+    { "name": "Dmitry Shemetov", "affiliation": "Carnegie Mellon University", "email": "dshemeto@andrew.cmu.edu" },
+    { "name": "Nat DeFries", "affiliation": "Carnegie Mellon University", "email": "ndefries@andrew.cmu.edu" },
+    { "name": "David Weber", "affiliation": "Carnegie Mellon University", "email": "davidweb@andrew.cmu.edu" },
+    { "name": "Daniel McDonald", "affiliation": "University of British Columbia", "email": "daniel@stat.ubc.ca" },
+    { "name": "Ryan Tibshirani", "affiliation": "UC Berkeley", "email": "ryantibs@berkeley.edu" },
+  ]
+website_url: "https://github.com/cmu-delphi/exploration-tooling/"
+repo_url: "https://github.com/cmu-delphi/exploration-tooling/"
+license: "CC-BY-4.0"
+designated_model: true
+team_funding: "Centers for Disease Control and Prevention Awards: U011P001121, 75D30123C15907, NU38FT000005"
+data_inputs: "Weekly RSV hospital admissions from NHSN and the percent of emergency department visits due to RSV from NSSP, including their revision histories, queried through the Delphi Epidata API."
+methods: "An equal-weight ensemble of three quantile autoregressions: a seasonally windowed AR, an AR with NSSP ED visits as a predictor, and a revision-aware AR."
+methods_long: "An equal-weight ensemble of three quantile autoregression models.
+Each model is fit jointly across all states, DC, Puerto Rico and the US as a whole, with a separate quantile regression for each of the 23 quantiles and quantile sorting applied post hoc.
+In all three, each signal is centered, scaled by its quantiles and fourth-root transformed per location.
+The first model uses lags of 0 to 3 weeks of RSV hospital admissions, and trains only on weeks within 5 weeks before and 3 weeks after the current week of the season, in every past season.
+The second model uses lags of 0 to 3 weeks of RSV hospital admissions and lags of 0 to 2 weeks of the NSSP percent of ED visits due to RSV.
+The third model trains on past versions of the data, so that it learns how the most recent weeks are revised; it uses lags of 0 and 1 weeks, trains on the same seasonal window, and is the only component at horizon -1.
+Where no component makes a forecast, a small weight on a climatological and linear trend baseline fills in.
+For the ED visits target, the same models run with the roles of the two signals swapped.
+All data signals are available as indicators through the Delphi Epidata API (https://cmu-delphi.github.io/delphi-epidata)."
+ensemble_of_models: true
+ensemble_of_hub_models: false
+designated_github_users: ["dshemetov", "dsweber2", "cmu-delphi-deploy-machine"]
