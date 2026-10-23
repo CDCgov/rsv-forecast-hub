@@ -1,6 +1,6 @@
 # Model Outputs Folder
 
-This folder contains a set of subdirectories, one for each model, that contains submitted model output files for that model. The structure of these directories and their contents follows general [hubverse model output guidelines](https://hubdocs.readthedocs.io/en/latest/user-guide/model-output.html). Specific documentation for the RSV Forecast Hub follows.
+This folder contains a set of subdirectories, one for each model, that contains submitted model output files for that model. The structure of these directories and their contents follows general [hubverse model output guidelines](https://docs.hubverse.io/en/latest/user-guide/model-output.html). Specific documentation for the RSV Forecast Hub follows.
 
 
 # Data Submission Instructions
@@ -31,7 +31,7 @@ This project treats laboratory-confirmed RSV hospital admissions data, and perce
 
 These data are reported through NHSN's [Hospital Respiratory Reporting](https://www.cdc.gov/nhsn/psc/hospital-respiratory-reporting.html) and NSSP's [Emergency Department Visit Trajectories](https://data.cdc.gov/Public-Health-Surveillance/NSSP-Emergency-Department-Visit-Trajectories-by-St/rdmq-nq56/about_data) systems.
 
-Further information on target data can be found in the [target-data readme](target-data/README.md).
+Further information on target data can be found in the [target-data readme](../target-data/README.md).
 
 
 ## Forecast Submission Formatting
@@ -41,7 +41,7 @@ The automatic checks in place for forecast files submitted to this repository va
 
 ### Model Subdirectories
 
-Each model that submits forecasts for this project will have a unique subdirectory within the [model-output/](model-output/) directory in this GitHub repository where forecasts will be submitted. Each subdirectory must be named
+Each model that submits forecasts for this project will have a unique subdirectory within the [model-output/](./) directory in this GitHub repository where forecasts will be submitted. Each subdirectory must be named
 
     team-model
 
@@ -63,7 +63,7 @@ The metadata file will be saved within the `model-metadata` directory in the Hub
     otherteam-othermodel.yaml
 
 
-Details on the content and formatting of metadata files are provided in the [model-metadata README](model-metadata/README.md).
+Details on the content and formatting of metadata files are provided in the [model-metadata README](../model-metadata/README.md).
 
 
 
@@ -243,7 +243,7 @@ Here, `output_type_id = s0` and `output_type_id = s1` specifies that the predict
 | 2024-10-15 |  0      |  NH | sample | S1 | - |
 | 2024-10-15 |  1      |  NH | sample | S1 | - |
 
-The above table shows two samples indexed by `output_type_id:` `S1` and `S2` from a joint predictive distribution across `location`s and `horizon`s. More details on sample output can be found in the [hubverse documentation of sample output type](https://hubverse.io/en/latest/user-guide/sample-output-type.html).
+The above table shows two samples indexed by `output_type_id:` `S1` and `S2` from a joint predictive distribution across `location`s and `horizon`s. More details on sample output can be found in the [hubverse documentation of sample output type](https://docs.hubverse.io/en/latest/user-guide/sample-output-type.html).
 
 ### `value`
 
@@ -256,7 +256,7 @@ To ensure proper data formatting, pull requests for new data in
 
 ### Pull request forecast validation
 
-When a pull request is submitted, the data are validated through [Github Actions](https://docs.github.com/en/actions) which runs the tests present in [the hubValidations package](https://github.com/hubverse-org/hubValidations). The intent for these tests are to validate the requirements above. Please [let us know](../../../issues) if you are facing issues while running the tests.
+When a pull request is submitted, the data are validated through [Github Actions](https://docs.github.com/en/actions) which runs the tests present in [the hubValidations package](https://github.com/hubverse-org/hubValidations). The intent for these tests are to validate the requirements above. Please [let us know](https://github.com/CDCgov/rsv-forecast-hub/issues) if you are facing issues while running the tests.
 
 ### Local forecast validation
 

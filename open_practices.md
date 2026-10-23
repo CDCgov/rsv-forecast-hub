@@ -10,7 +10,7 @@ Before you can publish your project, you must request access to be added to the 
 
 1. Review the [Rules of Behavior](rules_of_behavior.md).
 2. Confirm your [Github profile is setup](#profile-setup) properly.
-3. Complete the [project request form]([https://forms.office.com/Pages/ResponsePage.aspx?id=aQjnnNtg_USr6NJ2cHf8j44WSiOI6uNOvdWse4I-C2NUNk43NzMwODJTRzA4NFpCUk1RRU83RTFNVi4u](https://servicedesk.cdc.gov/sp?id=sc_cat_item&sys_id=ca066a881b11f8102954873fe54bcb4a)).
+3. Complete the [project request form](https://servicedesk.cdc.gov/sp?id=sc_cat_item&sys_id=ca066a881b11f8102954873fe54bcb4a).
    * This will require your CDC login, so if you don't have a login, ask someone to request on your behalf, or [get in touch](#support-and-feedback).
 
 You should receive an email or notification when you are given access and your first repository should be setup for you. For subsequent projects, you will be able to create a repository in the organization using Github's interface. The [template repository](https://github.com/CDCgov/template) is maintained and an easy way to quick start your repository that complies with the guidelines. Once this is completed you're ready to follow the required guidelines to publish code.
@@ -22,7 +22,7 @@ You must follow these practices before you publish real code into your repositor
 * [ ] **Get Clearance.** Always obtain clearance from your organization prior to setting up and publishing a repository.
   * GitHub is a third party service used by CDC to collaborate with the public. Official CDC health messages will always be distributed through www.cdc.gov and through appropriate channels, so make sure to plan your project along with your official public health program on cdc.gov.
 * [ ] **Naming.** Set a meaningful project name and short description for your project. The form to do this is in your repositories settings.
-  * [ ] Add [topics](https://help.github.com/en/github/administering-a-repository/classifying-your-repository-with-topics) to improve discovery and use of your project. For AI-related projects, the [Code.gov Implementation Guidance to Federal Agencies Regarding Enterprise Data and Source Code Inventories](https://code.gov/federal-agencies/compliance/inventory-code) must be followed when setting topics.
+  * [ ] Add [topics](https://help.github.com/en/github/administering-a-repository/classifying-your-repository-with-topics) to improve discovery and use of your project. For AI-related projects, the [Code.gov metadata schema for federal source code inventories](https://github.com/GSA/code-gov/tree/master/docs/MetadataSchema) must be followed when setting topics.
 * [ ] **Create a README.** Add a `README.md` file at the root with the following:
   * An overview of your project, including the purpose, goals and the team responsible.
   * A description of your development process in the `README.md` file. If your project is no longer active, mark it as [archived](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/archiving-repositories).
@@ -56,7 +56,7 @@ Optional improvements to make your open source project more successful.
 * [ ] Agree on project conventions and include them in your `README.md` file. Depending on what type of project, this includes folder structure for data, linters, editor configuration (eg, [MicrobeTrace's .editorconfig](https://github.com/CDCgov/MicrobeTrace/blob/master/.editorconfig)). This will help improve the quality of your project and make it easier for others to contribute to your project.
 * [ ] Add support and community procedures. CDC does not provide warranty or official support for open source projects, but describing how you would like questions and issues will assist users of your project. If you use a wiki, or project board, or package manager, describe and link to that. Official contribution steps will make it easier for people outside of CDC to contribute to your project.
 * [ ] Include references to publications, presentations, and sites featuring your project.
-* [ ] Add an entry to [open.cdc.gov](https://open.cdc.gov) to the [data](https://open.cdc.gov/data.html), [code](https://open.cdc.gov/code.html), [api](https://open.cdc.gov/apis.html), or [event](https://open.cdc.gov/events.html) page to help people find your project on cdc.gov
+* [ ] Add an entry to [open.cdc.gov](https://web.archive.org/web/20250819015818/https://open.cdc.gov/) to the [data](https://web.archive.org/web/20250815213050/https://open.cdc.gov/data.html), [code](https://web.archive.org/web/20250726014446/https://open.cdc.gov/code.html), [api](https://web.archive.org/web/20250726014448/https://open.cdc.gov/apis.html), or [event](https://web.archive.org/web/20250726014446/https://open.cdc.gov/events.html) page to help people find your project on cdc.gov
 * [ ] Add versions and tags describing major releases and milestones. For example, [open.cdc.gov's releases each time a new version is published to the web site](https://github.com/CDCgov/opencdc/releases/tag/v1.0.9) or [geneflow's changelog](https://github.com/CDCgov/geneflow/blob/master/CHANGELOG.md).
 * [ ] Follow [Semantic Versioning 2.0.0](https://semver.org/) when creating versions for your project.
 * [ ] Describe and test reproducible practices to install and build your project. For example, [injury_autocoding's code section on running the project's scripts](https://github.com/cdcai/injury_autocoding#code)).
@@ -92,13 +92,13 @@ So you've decided to set up an open source project at CDC. Here are the steps to
 
 * [ ] Create a new project using the [template repo](https://github.com/CDCgov/template).
 * [ ] Update your readme.md following the [CDC GitHub Practices for Open Source Projects](https://github.com/CDCgov/template/blob/master/open_practices.md)
-* [ ] Choose a license. Most projects are ASL2, but license should meet public health program need. See <https://www.philab.cdc.gov/index.php/2012/03/27/open-source-development-for-public-health-informatics/> for more info on choosing a license.
+* [ ] Choose a license. Most projects are ASL2, but license should meet public health program need. See <https://web.archive.org/web/20250306075939/https://www.techlab.cdc.gov/index.php/2012/03/27/open-source-development-for-public-health-informatics-historical-archive/> for more info on choosing a license.
 * [ ] Remove all sensitive info.
 * [ ] Talk with your ADI, ADS, and ISSO for review and clearance.
 * [ ] After approval, create a GitHub user.
 * [ ] Fill out the [Request a Repo form](https://forms.office.com/Pages/ResponsePage.aspx?id=aQjnnNtg_USr6NJ2cHf8j44WSiOI6uNOvdWse4I-C2NUNk43NzMwODJTRzA4NFpCUk1RRU83RTFNVi4u) for a new repo on [CDCGov](https://github.com/cdcgov) or [CDCai](https://github.com/cdcai).
 * [ ] When you get an email or push alert that your repo is ready, push to GitHub
-* [ ] Add an entry in [open.cdc.gov](https://open.cdc.gov) on their [code page](https://open.cdc.gov/code.html) to officially be linked from cdc.gov. This helps users find and use your project.
+* [ ] Add an entry in [open.cdc.gov](https://web.archive.org/web/20250819015818/https://open.cdc.gov/) on their [code page](https://web.archive.org/web/20250726014446/https://open.cdc.gov/code.html) to officially be linked from cdc.gov. This helps users find and use your project.
 * [ ] Keep your project up to date, when you're finished flag it as [archived](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/archiving-repositories).
 
 _This checklist was adapted from the CDC IT Guard Rail and put here to help people who don't have access to the intranet._
@@ -112,13 +112,13 @@ Our [CDCent](https://github.com/cdcent/) organization is used for private, non-p
 These are helpful links from across the Federal Government regarding open sourcing code.
 
 * [CFPB Open Tech](https://cfpb.github.io/)
-* [TTS Engineering Practices Guide](https://engineering.18f.gov/)
+* [TTS Engineering Practices Guide](https://github.com/18F/development-guide)
 * [18F Open Source Policy](https://github.com/18F/open-source-policy) and [Practicing our open source policy](https://github.com/18F/open-source-policy/blob/master/practice.md)
 * [GitHub and Government: How agencies build software](https://government.github.com/)
-* [code.gov](https://code.gov)
+* [code.gov](https://github.com/GSA/code-gov)
 * [Federal Source Code and Open Source Toolkit](https://github.com/GSA/code-gov-open-source-toolkit)
-* [Federal Source Code Policy (M-16-21)](https://sourcecode.cio.gov/)
-* [openCDC](https://open.cdc.gov)
+* [Federal Source Code Policy (M-16-21)](https://obamawhitehouse.archives.gov/sites/default/files/omb/memoranda/2016/m_16_21.pdf)
+* [openCDC](https://web.archive.org/web/20250819015818/https://open.cdc.gov/)
 * [Digital Services Playbook](https://playbook.cio.gov/)
 * [CDC/ATSDR Policy on Public Health Research and Nonresearch Data Management and Access](https://www.cdc.gov/maso/policy/policy385.pdf)
   * [CDC/ATSDR Policy on Releasing and Sharing Data](https://www.cdc.gov/maso/Policy/ReleasingData.pdf) (old version, but still a useful reference)
