@@ -7,10 +7,6 @@ This repository is designed to collect forecast data for the RSV Forecast Hub ru
 
 If you are interested in using these data for additional research or publications, please contact [rsvhub@cdc.gov](mailto:rsvhub@cdc.gov) for information regarding attribution of the source forecasts.
 
-> [!IMPORTANT]
->
-> See upcoming information on the **[removal of `latest.parquet` from the Hub](https://github.com/CDCgov/rsv-forecast-hub#latestparquet-will-be-removed-on-2026-10-12)** scheduled for 2026-10-12
-
 ## Nowcasts And Forecasts Of Confirmed RSV Hospital Admissions
 
 During the submission period, participating teams will be invited to submit national- and jurisdiction-specific (all 50 states, Washington DC, and Puerto Rico) probabilistic nowcasts and forecasts of the weekly number of confirmed RSV hospital admissions during the preceding [epidemiological week ("epiweek")](https://epiweeks.readthedocs.io/en/stable/background.html), the current epiweek, and the following three epiweeks.
@@ -27,11 +23,13 @@ The weekly percent of ED visits due to RSV can be found in the `percent_visits_r
 
 The Wednesday release of this dataset is available on `data.cdc.gov` at [NSSP Emergency Department Visit trajectories](https://data.cdc.gov/Public-Health-Surveillance/NSSP-Emergency-Department-Visit-Trajectories-by-St/rdmq-nq56/about_data), and the Hub's weekly target data updates are built from it. These data underlie the percentage ED visits reported on the PRISM Data Channel's [Respiratory Activity Levels page](https://www.cdc.gov/respiratory-viruses/data/index.html) (refreshed every Friday). The data represent the information available as of Wednesday morning through the previous Saturday. For example, the most recent data available as of the 2025-06-11 release were for the week ending 2025-06-07.
 
-### `latest.parquet` will be removed on 2026-10-12
+### NSSP `latest.parquet` has been removed
 
-Before Wednesday `data.cdc.gov` releases of this dataset were routine, the Hub provided a Wednesday release at [`auxiliary-data/nssp-raw-data/latest.parquet`](auxiliary-data/nssp-raw-data). `latest.parquet` has a slightly different schema from the `data.cdc.gov` release, but all columns corresponding to forecast targets are identical.
+Before Wednesday `data.cdc.gov` releases of this dataset were routine, the Hub provided its own Wednesday release at `auxiliary-data/nssp-raw-data/latest.parquet`. That file has since been removed, and the directory no longer exists.
 
-We plan to remove `latest.parquet` on `2026-10-12`. We are removing it rather than no longer updating it so that it cannot be used by mistake once out of date. Please migrate any workflows that use it to point at the `data.cdc.gov` endpoint prior to `2026-10-12`.
+> [!NOTE]
+>
+> Please use the `data.cdc.gov` endpoint linked above instead.
 
 ## Dates And Deadlines
 

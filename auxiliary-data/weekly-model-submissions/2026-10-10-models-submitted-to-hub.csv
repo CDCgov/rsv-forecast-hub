@@ -1,0 +1,15 @@
+model_id,target,designated
+CEPH-Rtrend_rsv,wk inc rsv hosp,TRUE
+CFA-PyRenew_HE,wk inc rsv hosp,TRUE
+docxology-timesfm,wk inc rsv hosp,TRUE
+NAU-Copycat,wk inc rsv hosp,TRUE
+NAU-epymorph,wk inc rsv hosp,TRUE
+RSVHub-baseline,wk inc rsv hosp,FALSE
+UGA_flucast-INFLAenza,wk inc rsv hosp,TRUE
+UM-DeepOutbreak,wk inc rsv hosp,TRUE
+CFA-NowcastAutoGP,wk inc rsv prop ed visits,TRUE
+CFA-PyRenew_E,wk inc rsv prop ed visits,TRUE
+CFA-PyRenew_HE,wk inc rsv prop ed visits,FALSE
+NAU-Copycat,wk inc rsv prop ed visits,TRUE
+RSVHub-baseline,wk inc rsv prop ed visits,FALSE
+UGA_flucast-INFLAenza,wk inc rsv prop ed visits,TRUE
