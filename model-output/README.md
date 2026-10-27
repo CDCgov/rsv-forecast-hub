@@ -256,7 +256,7 @@ To ensure proper data formatting, pull requests for new data in
 
 ### Pull request forecast validation
 
-When a pull request is submitted, the data are validated through [Github Actions](https://docs.github.com/en/actions) which runs the tests present in [the hubValidations package](https://github.com/hubverse-org/hubValidations). The intent for these tests are to validate the requirements above. Please [let us know](https://github.com/CDCgov/rsv-forecast-hub/issues) if you are facing issues while running the tests.
+When a pull request is submitted, the data are validated through [Github Actions](https://docs.github.com/en/actions) which runs the tests present in [the hubValidations package](https://github.com/hubverse-org/hubValidations). The intent for these tests are to validate the requirements above. Please [let us know](../../../issues) if you are facing issues while running the tests.
 
 ### Local forecast validation
 
