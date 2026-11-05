@@ -1,5 +1,6 @@
 model_id,target,designated
 ACCIDDA-Chromantis,wk inc rsv hosp,TRUE
+ACCIDDA-insightcast,wk inc rsv hosp,TRUE
 CEPH-Rtrend_rsv,wk inc rsv hosp,TRUE
 CFA-PyRenew_H,wk inc rsv hosp,FALSE
 CFA-PyRenew_HE,wk inc rsv hosp,TRUE
