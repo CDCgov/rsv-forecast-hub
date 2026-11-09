@@ -22,4 +22,5 @@ eval-output
 .vscode/
 !.vscode/settings.json
 
+.DS_Store
 actionlint

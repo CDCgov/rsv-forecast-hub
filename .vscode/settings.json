@@ -4,5 +4,17 @@
     "CFPB",
     "ISSO",
     "cybersecurity"
-  ]
+  ],
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "[csv]": {
+    "files.insertFinalNewline": false,
+    "files.trimTrailingWhitespace": false
+  },
+  "[plaintext]": {
+    "files.insertFinalNewline": false,
+    "files.trimTrailingWhitespace": false
+  }
 }
