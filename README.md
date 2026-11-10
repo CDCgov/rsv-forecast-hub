@@ -316,8 +316,8 @@ Example of adding a new entry to the existing list of downstream products:
     "name": "RSVHub Reports",
     "designated_contacts": [
       {
-        "contact_name": "Subekshya Bidari",
-        "contact_email": "zib2@cdc.gov"
+        "contact_name": "Trevor Martin",
+        "contact_email": "upx3@cdc.gov"
        }
     ],
     "organization": "CDC",
