@@ -1,0 +1,15 @@
+model_id,target,designated
+ACCIDDA-insightcast,wk inc rsv hosp,TRUE
+CEPH-Rtrend_rsv,wk inc rsv hosp,TRUE
+DMAPRIME-HYB,wk inc rsv hosp,TRUE
+docxology-timesfm,wk inc rsv hosp,TRUE
+Emory-EpiRSI,wk inc rsv hosp,TRUE
+NAU-Copycat,wk inc rsv hosp,TRUE
+NAU-epymorph,wk inc rsv hosp,TRUE
+NAU-epymorph_strata,wk inc rsv hosp,TRUE
+RSVHub-baseline,wk inc rsv hosp,FALSE
+UGA_flucast-INFLAenza,wk inc rsv hosp,TRUE
+DMAPRIME-HYB,wk inc rsv prop ed visits,TRUE
+NAU-Copycat,wk inc rsv prop ed visits,TRUE
+RSVHub-baseline,wk inc rsv prop ed visits,FALSE
+UGA_flucast-INFLAenza,wk inc rsv prop ed visits,TRUE
