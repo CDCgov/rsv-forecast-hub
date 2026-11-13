@@ -1,0 +1,22 @@
+team_name: "CPHMR, Clemson University"
+team_abbr: "DMAPRIME"
+model_name: "Weighted quantile ensemble"
+model_abbr: "QR"
+model_version: "1.0"
+model_contributors: [
+  {
+    "name": "Tanvir Ahammed",
+    "affiliation": "Clemson University, South Carolina",
+    "email": "tahamme@g.clemson.edu"
+  }
+]
+website_url: "https://github.com/Ahammed-Tanvir/rsv-forecast"
+license: "CC-BY-4.0"
+designated_model: true
+data_inputs: "NHSN weekly confirmed RSV hospital admissions and NSSP weekly proportion of ED visits due to RSV (RSV Forecast Hub target data, as released each week), for all states, DC, PR and the US. Prisma Health EHR data (South Carolina only) are evaluated weekly and used only when they improve backtest accuracy."
+methods: "Weighted ensemble of pooled linear quantile regression, LightGBM quantile regression and a damped trend, with a correction for reporting revisions."
+methods_long: "Three members trained jointly on all locations every week using only the data release available at the forecast date: linear quantile regression and LightGBM quantile regression of the 1-5 week change in log admissions per 100,000 (with the NSSP ED series as extra training series and ED share as inputs), and a damped log-linear trend. The latest two weeks of admissions are raised by their typical final/first-reported ratio, learned from earlier releases. Members are weighted by inverse squared log WIS over the previous 8 resolved weeks. Optional public early indicators (national, regional and Florida growth, share of states rising, ED acceleration) are used for a location group only when a multi-season real-time backtest shows a consistent gain."
+ensemble_of_models: true
+ensemble_of_hub_models: false
+team_funding: "Center for Forecasting and Outbreak Analytics of the Centers for Disease Control and Prevention (CDC) under award number NU38FT000011 and National Library of Medicine of the National Institutes of Health (NIH) under award number R01LM014193."
+designated_github_users: ["Ahammed-Tanvir"]
