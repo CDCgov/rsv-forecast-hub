@@ -37,3 +37,5 @@ website_url: "https://ai.google/applied-ai/science/"
 model_version: "2.0"
 repo_url: "https://github.com/sarahmart/googlesai-resubmits"
 citation: "Martinson S, Brenner MP, Plomecka M, Williams BP, Reich NG, Shamsi Z. Prospective multi-pathogen disease forecasting using autonomous LLM-guided tree search. arXiv. 2026. https://arxiv.org/abs/2605.16238"
+designated_github_users: ["zshamsi2", "sarahmart"]
+
