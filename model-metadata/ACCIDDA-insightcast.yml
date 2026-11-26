@@ -25,3 +25,4 @@ methods_long: "Forecasts are produced with the insight.cast R package. For each 
 ensemble_of_models: true
 ensemble_of_hub_models: false
 designated_targets: ["wk inc rsv hosp"]
+designated_github_users: ["shauntruelove", "cmilla12"]
