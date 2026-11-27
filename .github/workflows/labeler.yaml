@@ -10,9 +10,6 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - name: "Checkout Code"
-        uses: actions/checkout@v7
-
       - name: "Apply Labels"
         id: label-pr
         uses: actions/labeler@v7
